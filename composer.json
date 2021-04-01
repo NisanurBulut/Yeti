@@ -3,8 +3,13 @@
     "authors": [
         {
             "name": "NisanurBulut",
-            "email": "nbulut@sarplojistik.com"
+            "email": "nisanurbulutnb@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
     "require": {}
 }
