@@ -1,5 +1,6 @@
 <?php
 
+use app\controllers\AppsController;
 use app\controllers\HomeController;
 use app\core\Application;
 
@@ -9,7 +10,7 @@ $app = new Application(dirname((__DIR__)));
 
 
 $app->router->get('/', [HomeController::class,'home']);
-$app->router->get('/contact', [HomeController::class,'contact']);
+$app->router->get('/apps', [AppsController::class,'index']);
 $app->router->post('/contact', [HomeController::class,'handleContact']);
 
 

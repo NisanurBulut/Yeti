@@ -19,14 +19,10 @@
                 <a class="item" href="{{ route('dashboard.index') }}">
                     <i class="bolt icon large tooltip" data-content="Dashboard"></i>
                 </a>
-
-                    <a class="item" href="{{ route('settings.index') }}">
-                        <i class="settings icon large tooltip" data-content="Ayarlar"></i>
-                    </a>
                     <a class="item" href="{{ route('users.index') }}">
                         <i class="users icon large tooltip" data-content="Kullanıcılar"></i>
                     </a>
-                    <a class="item" href="{{ route('apps.index') }}">
+                    <a class="item" href="/apps">
                         <i class="rocket icon large tooltip" data-content="Uygulamalar"></i>
                     </a>
 
