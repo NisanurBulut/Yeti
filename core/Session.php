@@ -1,5 +1,7 @@
 <?php
+
 namespace app\core;
+
 class Session
 {
 
@@ -7,17 +9,20 @@ class Session
     public function __construct()
     {
         session_start();
-        $flashMessages = $_SESSION[self::FLASH_KEY] ?? [];
+        $flashMessages = $_SESSION[self::FLASH_KEY] === "" ? [] : $_SESSION[self::FLASH_KEY];
+
         foreach ($flashMessages as $key => &$flashMessage) {
-            $flashMessage['remove'] = true;
+
+            $flashMessage['removed'] = true;
         }
+
         $_SESSION[self::FLASH_KEY] = $flashMessages;
     }
     public function setFlash($key, $message)
     {
         $_SESSION[self::FLASH_KEY][$key] = [
-            'value' => $message,
-            'remove' => false
+            'removed' => false,
+            'value' => $message
         ];
     }
 
@@ -28,10 +33,10 @@ class Session
 
     public function __destruct()
     {
-        $flashMessages = $_SESSION[self::FLASH_KEY] ?? [];
+        $flashMessages = $_SESSION[self::FLASH_KEY] === "" ? [] : $_SESSION[self::FLASH_KEY];
 
         foreach ($flashMessages as $key => &$flashMessage) {
-            if ($flashMessage['remove']) {
+            if ($flashMessage['removed']) {
                 unset($flashMessages[$key]);
             }
         }

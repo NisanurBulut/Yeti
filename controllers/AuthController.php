@@ -11,6 +11,7 @@ class AuthController extends Controller {
 
     public function __construct()
     {
+        Application::$app->session->setFlash('success','Merhaba');
         $userEntity = new User();
         $result = $userEntity->select();
     }
