@@ -10,6 +10,8 @@
     <link rel="stylesheet" type="text/css" href="<?php echo APP_URL . 'css/Semantic-UI-CSS-2.4.1/semantic.min.css'; ?>" />
     <link rel="stylesheet" type="text/css" href="<?php echo APP_URL . 'css/main.css'; ?>" />
     <script src="<?php echo APP_URL . 'js/jquery-3.6.0.min.js'; ?>"></script>
+    <script src="<?php echo APP_URL . 'css/Semantic-UI-CSS-2.4.1/semantic.min.js'; ?>"></script>
+
 <body>
     <div id="idHeader" class="ui violet inverted borderless top fixed fluid pointing menu">
         <a class="header item" href="/">YETİ</a>
@@ -58,6 +60,6 @@
     {{ content }}
 </div>
 
-<script src="<?php echo APP_URL . 'js/Semantic-UI-CSS-2.4.1/semantic.min.js'; ?>"></script>
+
 <script src="<?php echo APP_URL . 'js/main.js'; ?>"></script>
 </html>
