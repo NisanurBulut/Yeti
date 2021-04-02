@@ -1,1 +1,1 @@
-<h1>Uygulamalar ekranı</h1>
+<h1 style="color:black;">Uygulamalar ekranı</h1>

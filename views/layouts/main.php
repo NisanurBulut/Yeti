@@ -7,13 +7,14 @@
     <title>Document</title>
     <link href="/css/semantic.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" />
-    <link href="../../public/css/main.css" defer />
-</head>
+
+    <?php include("./public/css/main.css"); ?>
+
+
 <body>
 <div class="ui violet inverted borderless top fixed fluid pointing menu">
         <a class="header item" href="{{ route('welcome') }}">AMON</a>
         <div class="right menu">
-
                 <div class="item">
                     <div class="ui small input"><input placeholder="Search..." /></div>
                 </div>
