@@ -1,8 +1,10 @@
 <?php
 
-use app\controllers\HomeController;
-use app\controllers\AuthController;
 use app\core\Application;
+use app\controllers\AppController;
+
+use app\controllers\AuthController;
+use app\controllers\HomeController;
 
 require_once  __DIR__.'/../vendor/autoload.php';
 
@@ -20,7 +22,7 @@ $app = new Application(dirname((__DIR__)), $config);
 
 
 $app->router->get('/', [HomeController::class,'home']);
-$app->router->get('/contact', [HomeController::class,'contact']);
+$app->router->get('/apps', [AppController::class,'index']);
 $app->router->post('/contact', [HomeController::class,'handleContact']);
 
 $app->router->get('/login', [AuthController::class,'login']);

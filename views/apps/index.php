@@ -1,0 +1,1 @@
+<h1>Uygulamalar ekranı</h1>
