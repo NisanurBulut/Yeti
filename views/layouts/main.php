@@ -9,29 +9,25 @@
 
     <link rel="stylesheet" type="text/css" href="<?php echo APP_URL . 'css/Semantic-UI-CSS-2.4.1/semantic.min.css'; ?>" />
     <link rel="stylesheet" type="text/css" href="<?php echo APP_URL . 'css/main.css'; ?>" />
-
     <script src="<?php echo APP_URL . 'js/jquery-3.6.0.min.js'; ?>"></script>
-
-    <!-- 1 sn -->
-
 <body>
     <div id="idHeader" class="ui violet inverted borderless top fixed fluid pointing menu">
-        <a class="header item" href="{{ route('welcome') }}">AMON</a>
+        <a class="header item" href="/">YETİ</a>
         <div class="right menu">
             <div class="item">
                 <div class="ui small input"><input placeholder="Search..." /></div>
             </div>
-            <a class="item" href="{{ route('dashboard.index') }}">
+            <a class="item" href="/dashboard">
                 <i class="bolt icon large tooltip" data-content="Dashboard"></i>
             </a>
-            <a class="item" href="{{ route('users.index') }}">
+            <a class="item" href="/users">
                 <i class="users icon large tooltip" data-content="Kullanıcılar"></i>
             </a>
             <a class="item" href="/apps">
                 <i class="rocket icon large tooltip" data-content="Uygulamalar"></i>
             </a>
 
-            <a class="item" href="{{ route('demands.index') }}">
+            <a class="item" href="/demands">
                 <i class="tasks icon large tooltip" data-content="Talepler"></i>
             </a>
             <div role="listbox" aria-expanded="false" class="ui item inline dropdown" tabindex="0">
@@ -55,7 +51,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </body>
