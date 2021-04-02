@@ -1,9 +1,9 @@
 {
-    "name": "nisanur.bulut/yeti",
+    "name": "nisanur.bulut/say-hi-php-mvc",
     "authors": [
         {
             "name": "NisanurBulut",
-            "email": "nisanurbulutnb@gmail.com"
+            "email": "nbulut@sarplojistik.com"
         }
     ],
     "autoload": {
@@ -11,5 +11,7 @@
             "app\\": "./"
         }
     },
-    "require": {}
+    "require": {
+        "vlucas/phpdotenv": "^5.3"
+    }
 }
