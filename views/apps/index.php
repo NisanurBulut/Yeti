@@ -1,4 +1,8 @@
-<?php include(__DIR__ . '/forms/create-app.php'); ?>
+<?php
+
+use app\views\AppItem;
+
+include(__DIR__ . '/forms/create-app.php'); ?>
 
 <div class="ui top attached menu">
   <div class="left menu">
@@ -21,7 +25,8 @@
   <div class="ui four column cards grid">
     <?php
     for ($i = 0; $i < 20; $i++) {
-      echo include(__DIR__ . '/app-item.php');
+      $appItem = app\views\apps\AppItem::begin('/apps/editApp', '/apps/deleteApp', $i);
+      $appItem->end();
     }
     ?>
   </div>
