@@ -59,5 +59,5 @@
 </div>
 
 <script src="<?php echo APP_URL . 'js/Semantic-UI-CSS-2.4.1/semantic.min.js'; ?>"></script>
-<script src="<?php echo APP_URL . 'js/custom.js'; ?>"></script>
+<script src="<?php echo APP_URL . 'js/main.js'; ?>"></script>
 </html>
