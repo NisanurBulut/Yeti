@@ -6,6 +6,8 @@ use app\controllers\AppController;
 use app\controllers\AuthController;
 use app\controllers\HomeController;
 
+ define("APP_URL","http://localhost:8080/");
+
 require_once  __DIR__.'/../vendor/autoload.php';
 
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
