@@ -1,6 +1,6 @@
 <?php
 
-namespace app\views\apps;
+namespace app\views\apps\components;
 
 class AppItem
 {
