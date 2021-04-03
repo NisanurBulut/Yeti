@@ -6,16 +6,24 @@ namespace app\core;
 
 class Request
 {
-    public function __contructor()
+    public $params;
+    public $contentType;
+    public $reqMethod;
+    public function __contructor($params = [])
     {
+        $this->params = $params;
+        $this->reqMethod = trim($_SERVER['REQUEST_METHOD']);
+        $this->contentType = !empty($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
     }
+
     public function getPath()
     {
-        $path = $_SERVER['REQUEST_URI'] ?? '/';
+        $path = $_SERVER['REQUEST_URI'] ?? '/';;
         $position = strpos($path, '?');
         if ($position === false) {
             return $path;
         }
+        $this->params['id']=substr($path, ($position+4),1);
         $path = substr($path, 0, $position);
         return $path;
     }
@@ -49,6 +57,6 @@ class Request
     }
     public function isDelete()
     {
-        return $this->method() === 'delete';
+        return $this->method() === 'post';
     }
 }

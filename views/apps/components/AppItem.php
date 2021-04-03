@@ -10,10 +10,10 @@ class AppItem
         <div class="ui fluid card">
             <div class="content">
                 <div class="hoverBtns">
-                    <a class="btnModalOpen" href="/apps/editApp/%s">
+                    <a class="btnModalOpen" href="/apps/editApp?id=%s">
                         <i class="right floated edit blue icon"></i>
                     </a>
-                    <a class="btnConfirmModalOpen" href="/apps/deleteApp/%s">
+                    <a class="btnConfirmModalOpen" href="/apps/deleteApp?id=%s">
                         <i class="right floated trash red icon"></i>
                     </a>
                 </div>

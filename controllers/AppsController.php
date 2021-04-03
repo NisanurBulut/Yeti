@@ -25,10 +25,13 @@ class AppsController extends Controller {
     public function deleteApp(Request $request)
     {
         $appEntity = new App();
+
         if($request->isDelete())
         {
-            $result = $appEntity->delete($request['id']);
+            $param=$request->params['id'];
+            $result = $appEntity->delete($param);
             Application::$app->session->setFlash('success','Uygulama başarıyla silindi');
+            return Application::$app->response->redirect('/apps');
         }
         Application::$app->session->setFlash('error','Bir hata ile karşılaşıldı');
         return Application::$app->response->redirect('/apps');
