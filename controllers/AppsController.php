@@ -27,6 +27,7 @@ class AppsController extends Controller {
 
         $appModel = new App();
         $appModel->loadData($request->getBody());
-        return $this->render('apps/index');
+        Application::$app->session->setFlash('success','selam nisanur storeApp methoddan geliyorum');
+        return Application::$app->response->redirect('/apps');
     }
 }

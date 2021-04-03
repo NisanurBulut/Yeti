@@ -48,9 +48,10 @@
         <div class="two fields">
             <div class="twelve wide field">
                 <div class="ui right labeled input">
-                    <input id="url_icon" type="text" name="image_url" placeholder="Uygulama ikon adresi"
+                    <input id="url_icon" type="text" name="image_url"
+                    placeholder="Uygulama ikon adresi"
                       onchange="$('#icon_img').attr('src',this.value)"
-                    onkeyup="event.preventDefault();countInput(this,'lblAppUrlIcon')" maxlength="300"/>
+                      maxlength="300"/>
                     <div class="ui basic label label" id="lblAppUrlIcon">0</div>
                 </div>
             </div>
