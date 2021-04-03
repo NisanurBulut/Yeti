@@ -24,8 +24,8 @@ include(__DIR__ . '/forms/create-app.php'); ?>
 <div class="ui bottom attached segment" id="divSearchContent">
   <div class="ui four column cards grid">
     <?php
-    for ($i = 0; $i < 20; $i++) {
-      $appItem = app\views\apps\AppItem::begin('/apps/editApp', '/apps/deleteApp', $i);
+    for ($i = 0; $i<20; $i++) {
+      $appItem = app\views\apps\AppItem::begin($i, $i);
       $appItem->end();
     }
     ?>

@@ -4,16 +4,16 @@ namespace app\views\apps;
 
 class AppItem
 {
-    public static function begin($actionEdit, $actionDelete, $description)
+    public static function begin($id, $description)
     {
         echo sprintf('<div class="column">
         <div class="ui fluid card">
             <div class="content">
                 <div class="hoverBtns">
-                    <a class="btnModalOpen" href="%s">
+                    <a class="btnModalOpen" href="/apps/editApp/%s">
                         <i class="right floated edit blue icon"></i>
                     </a>
-                    <a class="btnConfirmModalOpen" href="%s">
+                    <a class="btnConfirmModalOpen" href="/apps/deleteApp/%s">
                         <i class="right floated trash red icon"></i>
                     </a>
                 </div>
@@ -46,12 +46,11 @@ class AppItem
             </div>
             <div class="content">
                 <div class="meta right floated"></div>
-            </div>
-        ', $actionEdit, $actionDelete, $description);
+            </div>', $id, $id, $description);
         return new AppItem();
     }
     public static function end()
     {
-        return '</div></div>';
+        echo '</div></div>';
     }
 }
