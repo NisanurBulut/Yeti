@@ -51,7 +51,7 @@ abstract class DbModel extends Model
         $result = $statement->fetchAll();
         return $result;
     }
-    public function id($value)
+    public function delete($value)
     {
         $tableName = $this->tableName();
 

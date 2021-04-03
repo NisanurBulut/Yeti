@@ -53,7 +53,6 @@ $(document).ready(function () {
     });
 
     $(document).on("click", ".btnConfirmModalOpen", function (event) {
-        debugger;
         event.preventDefault();
         let href = $(this).attr("href");
         $("#confirmDeleteForm").attr("action", href);

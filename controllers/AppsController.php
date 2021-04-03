@@ -22,7 +22,17 @@ class AppsController extends Controller {
         ];
         return $this->render('apps/index', $params);
     }
-
+    public function deleteApp(Request $request)
+    {
+        $appEntity = new App();
+        if($request->isDelete())
+        {
+            $result = $appEntity->delete($request['id']);
+            Application::$app->session->setFlash('success','Uygulama başarıyla silindi');
+        }
+        Application::$app->session->setFlash('error','Bir hata ile karşılaşıldı');
+        return Application::$app->response->redirect('/apps');
+    }
     public function storeApp(Request $request)
     {
         $appModel = new App();
@@ -31,11 +41,10 @@ class AppsController extends Controller {
             $appModel->loadData($request->getBody());
 
             if($appModel->validate() && $appModel->save()){
-                Application::$app->response->redirect('/apps');
                 Application::$app->session->setFlash('success','Uygulama başarıyla kaydedildi');
             }
         }
-        Application::$app->session->setFlash('error','Uygulama kaydedilemedi');
+        Application::$app->session->setFlash('error','Bir hata ile karşılaşıldı');
         return Application::$app->response->redirect('/apps');
     }
 }

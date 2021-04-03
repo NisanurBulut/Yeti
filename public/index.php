@@ -25,6 +25,7 @@ $app = new Application(dirname((__DIR__)), $config);
 $app->router->get('/', [HomeController::class,'home']);
 $app->router->get('/apps', [AppsController::class,'index']);
 $app->router->post('/apps/storeApp', [AppsController::class,'storeApp']);
+$app->router->delete('/apps/deleteApp/{id}', [AppsController::class,'deleteApp']);
 
 $app->router->post('/contact', [HomeController::class,'handleContact']);
 

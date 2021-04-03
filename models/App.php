@@ -28,6 +28,10 @@ class App extends DbModel
     {
         return parent::where($field, $value);
     }
+    public function delete($value)
+    {
+        return parent::delete($value);
+    }
     public function rules(): array
     {
         return [

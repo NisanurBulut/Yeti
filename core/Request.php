@@ -47,4 +47,8 @@ class Request
     {
         return $this->method() === 'post';
     }
+    public function isDelete()
+    {
+        return $this->method() === 'delete';
+    }
 }
