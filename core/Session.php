@@ -33,6 +33,22 @@ class Session
     {
         $_SESSION[$key] = $value;
     }
+    public function setSuccessFlashMessage($content)
+    {
+        $_SESSION[self::FLASH_KEY]['message'] = [
+            'removed' => false,
+            'value' => $content
+        ];
+        $_SESSION[self::FLASH_KEY]['state'] = [
+            'removed' => false,
+            'value' => 'positive'
+        ];
+
+        $_SESSION[self::FLASH_KEY]['icon'] = [
+            'removed' => false,
+            'value' => 'check'
+        ];
+    }
     public function get($key)
     {
         return $_SESSION[$key] ?? false;
