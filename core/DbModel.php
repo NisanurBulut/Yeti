@@ -4,7 +4,6 @@ namespace app\core;
 
 abstract class DbModel extends Model
 {
-
     abstract public function tableName(): string;
     abstract public function attributes(): array;
     public function save()
@@ -15,16 +14,33 @@ abstract class DbModel extends Model
         $statement = self::prepare("INSERT INTO $tableName (" . implode(',', $attributes) . ")
         VALUES(" . implode(',', $params) . ")");
 
-        foreach($attributes as $attribute)
-        {
+        foreach ($attributes as $attribute) {
             $statement->bindValue(":$attribute", $this->{$attribute});
         }
         $statement->execute();
         return true;
-        // echo '<pre>';
-        // var_dump($statement, $params, $attributes);
-        // '</pre>';
-        // exit;
+    }
+    public function where()
+    {
+        $tableName = $this->tableName();
+        $attributes = $this->attributes();
+        $params = array_map(fn ($attr) => ":$attr", $attributes);
+        $statement = self::prepare("SELECT * FROM $tableName WHERE (" . implode(',', $attributes) . ")
+        VALUES(" . implode(',', $params) . ")");
+
+        echo '<pre>';
+        var_dump($statement, $params, $attributes);
+        '</pre>';
+        exit;
+        foreach ($attributes as $attribute) {
+            $statement->bindValue(":$attribute", $this->{$attribute});
+        }
+        echo '<pre>';
+        var_dump($statement, $params, $attributes);
+        '</pre>';
+        exit;
+        $statement->execute();
+        return true;
     }
     public function select()
     {
@@ -40,8 +56,13 @@ abstract class DbModel extends Model
         // '</pre>';
         // exit;
     }
-    public function prepare($sql)
+    public static function prepare($sql)
     {
         return Application::$app->db->pdo->prepare($sql);
     }
 }
+
+        // echo '<pre>';
+        // var_dump($statement, $params, $attributes);
+        // '</pre>';
+        // exit;
