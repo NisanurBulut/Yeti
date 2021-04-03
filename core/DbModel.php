@@ -40,27 +40,16 @@ abstract class DbModel extends Model
         self::prepare("UPDATE $tableName SET $statement WHERE id = :id")->execute($params);
         return true;
     }
-    public function where()
+    public function where($field, $value)
     {
         $tableName = $this->tableName();
-        $attributes = $this->attributes();
-        $params = array_map(fn ($attr) => ":$attr", $attributes);
-        $statement = self::prepare("SELECT * FROM $tableName WHERE (" . implode(',', $attributes) . ")
-        VALUES(" . implode(',', $params) . ")");
 
-        echo '<pre>';
-        var_dump($statement, $params, $attributes);
-        '</pre>';
-        exit;
-        foreach ($attributes as $attribute) {
-            $statement->bindValue(":$attribute", $this->{$attribute});
-        }
-        echo '<pre>';
-        var_dump($statement, $params, $attributes);
-        '</pre>';
-        exit;
+        $query="SELECT * FROM $tableName WHERE ".($field)."=".($value);
+
+        $statement = self::prepare($query);
         $statement->execute();
-        return true;
+        $result = $statement->fetchAll();
+        return $result;
     }
     public function select()
     {

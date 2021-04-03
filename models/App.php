@@ -24,9 +24,9 @@ class App extends DbModel
     {
         return parent::save();
     }
-    public function where()
+    public function where($field, $value)
     {
-        return parent::where();
+        return parent::where($field, $value);
     }
     public function rules(): array
     {
