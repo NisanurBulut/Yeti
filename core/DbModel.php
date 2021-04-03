@@ -51,6 +51,16 @@ abstract class DbModel extends Model
         $result = $statement->fetchAll();
         return $result;
     }
+    public function id($value)
+    {
+        $tableName = $this->tableName();
+
+        $query="DELETE FROM $tableName WHERE id=".($value);
+
+        $statement = self::prepare($query);
+        $statement->execute();
+        return true;
+    }
     public function select()
     {
         $tableName = $this->tableName();
