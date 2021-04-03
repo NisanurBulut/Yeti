@@ -40,8 +40,14 @@ class Router
         }
         // controller burada okuyorum.
         if (is_array($callback)) {
-            Application::$app->controller = new $callback[0]();
+            $controller = new $callback[0]();
+            Application::$app->controller = $controller;
             $callback[0] = Application::$app->controller;
+            $controller->action = $callback[1];
+            $callback[0] = $controller;
+            foreach ($controller->getMiddlewares() as $middleware) {
+                $middleware->execute();
+            }
         }
         return call_user_func($callback, $this->request);
     }

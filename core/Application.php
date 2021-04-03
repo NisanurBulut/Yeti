@@ -13,7 +13,7 @@ class Application
     public Session $session;
     public Database $db;
     public static Application $app;
-    public Controller $controller;
+    public ?Controller $controller = null;
     public function __construct($rootPath, array $config)
     {
         self::$ROOT_DIR = $rootPath;
