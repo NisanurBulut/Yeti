@@ -65,6 +65,6 @@ echo APP_URL . 'css/Semantic-UI-CSS-2.4.1/semantic.min.css'; ?>" />
     {{ content }}
 </div>
 
-
+<script src="<?php echo APP_URL . 'js/activate.semanticui-components.js'; ?>"></script>
 <script src="<?php echo APP_URL . 'js/main.js'; ?>"></script>
 </html>

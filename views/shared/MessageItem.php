@@ -14,7 +14,7 @@ class MessageItem
             $header=Application::$app->session->getFlash('header') ?? '';
             $content=Application::$app->session->getFlash('message') ?? '';
 
-            echo sprintf('<div class="ui %s message">
+            echo sprintf('<div class="ui %s icon message" style="float:right;max-width:300px;">
                             <i class=" %s icon"></i>
                             <i class="close icon"></i>
                             <div class="header">
