@@ -1,10 +1,13 @@
 <?php
 
 use app\core\Application;
-use app\views\AppItem;
+use app\views\apps\components\AppItem;
+use app\views\shared;
 
+
+
+include(__DIR__ . '/../shared/confirm-modal.php');
 include(__DIR__ . '/forms/create-app.php'); ?>
-
 <?php
 if (Application::$app->session->getFlash('success')) :
 ?>
