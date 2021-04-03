@@ -1,7 +1,7 @@
 <?php
 
 namespace app\core;
-
+use app\core\exceptions\NotFoundException;
 class Router
 {
     protected array $routes = [];
@@ -33,8 +33,7 @@ class Router
         $callback = $this->routes[$method][$path] ?? false;
 
         if ($callback === false) {
-            $this->response->setStatusCode(404);
-            return $this->renderContent('Not found');
+            throw new NotFoundException();
         }
         if (is_string($callback)) {
             return $this->renderView($callback);
@@ -69,8 +68,7 @@ class Router
     protected function layoutContent()
     {
         $layout = Application::$app->layout;
-        if(Application::$app->controller)
-        {
+        if (Application::$app->controller) {
             $layout = Application::$app->controller->layout;
         }
         ob_start();
