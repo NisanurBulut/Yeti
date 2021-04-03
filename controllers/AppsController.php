@@ -30,7 +30,7 @@ class AppsController extends Controller {
         {
             $param=$request->params['id'];
             $result = $appEntity->delete($param);
-            Application::$app->session->setFlash('success','Uygulama başarıyla silindi');
+            Application::$app->session->setSuccessFlashMessage('Uygulama başarıyla silindi');
             return Application::$app->response->redirect('/apps');
         }
         Application::$app->session->setFlash('error','Bir hata ile karşılaşıldı');
