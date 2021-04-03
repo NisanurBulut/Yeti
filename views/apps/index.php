@@ -1,24 +1,3 @@
-<?php
-
-use app\core\Application;
-use app\views\apps\components\AppItem;
-use app\views\shared;
-
-
-
-include(__DIR__ . '/../shared/confirm-modal.php');
-include(__DIR__ . '/forms/create-app.php'); ?>
-<?php
-if (Application::$app->session->getFlash('success')) :
-?>
-  <div class="ui message">
-    <div class="header">
-      Changes in Service
-    </div>
-    <p>
-      <?php echo Application::$app->session->getFlash('success'); ?></p>
-  </div>
-<?php endif; ?>
 
 <div class="ui top attached menu">
   <div class="left menu">
@@ -47,3 +26,7 @@ if (Application::$app->session->getFlash('success')) :
     ?>
   </div>
 </div>
+    <?php
+    include(__DIR__ . '/../shared/confirm-modal.php');
+    include(__DIR__ . '/forms/create-app.php');
+    ?>
