@@ -6,12 +6,5 @@
             "email": "nbulut@sarplojistik.com"
         }
     ],
-    "autoload": {
-        "psr-4": {
-            "app\\": "./"
-        }
-    },
-    "require": {
-        "vlucas/phpdotenv": "^5.3"
-    }
+    "require": {}
 }

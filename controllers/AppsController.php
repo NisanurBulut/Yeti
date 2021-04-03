@@ -7,7 +7,7 @@ use app\core\Request;
 use app\core\Controller;
 use app\core\Application;
 
-class AppController extends Controller {
+class AppsController extends Controller {
 
     public function __construct()
     {
@@ -21,10 +21,7 @@ class AppController extends Controller {
         ];
         return $this->render('apps/index', $params);
     }
-    public function createApp()
-    {
-        return $this->render('apps/forms/create-app');
-    }
+
     public function storeApp(Request $request)
     {
 

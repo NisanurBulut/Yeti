@@ -1,8 +1,7 @@
 <?php
 
 use app\core\Application;
-use app\controllers\AppController;
-
+use app\controllers\AppsController;
 use app\controllers\AuthController;
 use app\controllers\HomeController;
 
@@ -24,9 +23,8 @@ $app = new Application(dirname((__DIR__)), $config);
 
 
 $app->router->get('/', [HomeController::class,'home']);
-$app->router->get('/apps', [AppController::class,'index']);
-$app->router->get('/apps/createApp', [AppController::class,'createApp']);
-$app->router->post('/apps/storeApp', [AppController::class,'storeApp']);
+$app->router->get('/apps', [AppsController::class,'index']);
+$app->router->post('/apps/storeApp', [AppsController::class,'storeApp']);
 
 $app->router->post('/contact', [HomeController::class,'handleContact']);
 
