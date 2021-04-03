@@ -14,7 +14,7 @@ class App extends DbModel
 
     public function tableName(): string
     {
-        return 'tapps';
+        return 'tapp';
     }
     public function select()
     {

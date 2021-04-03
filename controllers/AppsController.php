@@ -26,8 +26,16 @@ class AppsController extends Controller {
     {
 
         $appModel = new App();
-        $appModel->loadData($request->getBody());
-        Application::$app->session->setFlash('success','selam nisanur storeApp methoddan geliyorum');
+        if($request->isPost())
+        {
+            $appModel->loadData($request->getBody());
+
+            if($appModel->validate() && $appModel->save()){
+                Application::$app->response->redirect('/apps');
+                Application::$app->session->setFlash('success','Uygulama başarıyla kaydedildi');
+            }
+        }
+        Application::$app->session->setFlash('error','Uygulama kaydedilemedi');
         return Application::$app->response->redirect('/apps');
     }
 }
