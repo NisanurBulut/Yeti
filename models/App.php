@@ -4,7 +4,7 @@ namespace app\models;
 
 use app\core\DbModel;
 
-class User extends DbModel
+class App extends DbModel
 {
     public string $app_name = '';
     public string $description = '';

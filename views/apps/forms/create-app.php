@@ -1,13 +1,13 @@
 <div class="ui modal">
   <div class="header">Header</div>
   <div class="content">
-  <form class="ui form" autocomplete="off" method="POST" action="{{ route('apps.storeApp') }}">
+  <form class="ui form" autocomplete="off" method="POST" action="/apps/storeApp">
     <h4 class="ui dividing header">Uygulama bilgileri</h4>
     <div class="field">
         <label>Uygulama Adı</label>
         <div class="ui fluid field">
             <div class="ui right labeled input">
-                <input type="text" name="name" placeholder="Uygulama Adı" required
+                <input type="text" name="app_name" placeholder="Uygulama Adı" required
                     onkeyup="event.preventDefault();countInput(this,'lblAppName')" maxlength="100"/>
                 <div class="ui basic label label" id="lblAppName">0</div>
             </div>
@@ -36,7 +36,7 @@
             </div>
             <div class="field">
                 <div class="ui right labeled input">
-                    <input type="text" name="url_address" placeholder="Bağlantı Adresi" required
+                    <input type="text" name="access_url" placeholder="Bağlantı Adresi" required
                     onkeyup="event.preventDefault();countInput(this,'lblAppUrlAddress')" maxlength="200"/>
                     <div class="ui basic label label" id="lblAppUrlAddress">0</div>
                 </div>
@@ -48,7 +48,7 @@
         <div class="two fields">
             <div class="twelve wide field">
                 <div class="ui right labeled input">
-                    <input id="url_icon" type="text" name="url_icon" placeholder="Uygulama ikon adresi"
+                    <input id="url_icon" type="text" name="image_url" placeholder="Uygulama ikon adresi"
                      required onchange="$('#icon_img').attr('src',this.value)"
                     onkeyup="event.preventDefault();countInput(this,'lblAppUrlIcon')" maxlength="300"/>
                     <div class="ui basic label label" id="lblAppUrlIcon">0</div>

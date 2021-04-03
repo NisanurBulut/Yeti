@@ -26,6 +26,8 @@ $app = new Application(dirname((__DIR__)), $config);
 $app->router->get('/', [HomeController::class,'home']);
 $app->router->get('/apps', [AppController::class,'index']);
 $app->router->get('/apps/createApp', [AppController::class,'createApp']);
+$app->router->post('/apps/storeApp', [AppController::class,'storeApp']);
+
 $app->router->post('/contact', [HomeController::class,'handleContact']);
 
 $app->router->get('/login', [AuthController::class,'login']);
