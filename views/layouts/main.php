@@ -7,7 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YETİ</title>
 
-    <link rel="stylesheet" type="text/css" href="<?php echo APP_URL . 'css/Semantic-UI-CSS-2.4.1/semantic.min.css'; ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php
+
+use app\views\shared\MessageItem;
+
+echo APP_URL . 'css/Semantic-UI-CSS-2.4.1/semantic.min.css'; ?>" />
     <link rel="stylesheet" type="text/css" href="<?php echo APP_URL . 'css/main.css'; ?>" />
     <script src="<?php echo APP_URL . 'js/jquery-3.6.0.min.js'; ?>"></script>
     <script src="<?php echo APP_URL . 'css/Semantic-UI-CSS-2.4.1/semantic.min.js'; ?>"></script>
@@ -57,6 +61,7 @@
     </div>
 </body>
 <div class="contentBody">
+<?php MessageItem::showMessage(); ?>
     {{ content }}
 </div>
 
