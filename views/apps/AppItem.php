@@ -4,7 +4,7 @@ namespace app\views\apps;
 
 class AppItem
 {
-    public static function begin($id, $description)
+    public static function begin($app)
     {
         echo sprintf('<div class="column">
         <div class="ui fluid card">
@@ -19,7 +19,7 @@ class AppItem
                 </div>
                 <div class="header">
                     <div class="left floated author">
-                        <img class="ui avatar image" src="https://st2.depositphotos.com/2435397/8630/i/950/depositphotos_86302230-stock-photo-cartoon-ape-like-yeti.jpg"> YETİ
+                        <img class="ui avatar image" src="%s">%s
                     </div>
                 </div>
             </div>
@@ -33,20 +33,20 @@ class AppItem
                     <div class="item">
                         <i class="database icon grey large"></i>
                         <div class="content">
-                            <a class="header"></a>
+                            <a class="header">%s</a>
                         </div>
                     </div>
                     <div class="item">
                         <i class="linkify icon large grey"></i>
                         <div class="content">
-                            <a class="header"></a>
+                            <a class="header">%s</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="content">
                 <div class="meta right floated"></div>
-            </div>', $id, $id, $description);
+            </div>', $app['id'],$app['id'],$app['image_url'],$app['app_name'],$app['description'],$app['db_name'],$app['access_url']);
         return new AppItem();
     }
     public static function end()

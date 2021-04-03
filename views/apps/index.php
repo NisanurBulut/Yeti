@@ -6,15 +6,15 @@ use app\views\AppItem;
 include(__DIR__ . '/forms/create-app.php'); ?>
 
 <?php
-if(Application::$app->session->getFlash('success')):
+if (Application::$app->session->getFlash('success')) :
 ?>
-<div class="ui message">
-  <div class="header">
-    Changes in Service
+  <div class="ui message">
+    <div class="header">
+      Changes in Service
+    </div>
+    <p>
+      <?php echo Application::$app->session->getFlash('success'); ?></p>
   </div>
-  <p>
-  <?php echo Application::$app->session->getFlash('success'); ?></p>
-</div>
 <?php endif; ?>
 
 <div class="ui top attached menu">
@@ -37,8 +37,8 @@ if(Application::$app->session->getFlash('success')):
 <div class="ui bottom attached segment" id="divSearchContent">
   <div class="ui four column cards grid">
     <?php
-    for ($i = 0; $i<20; $i++) {
-      $appItem = app\views\apps\AppItem::begin($i, $i);
+    foreach ($apps as $app) {
+      $appItem = app\views\apps\AppItem::begin($app);
       $appItem->end();
     }
     ?>

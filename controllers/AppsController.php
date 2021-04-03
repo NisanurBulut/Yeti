@@ -15,9 +15,10 @@ class AppsController extends Controller {
     }
     public function index()
     {
-        // todo listed apps from db
+        $appList = new App();
+        $result = $appList->select();
         $params = [
-            'name' => "Selam Nisanur"
+            'apps' => $result
         ];
         return $this->render('apps/index', $params);
     }
