@@ -25,7 +25,6 @@ class AppsController extends Controller {
 
     public function storeApp(Request $request)
     {
-
         $appModel = new App();
         if($request->isPost())
         {

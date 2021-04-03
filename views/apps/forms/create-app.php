@@ -7,7 +7,7 @@
         <label>Uygulama Adı</label>
         <div class="ui fluid field">
             <div class="ui right labeled input">
-                <input type="text" name="app_name" placeholder="Uygulama Adı" required value="test"
+                <input type="text" name="app_name" placeholder="Uygulama Adı" required value="testApp"
                     onkeyup="event.preventDefault();countInput(this,'lblAppName')" maxlength="100"/>
                 <div class="ui basic label label" id="lblAppName">0</div>
             </div>
