@@ -1,0 +1,17 @@
+{
+    "name": "nisanur.bulut/yeti",
+    "authors": [
+        {
+            "name": "NisanurBulut",
+            "email": "nisanurrunasin@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "app\\":"./"
+        }
+    },
+    "require": {
+        "vlucas/phpdotenv": "^5.3"
+    }
+}
