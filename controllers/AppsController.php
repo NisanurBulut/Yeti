@@ -50,18 +50,31 @@ class AppsController extends Controller {
         Application::$app->session->setFlash('error','Bir hata ile karşılaşıldı');
         return Application::$app->response->redirect('/apps');
     }
+    function convertArraysToString($array, $separator  = ', ') {
+        $str = '';
+        foreach ($array as $Array) {
+                $str .= implode($separator, $Array);
+        }
+        return $str;
+}
     public function updateApp(Request $request)
     {
         $appModel = new App();
         if($request->isPost())
         {
             $appModel->loadData($request->getBody());
+            if(!$appModel->validate())
+            {
+                $errorMsgList =$this->convertArraysToString($appModel->errors,',');
+                Application::$app->session->setErrorFlashMessage('İşlem iptal edildi.'.$errorMsgList);
+                return Application::$app->response->redirect('/apps');
+            }
 
-            if($appModel->validate() && $appModel->update()){
-                Application::$app->session->setFlash('success','Uygulama başarıyla güncellendi');
+            if($appModel->update()){
+                Application::$app->session->setSuccessFlashMessage('Uygulama başarıyla güncellendi');
             }
         }
-        Application::$app->session->setFlash('error','Bir hata ile karşılaşıldı');
+        Application::$app->session->setErrorFlashMessage('Bir hata ile karşılaşıldı');
         return Application::$app->response->redirect('/apps');
     }
     public function editApp(Request $request)
