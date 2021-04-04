@@ -11,23 +11,26 @@ class InputField extends BaseField
     public Model $model;
     public string $attribute;
     public string $type;
-
+    public string $classStyle = '';
     public const TYPE_PASSWORD = 'password';
     public const TYPE_TEXT = 'text';
     public const TYPE_NUMBER = 'number';
-    public function __construct(Model $model, string $attribute, string $type)
+    public function __construct(Model $model, string $attribute, string $type, string $classStyle)
     {
         parent::__construct($model, $attribute);
         $this->type = $type;
+        $this->classStyle = $classStyle;
     }
     public function renderInput(): string
     {
         return sprintf(
-            '<input id="inputFor" type="%s" name="%s" value="%s" placeholder="%s" class="ui input" ></input>',
+            '<input type="%s" name="%s" id="%s" value="%s" placeholder="%s" class="ui input %s"></input>',
             $this->type,
             $this->attribute,
+            $this->attribute,
             $this->model->{$this->attribute},
-            $this->model->getLabel($this->attribute)
+            $this->model->getLabel($this->attribute),
+            $this->classStyle
         );
     }
 }

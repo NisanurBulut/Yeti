@@ -15,8 +15,8 @@ class Form
     {
         return '</form';
     }
-    public function field(Model $model, $attribute, $type)
+    public function field(Model $model, $attribute, $type, $actions)
     {
-        return new InputField($model, $attribute, $type);
+        return new InputField($model, $attribute, $type, $actions);
     }
 }
