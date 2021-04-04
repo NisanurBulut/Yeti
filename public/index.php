@@ -4,6 +4,7 @@ use app\core\Application;
 use app\controllers\AppsController;
 use app\controllers\AuthController;
 use app\controllers\HomeController;
+use app\controllers\UsersController;
 
  define("APP_URL","http://localhost:8080/");
 
@@ -33,6 +34,13 @@ $app->router->get('/apps/createApp', [AppsController::class,'createApp']);
 $app->router->post('/apps/updateApp', [AppsController::class,'updateApp']);
 
 $app->router->get('/users', [UsersController::class,'index']);
+$app->router->post('/users/storeUser', [AppsController::class,'storeUser']);
+$app->router->delete('/users/deleteUser', [AppsController::class,'deleteUser']);
+$app->router->get('/users/editUser', [AppsController::class,'editUser']);
+$app->router->get('/users/createUser', [AppsController::class,'createUser']);
+$app->router->post('/users/updateUser', [AppsController::class,'updateUser']);
+
+
 
 $app->router->get('/login', [AuthController::class,'login']);
 $app->router->post('/login', [AuthController::class,'login']);
