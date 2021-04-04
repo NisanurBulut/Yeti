@@ -78,7 +78,7 @@ abstract class DbModel extends Model
         $tableName = $this->tableName();
         $attributes = $this->attributes();
         $params = array_map(fn ($attr) => ":$attr", $attributes);
-        $statement = self::prepare("SELECT * FROM $tableName");
+        $statement = self::prepare("SELECT * FROM $tableName ORDER BY id DESC");
         $statement->execute();
         $result = $statement->fetchAll();
         return $result;
