@@ -23,7 +23,9 @@ class Request
         if ($position === false) {
             return $path;
         }
-        $this->params['id']=substr($path, ($position+4),1);
+        $totalLenght=strlen($path);
+        $count=$totalLenght-4-$position;
+        $this->params['id']=substr($path, ($position+4),$count);
         $path = substr($path, 0, $position);
         return $path;
     }
