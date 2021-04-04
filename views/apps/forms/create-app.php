@@ -7,7 +7,7 @@
         <label>Uygulama Adı</label>
         <div class="ui fluid field">
             <div class="ui right labeled input">
-                <input type="text" name="app_name" placeholder="Uygulama Adı" required value="testApp"
+                <input type="text" name="app_name" placeholder="Uygulama Adı" required value=""
                     onkeyup="event.preventDefault();countInput(this,'lblAppName')" maxlength="100"/>
                 <div class="ui basic label label" id="lblAppName">0</div>
             </div>
@@ -17,7 +17,7 @@
         <label>Uygulama tanımı/açıklama</label>
         <div class="ui fluid field">
             <div class="ui right labeled input">
-            <input type="text" name="description" class="inputTextAreaHeight" value="test"
+            <input type="text" name="description" class="inputTextAreaHeight" value=""
             onkeyup="event.preventDefault();countInput(this,'lblAppDescription')"
             placeholder="Uygulama Tanımı/Açıklama" required />
             <div class="ui basic label label text-center" id="lblAppDescription">0</div>
@@ -29,14 +29,14 @@
         <div class="two fields">
             <div class="field">
                 <div class="ui right labeled input">
-                    <input value="test" type="text" name="db_name" placeholder="Veritabanı Adı" required
+                    <input value="" type="text" name="db_name" placeholder="Veritabanı Adı" required
                     onkeyup="event.preventDefault();countInput(this,'lblAppDbName')" maxlength="100"/>
                     <div class="ui basic label label" id="lblAppDbName">0</div>
                 </div>
             </div>
             <div class="field">
                 <div class="ui right labeled input">
-                    <input type="text" name="access_url" placeholder="Bağlantı Adresi" required value="test"
+                    <input type="text" name="access_url" placeholder="Bağlantı Adresi" required value=""
                     onkeyup="event.preventDefault();countInput(this,'lblAppUrlAddress')" maxlength="200"/>
                     <div class="ui basic label label" id="lblAppUrlAddress">0</div>
                 </div>
