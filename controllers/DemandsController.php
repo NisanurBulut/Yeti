@@ -15,12 +15,12 @@ class  DemandsController extends Controller
     }
     public function index()
     {
-        $appList = new Demand();
-        $result = $appList->select();
         $params = [
-            'demands' => $result
+            'red'=>'Kırmızı',
+            'orange'=>'Turuncu',
+            'blue'=>'Mavi'
         ];
-        return $this->render('demands/index', $params);
+        return $this->render('demands/index', ['items'=>$params]);
     }
     public function deleteDemand(Request $request)
     {
