@@ -12,7 +12,6 @@ class AppsController extends Controller
 
     public function __construct()
     {
-        // Application::$app->session->setFlash('success','Merhaba');
     }
     public function index()
     {

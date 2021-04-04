@@ -2,24 +2,25 @@
 
 namespace app\models;
 
-use app\core\DbModel;
+use app\core\db\DbModel;
 
 class User extends DbModel
 {
-    const STATUS_INACTIVE = 0;
-    const STATUS_ACTIVE = 1;
-    const STATUS_DELETED = 2;
-
-    public string $firstName = '';
-    public string $lastName = '';
+    public string $name_surname = '';
+    public string $username = '';
     public string $email = '';
-    public string $password = '';
-    public string $passwordConfirm = '';
-    public int $status = self::STATUS_ACTIVE;
+    public string $image_url = '';
+    public bool $is_admin = false;
+    public string $id = '0';
 
+    public function __constructor()
+    {
+        $this->is_admin = false;
+        $this->id = '0';
+    }
     public function tableName(): string
     {
-        return 'users';
+        return 'tuser';
     }
     public function select()
     {
@@ -27,22 +28,43 @@ class User extends DbModel
     }
     public function save()
     {
-        $this->password =  password_hash($this->password, PASSWORD_DEFAULT);
         return parent::save();
+    }
+    public function update()
+    {
+        return parent::update();
+    }
+    public function where($where)
+    {
+        return parent::where($where);
+    }
+    public function delete($value)
+    {
+        return parent::delete($value);
     }
     public function rules(): array
     {
         return [
-            'firstName' => [self::RULE_REQUIRED],
-            'lastName' => [self::RULE_REQUIRED],
-            'email' => [self::RULE_REQUIRED, [self::RULE_UNIQUE, 'class'=>self::class]],
-            'password' => [self::RULE_REQUIRED, [self::RULE_MIN, 'min' => 1], [self::RULE_MAX, 'max' => 2]],
-            'passwordConfirm' => [self::RULE_REQUIRED, [self::RULE_MATCH, 'match' => 'password']],
+            'username' => [self::RULE_REQUIRED, [self::RULE_UNIQUE, 'class' => self::class]],
+            'name_surname' => [self::RULE_REQUIRED],
+            'email' => [self::RULE_REQUIRED],
+            'image_url' => [self::RULE_REQUIRED],
+            'is_admin' => [self::RULE_REQUIRED],
         ];
     }
 
     public function attributes(): array
     {
-        return ['firstName', 'lastName', 'email', 'password', 'status'];
+        return ['name_surname', 'username', 'image_url', 'is_admin', 'email', 'id'];
+    }
+    public function labels(): array
+    {
+        return [
+            'name_surname' => 'İsim Soyisim',
+            'username' => 'Kullanıcı Adı',
+            'image_url' => "Kullanıcı Fotoğrafı Http Adresi",
+            'is_admin' => "Admin mi?",
+            'email' => "Eposta Adresi"
+        ];
     }
 }

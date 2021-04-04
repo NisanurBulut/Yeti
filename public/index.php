@@ -23,13 +23,16 @@ $app = new Application(dirname((__DIR__)), $config);
 
 
 $app->router->get('/', [HomeController::class,'home']);
+$app->router->post('/contact', [HomeController::class,'handleContact']);
+
 $app->router->get('/apps', [AppsController::class,'index']);
 $app->router->post('/apps/storeApp', [AppsController::class,'storeApp']);
 $app->router->delete('/apps/deleteApp', [AppsController::class,'deleteApp']);
 $app->router->get('/apps/editApp', [AppsController::class,'editApp']);
 $app->router->get('/apps/createApp', [AppsController::class,'createApp']);
 $app->router->post('/apps/updateApp', [AppsController::class,'updateApp']);
-$app->router->post('/contact', [HomeController::class,'handleContact']);
+
+$app->router->get('/users', [UsersController::class,'index']);
 
 $app->router->get('/login', [AuthController::class,'login']);
 $app->router->post('/login', [AuthController::class,'login']);
