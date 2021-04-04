@@ -23,4 +23,8 @@ class Form
     {
         return new HiddenField($model, $attribute);
     }
+    public function toggleField(Model $model, $attribute)
+    {
+        return new ToggleField($model, $attribute);
+    }
 }

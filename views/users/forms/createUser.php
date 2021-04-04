@@ -15,12 +15,7 @@
     </div>
 </div>
 <div class="ui segment">
-    <div class="field">
-        <div class="ui toggle checkbox">
-            <input type="checkbox" name="is_admin" tabindex="0" readonly="" required>
-            <label class="ui yellow">Kullanıcı yönetici midir ?</label>
-        </div>
-    </div>
+<?php echo $form->toggleField($model, 'is_admin') ?>
 </div>
 <div class="formBtnRightAlligned">
     <button class="ui button purple" type="submit">Kaydet</button>

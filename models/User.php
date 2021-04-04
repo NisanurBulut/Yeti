@@ -63,7 +63,7 @@ class User extends DbModel
             'name_surname' => 'İsim Soyisim',
             'username' => 'Kullanıcı Adı',
             'image_url' => "Kullanıcı Fotoğrafı Http Adresi",
-            'is_admin' => "Admin mi?",
+            'is_admin' => "Kullanıcı yönetici midir ?",
             'email' => "Eposta Adresi"
         ];
     }
