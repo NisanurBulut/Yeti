@@ -3,7 +3,7 @@
   <div class="left menu">
     <div class="ui left aligned category search item">
       <div class="ui transparent icon input">
-        <input id="inputSearch" class="prompt" type="text" placeholder="Uygulama ara...">
+        <input id="inputSearch" class="prompt" type="text" placeholder="Kullanıcı ara...">
         <i class="search link icon"></i>
       </div>
       <div class="results">
