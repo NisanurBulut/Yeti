@@ -16,6 +16,7 @@ class InputField extends BaseField
     public const TYPE_HIDDEN = 'hidden';
     public const TYPE_TEXT = 'text';
     public const TYPE_NUMBER = 'number';
+    public const TYPE_EMAIL = 'email';
     public function __construct(Model $model, string $attribute, string $type, string $classStyle)
     {
         parent::__construct($model, $attribute);
@@ -34,7 +35,11 @@ class InputField extends BaseField
             $this->classStyle
         );
     }
-
+    public function emailField()
+    {
+        $this->type = self::TYPE_EMAIL;
+        return $this;
+    }
     public function hiddenField()
     {
         $this->type = self::TYPE_HIDDEN;

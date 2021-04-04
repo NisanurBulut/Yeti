@@ -20,7 +20,7 @@ class UsersController extends Controller {
         ];
         return $this->render('users/index', $params);
     }
-    public function createApp()
+    public function createUser()
     {
         $userModel = new User();
         return $this->renderOnlyView('users/forms/createUser', ['model' => $userModel]);

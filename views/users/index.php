@@ -14,7 +14,7 @@ use app\views\users\components\UserItem; ?>
     </div>
   </div>
   <div class="right menu">
-    <a class="ui item mini btnModalOpen" href="/apps/createUser">
+    <a class="ui item mini btnModalOpen" href="/users/createUser">
       <i class="plus icon large green center aligned"></i>
     </a>
   </div>

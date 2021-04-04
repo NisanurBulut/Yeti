@@ -34,11 +34,11 @@ $app->router->get('/apps/createApp', [AppsController::class,'createApp']);
 $app->router->post('/apps/updateApp', [AppsController::class,'updateApp']);
 
 $app->router->get('/users', [UsersController::class,'index']);
-$app->router->post('/users/storeUser', [AppsController::class,'storeUser']);
-$app->router->delete('/users/deleteUser', [AppsController::class,'deleteUser']);
-$app->router->get('/users/editUser', [AppsController::class,'editUser']);
-$app->router->get('/users/createUser', [AppsController::class,'createUser']);
-$app->router->post('/users/updateUser', [AppsController::class,'updateUser']);
+$app->router->post('/users/storeUser', [UsersController::class,'storeUser']);
+$app->router->delete('/users/deleteUser', [UsersController::class,'deleteUser']);
+$app->router->get('/users/editUser', [UsersController::class,'editUser']);
+$app->router->get('/users/createUser', [UsersController::class,'createUser']);
+$app->router->post('/users/updateUser', [UsersController::class,'updateUser']);
 
 
 
