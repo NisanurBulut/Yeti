@@ -11,6 +11,7 @@ class App extends DbModel
     public string $image_url = '';
     public string $access_url = '';
     public string $id;
+
     public function tableName(): string
     {
         return 'tapp';

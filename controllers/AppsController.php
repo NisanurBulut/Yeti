@@ -7,7 +7,8 @@ use app\core\Request;
 use app\core\Controller;
 use app\core\Application;
 
-class AppsController extends Controller {
+class AppsController extends Controller
+{
 
     public function __construct()
     {
@@ -26,45 +27,47 @@ class AppsController extends Controller {
     {
         $appEntity = new App();
 
-        if($request->isDelete())
-        {
-            $param=$request->params['id'];
+        if ($request->isDelete()) {
+            $param = $request->params['id'];
             $result = $appEntity->delete($param);
             Application::$app->session->setSuccessFlashMessage('Uygulama başarıyla silindi');
             return Application::$app->response->redirect('/apps');
         }
-        Application::$app->session->setFlash('error','Bir hata ile karşılaşıldı');
+        Application::$app->session->setFlash('error', 'Bir hata ile karşılaşıldı');
         return Application::$app->response->redirect('/apps');
     }
     public function storeApp(Request $request)
     {
         $appModel = new App();
-        if($request->isPost())
-        {
+        if ($request->isPost()) {
             $appModel->loadData($request->getBody());
-
-            if($appModel->validate() && $appModel->save()){
-                Application::$app->session->setFlash('success','Uygulama başarıyla kaydedildi');
+            if (!$appModel->validate()) {
+                $msg = $appModel->convertErrorMessagesToString();
+                Application::$app->session->setErrorFlashMessage('İşlem iptal edildi.' . $msg);
+                return Application::$app->response->redirect('/apps');
+            }
+            if ($appModel->save()) {
+                Application::$app->session->setFlash('success', 'Uygulama başarıyla kaydedildi');
             }
         }
-        Application::$app->session->setFlash('error','Bir hata ile karşılaşıldı');
+        Application::$app->session->setFlash('error', 'Bir hata ile karşılaşıldı');
         return Application::$app->response->redirect('/apps');
     }
 
     public function updateApp(Request $request)
     {
         $appModel = new App();
-        if($request->isPost())
-        {
+        if ($request->isPost()) {
             $appModel->loadData($request->getBody());
-            if(!$appModel->validate())
-            {
-                Application::$app->session->setErrorFlashMessage('İşlem iptal edildi.'.$appModel->convertErrorMessagesToString());
+            if (!$appModel->validate()) {
+                $msg = $appModel->convertErrorMessagesToString();
+                Application::$app->session->setErrorFlashMessage('İşlem iptal edildi.' . $msg);
                 return Application::$app->response->redirect('/apps');
             }
 
-            if($appModel->update()){
+            if ($appModel->update()) {
                 Application::$app->session->setSuccessFlashMessage('Uygulama başarıyla güncellendi');
+                return Application::$app->response->redirect('/apps');
             }
         }
         Application::$app->session->setErrorFlashMessage('Bir hata ile karşılaşıldı');
@@ -74,13 +77,12 @@ class AppsController extends Controller {
     {
         $appEntity = new App();
 
-        if($request->isGet())
-        {
-            $param=$request->params['id'];
-            $result = $appEntity->where(['id'=>$param]);
-            return $this->renderOnlyView('apps/forms/editApp', ['model'=>$result]);
+        if ($request->isGet()) {
+            $param = $request->params['id'];
+            $result = $appEntity->where(['id' => $param]);
+            return $this->renderOnlyView('apps/forms/editApp', ['model' => $result]);
         }
-        Application::$app->session->setFlash('error','Bir hata ile karşılaşıldı');
+        Application::$app->session->setFlash('error', 'Bir hata ile karşılaşıldı');
         return Application::$app->response->redirect('/apps');
     }
     public function createApp()

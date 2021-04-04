@@ -11,12 +11,17 @@ abstract class Model
     public const RULE_MATCH = 'match';
     public const RULE_EMAIL = 'email';
     public const RULE_UNIQUE = 'unique';
+    public bool $isUpdating;
 
     public function loadData($data)
     {
+        $this->isUpdating=false;
         foreach ($data as $key => $value) {
             if (property_exists($this, $key)) {
                 $this->{$key} = $value;
+                if ($key === 'id' && $this->{$key} > 0) {
+                    $this->isUpdating = true;
+                }
             }
         }
     }
@@ -56,7 +61,7 @@ abstract class Model
                     $rule['match'] = $this->getLabel($rule['match']);
                     $this->addError($attribute, self::RULE_MATCH, $rule);
                 }
-                if ($ruleName === self::RULE_UNIQUE) {
+                if ($ruleName === self::RULE_UNIQUE && $this->isUpdating == false) {
                     $className = $rule['class'];
                     $uniqueAttr = $rule['attribute'] ?? $attribute;
                     $tableName = $className::tableName();
@@ -101,11 +106,13 @@ abstract class Model
     {
         return $this->errors[$attribute][0] ?? false;
     }
-    public function convertErrorMessagesToString() {
+    public function convertErrorMessagesToString()
+    {
         $str = '';
         $separator  = ', ';
-        foreach ($this->errors as $Array) {
-                $str .= implode($separator, $Array);
+        $errorMessages = array_values($this->errors);
+        foreach ($errorMessages as $Array) {
+            $str .= implode($separator, $Array);
         }
         return $str;
     }
