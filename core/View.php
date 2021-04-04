@@ -10,7 +10,7 @@ class View {
         $layoutContent = $this->layoutContent();
         return str_replace('{{ content }}', $viewContent, $layoutContent);
     }
-    protected function renderOnlyView($view, $params)
+    public function renderOnlyView($view, $params)
     {
         foreach ($params as $key => $value) {
             $$key = $value;

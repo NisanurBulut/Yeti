@@ -11,7 +11,7 @@
     </div>
   </div>
   <div class="right menu">
-    <a class="ui item mini btnModalOpen">
+    <a class="ui item mini btnModalOpen" href="/apps/createApp">
       <i class="plus icon large green center aligned"></i>
     </a>
   </div>
@@ -28,5 +28,6 @@
 </div>
     <?php
     include(__DIR__ . '/../shared/confirm-modal.php');
+    include(__DIR__ . '/../shared/general-modal.php');
     include(__DIR__ . '/forms/create-app.php');
     ?>

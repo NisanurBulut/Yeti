@@ -50,4 +50,22 @@ class AppsController extends Controller {
         Application::$app->session->setFlash('error','Bir hata ile karşılaşıldı');
         return Application::$app->response->redirect('/apps');
     }
+
+    public function editApp(Request $request)
+    {
+        $appEntity = new App();
+
+        if($request->isGet())
+        {
+            $param=$request->params['id'];
+            $result = $appEntity->where(['id'=>$param]);
+            return $this->renderOnlyView('apps/forms/editApp', ['model'=>$result]);
+        }
+        Application::$app->session->setFlash('error','Bir hata ile karşılaşıldı');
+        return Application::$app->response->redirect('/apps');
+    }
+    public function createApp()
+    {
+        return $this->renderOnlyView('apps/forms/createApp');
+    }
 }

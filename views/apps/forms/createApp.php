@@ -1,6 +1,4 @@
-<div class="ui modal">
-  <div class="header">Header</div>
-  <div class="content">
+
   <form class="ui form" autocomplete="off" method="POST" action="/apps/storeApp">
     <h4 class="ui dividing header">Uygulama bilgileri</h4>
     <div class="field">
@@ -65,6 +63,3 @@
         <button class="ui button purple" type="submit">Kaydet</button>
     </div>
 </form>
-</div>
-  </div>
-</div>

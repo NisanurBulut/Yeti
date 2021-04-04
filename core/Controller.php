@@ -30,4 +30,8 @@ class Controller
     {
         return Application::$app->view->renderView($view, $params);
     }
+    public function renderOnlyView($view, $params = [])
+    {
+        return Application::$app->view->renderOnlyView($view, $params);
+    }
 }

@@ -24,10 +24,9 @@ $(document).ready(function () {
         document.getElementById(labelName).innerText=`${s}/${maxLength}`;
         return false;
     };
-    function loadModal(href, modalId) {
+    function openModal() {
         event.preventDefault();
-        let itemModal = document.getElementById(`${modalId}`);
-        $(itemModal)
+        $('#generalModal')
             .modal({
                 blurring: false,
                 observeChanges: true,
@@ -36,11 +35,6 @@ $(document).ready(function () {
                     callback = $.isFunction(callback)
                         ? callback
                         : function () {};
-
-                    $.get(href, function (responseContent) {
-                        debugger;
-                        $(itemModal).find(".content").html(responseContent);
-                    });
                 },
             })
             .modal("show");
@@ -48,8 +42,15 @@ $(document).ready(function () {
 
     $(document).on("click", ".btnModalOpen", function (event) {
         event.preventDefault();
-        $('.ui.modal')
-        .modal('show');
+        let href = $(this).attr("href");
+        $.ajax({
+            url: href,
+            success: function (responseContent) {
+                console.log(responseContent);
+              $('#generalModal').find(".content").html(responseContent);
+            },
+          });
+       openModal();
     });
 
     $(document).on("click", ".btnConfirmModalOpen", function (event) {
