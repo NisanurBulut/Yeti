@@ -59,6 +59,9 @@ $(document).ready(function () {
         $("#confirmDeleteForm").attr("action", href);
         $("#confirmModal").modal("setting", "closable", false).modal("show");
     });
+    $(document).on('click', ".imageChange", function (event) {
+        event.preventDefault();
+    });
     $(document).on('change', ".imageChange", function (event) {
         event.preventDefault();
         imageValue = $(this).val();

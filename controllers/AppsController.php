@@ -26,12 +26,12 @@ class AppsController extends Controller
     public function deleteApp(Request $request)
     {
         $appEntity = new App();
-
         if ($request->isDelete()) {
             $param = $request->params['id'];
-            $result = $appEntity->delete($param);
-            Application::$app->session->setSuccessFlashMessage('Uygulama başarıyla silindi');
-            return Application::$app->response->redirect('/apps');
+            if ($appEntity->delete($param)) {
+                Application::$app->session->setSuccessFlashMessage('Uygulama başarıyla silindi');
+                return Application::$app->response->redirect('/apps');
+            }
         }
         Application::$app->session->setFlash('error', 'Bir hata ile karşılaşıldı');
         return Application::$app->response->redirect('/apps');
@@ -44,11 +44,11 @@ class AppsController extends Controller
             if (!$appModel->validate()) {
                 $msg = $appModel->convertErrorMessagesToString();
                 Application::$app->session->setErrorFlashMessage('İşlem iptal edildi.' . $msg);
-                return Application::$app->response->redirect('/apps');
             }
             if ($appModel->save()) {
-                Application::$app->session->setFlash('success', 'Uygulama başarıyla kaydedildi');
+                Application::$app->session->setSuccessFlashMessage('Uygulama başarıyla kaydedildi');
             }
+            return Application::$app->response->redirect('/apps');
         }
         Application::$app->session->setFlash('error', 'Bir hata ile karşılaşıldı');
         return Application::$app->response->redirect('/apps');
@@ -62,13 +62,12 @@ class AppsController extends Controller
             if (!$appModel->validate()) {
                 $msg = $appModel->convertErrorMessagesToString();
                 Application::$app->session->setErrorFlashMessage('İşlem iptal edildi.' . $msg);
-                return Application::$app->response->redirect('/apps');
             }
 
             if ($appModel->update()) {
                 Application::$app->session->setSuccessFlashMessage('Uygulama başarıyla güncellendi');
-                return Application::$app->response->redirect('/apps');
             }
+            return Application::$app->response->redirect('/apps');
         }
         Application::$app->session->setErrorFlashMessage('Bir hata ile karşılaşıldı');
         return Application::$app->response->redirect('/apps');
