@@ -51,4 +51,12 @@ class App extends DbModel
     {
         return ['app_name', 'description', 'image_url', 'access_url', 'db_name','id'];
     }
+    public function labels(): array
+    {
+        return ['app_name'=>'Uygulama Adı',
+                'description'=>'Tanım/Açıklama',
+                'image_url'=>'İkon Http Adresi',
+                'access_url'=>'Erişim Bağlantı Linki',
+                'db_name'=>'Veritabanı Adı'];
+    }
 }

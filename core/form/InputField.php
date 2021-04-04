@@ -22,15 +22,12 @@ class InputField extends BaseField
     }
     public function renderInput(): string
     {
-        $te= $this->type;
-        $te1= $this->attribute;
-        $te2= $this->model->{$this->attribute};
-
         return sprintf(
-            '<input id="inputFor" type="%s" name="%s" value="%s" class="ui input" ></input>',
+            '<input id="inputFor" type="%s" name="%s" value="%s" placeholder="%s" class="ui input" ></input>',
             $this->type,
             $this->attribute,
-            $this->model->{$this->attribute}
+            $this->model->{$this->attribute},
+            $this->model->getLabel($this->attribute)
         );
     }
 }
