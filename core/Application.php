@@ -1,8 +1,10 @@
 <?php
 
 namespace app\core;
-use app\core\Controller;
+use app\core\View;
 use app\core\Session;
+use app\core\Controller;
+
 class Application
 {
     public static string $ROOT_DIR;
@@ -14,6 +16,7 @@ class Application
     public Database $db;
     public static Application $app;
     public ?Controller $controller = null;
+    public View $view;
     public function __construct($rootPath, array $config)
     {
         self::$ROOT_DIR = $rootPath;
@@ -23,6 +26,7 @@ class Application
         $this->session = new Session();
         $this->router = new Router($this->request, $this->response);
         $this->controller = new Controller();
+        $this->view = new View();
         $this->db = new Database($config['db']);
     }
     public function getController()
@@ -39,7 +43,7 @@ class Application
             echo $this->router->resolve();
         } catch (\Exception $e) {
             $this->response->setStatusCode($e->getCode());
-            echo $this->router->renderView('_error', [
+            echo $this->view->renderView('_error', [
                 'exception' => $e
             ]);
         }
