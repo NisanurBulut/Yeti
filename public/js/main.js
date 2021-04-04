@@ -59,4 +59,9 @@ $(document).ready(function () {
         $("#confirmDeleteForm").attr("action", href);
         $("#confirmModal").modal("setting", "closable", false).modal("show");
     });
+    $(document).on('change', ".imageChange", function (event) {
+        event.preventDefault();
+        imageValue = $(this).val();
+       $("#icon_img").attr("src",imageValue);
+    });
 });
