@@ -23,11 +23,6 @@ class UserItem
     <div class="content">
         <div class="header">%s</div>
         <div class="ui divider"></div>
-        <div class="meta">
-            <p class="item">
-                <i class="icon grey clock"></i> %s
-                 </p>
-        </div>
         <div class="description">
             <p class="item"><i class="icon grey envelope"></i>%s</p>
         </div>
@@ -42,7 +37,7 @@ class UserItem
         </a>
     </div>
 </div>';
-        echo sprintf($finalPrint, $user['name_surname'], $user['image_url'], $user['username'], $user['created_at'], $user['email'], $user['id'], $user['id'], $user['id']);
+        echo sprintf($finalPrint, $user['name_surname'], $user['image_url'], $user['username'], $user['email'], $user['id'], $user['id'], $user['id']);
         return new UserItem();
     }
     public static function end()
