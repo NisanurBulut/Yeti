@@ -4,7 +4,10 @@
     margin-right: 2rem;
     margin-bottom: 5rem;
 }
-
+.formBtnRightAlligned {
+    display: flex;
+    justify-content: flex-end;
+}
 .appContent{
 
 }
