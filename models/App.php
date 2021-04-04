@@ -2,8 +2,7 @@
 
 namespace app\models;
 
-use app\core\DbModel;
-
+use app\core\db\DbModel;
 class App extends DbModel
 {
     public string $app_name = '';
