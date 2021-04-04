@@ -26,7 +26,7 @@ class InputField extends BaseField
     public function renderInput(): string
     {
         return sprintf(
-            '<input type="%s" name="%s" id="%s" value="%s" placeholder="%s" class="ui input %s"></input>',
+            '<input type="%s" name="%s" id="%s" value="%s" placeholder="%s" class="ui input %s" required></input>',
             $this->type,
             $this->attribute,
             $this->attribute,
