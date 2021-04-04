@@ -10,7 +10,7 @@ class App extends DbModel
     public string $db_name = '';
     public string $image_url = '';
     public string $access_url = '';
-    public string $id;
+    public string $id='0';
 
     public function tableName(): string
     {
