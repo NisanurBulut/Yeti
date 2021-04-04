@@ -63,3 +63,10 @@
         <button class="ui button purple" type="submit">Kaydet</button>
     </div>
 </form>
+
+<?php $form=app\core\form\Form::begin('/apps/storeApp','post')?>
+<?php echo $form->field($model, 'app_name','text') ?>
+<?php echo $form->field($model,'description','text') ?>
+
+<button type="submit" class="btn btn-primary float-right">Kaydol</button>
+<?php echo app\core\form\Form::end() ?>

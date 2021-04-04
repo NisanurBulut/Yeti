@@ -87,6 +87,7 @@ class AppsController extends Controller
     }
     public function createApp()
     {
-        return $this->renderOnlyView('apps/forms/createApp');
+        $appModel = new App();
+        return $this->renderOnlyView('apps/forms/createApp', ['model' => $appModel]);
     }
 }

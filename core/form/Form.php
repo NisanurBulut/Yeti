@@ -8,7 +8,7 @@ class Form
 {
     public static function begin($action, $method)
     {
-        echo sprintf('<form style="padding:1.5rem;" action="%s" method="%s">', $action, $method);
+        echo sprintf('<form class="ui form" autocomplete="off" action="%s" method="%s">', $action, $method);
         return new Form();
     }
     public static function end()
@@ -17,6 +17,6 @@ class Form
     }
     public function field(Model $model, $attribute, $type)
     {
-        return new Field($model, $attribute, $type);
+        return new InputField($model, $attribute, $type);
     }
 }

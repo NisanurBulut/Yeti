@@ -16,14 +16,14 @@ abstract class BaseField
     }
     public function __toString()
     {
-        return sprintf('<div class="form-group">
-        <label for="inputFor">%s</label>
-                %s
-        <small  class="text-danger %s"> %s </small>
-        </div>',
+        return sprintf('<div class="field">
+                            <label>%s</label>
+                        <div class="ui fluid field">
+                            %s
+                        </div>
+                        </div>',
             $this->model->getLabel($this->attribute),
-            $this->renderInput(),
-            $this->model->getFirstError($this->attribute)
+            $this->renderInput()
         );
     }
 }
