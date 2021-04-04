@@ -3,6 +3,7 @@
 namespace app\models;
 
 use app\core\db\DbModel;
+use DateTime;
 
 class User extends DbModel
 {
@@ -12,6 +13,7 @@ class User extends DbModel
     public string $image_url = '';
     public bool $is_admin = false;
     public string $id = '0';
+    public DateTime $created_at;
 
     public function __constructor()
     {
@@ -55,7 +57,7 @@ class User extends DbModel
 
     public function attributes(): array
     {
-        return ['name_surname', 'username', 'image_url', 'is_admin', 'email', 'id'];
+        return ['name_surname', 'username', 'image_url', 'is_admin', 'email', 'id','created_at'];
     }
     public function labels(): array
     {

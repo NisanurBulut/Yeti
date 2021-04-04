@@ -21,9 +21,9 @@ use app\views\users\components\UserItem; ?>
 </div>
 <div class="ui bottom attached segment" id="divSearchContent">
   <div class="ui grid">
-    <?php for ($i = 0; $i < 15; $i++) {
+    <?php foreach($users as $user) {
 
-      $userItem = UserItem::begin();
+      $userItem = UserItem::begin($user);
       $userItem->end();
     }
     ?>

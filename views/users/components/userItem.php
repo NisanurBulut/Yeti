@@ -4,47 +4,45 @@ namespace app\views\users\components;
 
 class UserItem
 {
-    public static function begin()
+    public static function begin($user)
     {
-        echo sprintf('<div class="four wide column centerGridItems">
-        <div class="ui card">
-    <div class="content">
-        @if ($user->is_admin)
-            <i class="right floated star yellow icon"></i>
-        @endif
-        <div class="header">{{ $user->name }}</div>
+        $finalPrint = '<div class="four wide column centerGridItems">
+        <div class="ui card"><div class="content">';
+        if ($user['is_admin']) {
+            $finalPrint = $finalPrint . '<i class="right floated star yellow icon"></i>';
+        }
+        $finalPrint = $finalPrint . '
+        <div class="header"> %s </div>
         <div class="description">
             <p></p>
         </div>
-    </div>
-    <div class="image">
-        <img class="ui image" src="https://avatars.githubusercontent.com/u/9026717?v=4">
-    </div>
+        </div>
+        <div class="image">
+        <img class="ui image" src="%s" />
+        </div>
     <div class="content">
-        <div class="header">{{ $user->username }}</div>
+        <div class="header">%s</div>
         <div class="ui divider"></div>
         <div class="meta">
             <p class="item">
-                <i class="icon grey clock"></i>
-                {{ $user->created_at->diffForHumans() }}</p>
+                <i class="icon grey clock"></i> %s
+                 </p>
         </div>
         <div class="description">
-            <p class="item">
-                <i class="icon grey envelope"></i>
-                {{ $user->email }}</p>
+            <p class="item"><i class="icon grey envelope"></i>%s</p>
         </div>
     </div>
     <div class="extra content">
-        <a onclick="event.preventDefault()" class="left floated edit btnModalOpen" href="/users/editUser/">
+        <a onclick="event.preventDefault()" class="left floated edit btnModalOpen" href="/users/editUser/%s">
             <i class="edit blue icon"></i>
         </a>
         <a class="right floated trash btnConfirmModalOpen"
-          id=""  href="">
+          id="%s"  href="/users/deleteUser/%s">
             <i class="trash red icon"></i>
         </a>
     </div>
-</div>
-        ');
+</div>';
+        echo sprintf($finalPrint, $user['name_surname'], $user['image_url'], $user['username'], $user['created_at'], $user['email'], $user['id'], $user['id'], $user['id']);
         return new UserItem();
     }
     public static function end()

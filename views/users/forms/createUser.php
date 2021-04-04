@@ -1,4 +1,4 @@
-<?php $form = app\core\form\Form::begin('/apps/storeUser', 'post') ?>
+<?php $form = app\core\form\Form::begin('/users/storeUser', 'post') ?>
 
 <div class="two fields">
     <?php echo $form->field($model, 'name_surname', 'text', '') ?>

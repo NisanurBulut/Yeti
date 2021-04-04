@@ -1,4 +1,4 @@
-<?php $form = app\core\form\Form::begin('/apps/updateUser', 'post') ?>
+<?php $form = app\core\form\Form::begin('/users/updateUser', 'post') ?>
 <?php echo $form->hiddenField($model,'id','text','') ?>
 <div class="two fields">
     <?php echo $form->field($model, 'name_surname', 'text', '') ?>
