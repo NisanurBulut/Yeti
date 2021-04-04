@@ -13,6 +13,7 @@ class InputField extends BaseField
     public string $type;
     public string $classStyle = '';
     public const TYPE_PASSWORD = 'password';
+    public const TYPE_HIDDEN = 'hidden';
     public const TYPE_TEXT = 'text';
     public const TYPE_NUMBER = 'number';
     public function __construct(Model $model, string $attribute, string $type, string $classStyle)
@@ -32,5 +33,11 @@ class InputField extends BaseField
             $this->model->getLabel($this->attribute),
             $this->classStyle
         );
+    }
+
+    public function hiddenField()
+    {
+        $this->type = self::TYPE_HIDDEN;
+        return $this;
     }
 }

@@ -19,4 +19,8 @@ class Form
     {
         return new InputField($model, $attribute, $type, $actions);
     }
+    public function hiddenField(Model $model, $attribute)
+    {
+        return new HiddenField($model, $attribute);
+    }
 }
