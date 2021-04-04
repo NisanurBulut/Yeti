@@ -1,3 +1,6 @@
+<?php
+
+use app\views\users\components\UserItem; ?>
 
 <div class="ui top attached menu">
   <div class="left menu">
@@ -17,16 +20,17 @@
   </div>
 </div>
 <div class="ui bottom attached segment" id="divSearchContent">
-  <div class="ui four column cards grid">
-    <?php
-    foreach ($users as $user) {
-    //   $appItem = app\views\apps\components\AppItem::begin($app);
-    //   $appItem->end();
+  <div class="ui grid">
+    <?php for ($i = 0; $i < 15; $i++) {
+
+      $userItem = UserItem::begin();
+      $userItem->end();
     }
     ?>
   </div>
 </div>
-    <?php
-    include(__DIR__ . '/../shared/confirm-modal.php');
-    include(__DIR__ . '/../shared/general-modal.php');
-    ?>
+
+<?php
+include(__DIR__ . '/../shared/confirm-modal.php');
+include(__DIR__ . '/../shared/general-modal.php');
+?>

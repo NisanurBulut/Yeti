@@ -6,7 +6,7 @@ class AppItem
 {
     public static function begin($app)
     {
-        echo sprintf('<div class="column">
+        echo sprintf('<div class="four wide column centerGridItems">
         <div class="ui fluid card">
             <div class="content">
                 <div class="hoverBtns">
