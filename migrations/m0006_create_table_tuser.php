@@ -4,7 +4,6 @@ use app\core\Application;
 
 class m0006_create_table_tuser
 {
-
     public function up()
     {
         $db = Application::$app->db;
