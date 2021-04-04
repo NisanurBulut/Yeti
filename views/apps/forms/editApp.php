@@ -1,7 +1,7 @@
 
   <form class="ui form" autocomplete="off" method="POST" action="/apps/updateApp">
     <h4 class="ui dividing header">Uygulama bilgileri</h4>
-    <input type="hidden"  value="<?php echo $model->id ?>"/>
+    <input type="hidden" name="id" value="<?php echo $model->id ?>"/>
     <div class="field">
         <label>Uygulama Adı</label>
         <div class="ui fluid field">

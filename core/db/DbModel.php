@@ -24,7 +24,7 @@ abstract class DbModel extends Model
         $statement->execute();
         return true;
     }
-    public function update($id)
+    public function update()
     {
         $tableName = $this->tableName();
         $attributes = $this->attributes();
@@ -37,9 +37,13 @@ abstract class DbModel extends Model
                 $statement .= "`$key` = :$key,";
                 $params[$key] = $this->{$key};
             }
+            if (isset($_POST[$key]) && $key == "id")
+            {
+                $statement .= "`$key` = :$key,";
+                $params[$key] = $this->{$key};
+            }
         }
         $statement = rtrim($statement, ",");
-        $params['id'] = $id;
         self::prepare("UPDATE $tableName SET $statement WHERE id = :id")->execute($params);
         return true;
     }

@@ -10,7 +10,7 @@ class App extends DbModel
     public string $db_name = '';
     public string $image_url = '';
     public string $access_url = '';
-
+    public string $id;
     public function tableName(): string
     {
         return 'tapp';
@@ -22,6 +22,10 @@ class App extends DbModel
     public function save()
     {
         return parent::save();
+    }
+    public function update()
+    {
+        return parent::update();
     }
     public function where($where)
     {
@@ -44,6 +48,6 @@ class App extends DbModel
 
     public function attributes(): array
     {
-        return ['app_name', 'description', 'image_url', 'access_url', 'db_name'];
+        return ['app_name', 'description', 'image_url', 'access_url', 'db_name','id'];
     }
 }

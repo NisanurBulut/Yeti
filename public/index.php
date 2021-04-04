@@ -28,7 +28,7 @@ $app->router->post('/apps/storeApp', [AppsController::class,'storeApp']);
 $app->router->delete('/apps/deleteApp', [AppsController::class,'deleteApp']);
 $app->router->get('/apps/editApp', [AppsController::class,'editApp']);
 $app->router->get('/apps/createApp', [AppsController::class,'createApp']);
-
+$app->router->post('/apps/updateApp', [AppsController::class,'updateApp']);
 $app->router->post('/contact', [HomeController::class,'handleContact']);
 
 $app->router->get('/login', [AuthController::class,'login']);

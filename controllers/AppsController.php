@@ -50,7 +50,20 @@ class AppsController extends Controller {
         Application::$app->session->setFlash('error','Bir hata ile karşılaşıldı');
         return Application::$app->response->redirect('/apps');
     }
+    public function updateApp(Request $request)
+    {
+        $appModel = new App();
+        if($request->isPost())
+        {
+            $appModel->loadData($request->getBody());
 
+            if($appModel->validate() && $appModel->update()){
+                Application::$app->session->setFlash('success','Uygulama başarıyla güncellendi');
+            }
+        }
+        Application::$app->session->setFlash('error','Bir hata ile karşılaşıldı');
+        return Application::$app->response->redirect('/apps');
+    }
     public function editApp(Request $request)
     {
         $appEntity = new App();
