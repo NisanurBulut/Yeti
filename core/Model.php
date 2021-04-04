@@ -101,4 +101,12 @@ abstract class Model
     {
         return $this->errors[$attribute][0] ?? false;
     }
+    public function convertErrorMessagesToString() {
+        $str = '';
+        $separator  = ', ';
+        foreach ($this->errors as $Array) {
+                $str .= implode($separator, $Array);
+        }
+        return $str;
+    }
 }

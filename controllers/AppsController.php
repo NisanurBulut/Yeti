@@ -50,13 +50,7 @@ class AppsController extends Controller {
         Application::$app->session->setFlash('error','Bir hata ile karşılaşıldı');
         return Application::$app->response->redirect('/apps');
     }
-    function convertArraysToString($array, $separator  = ', ') {
-        $str = '';
-        foreach ($array as $Array) {
-                $str .= implode($separator, $Array);
-        }
-        return $str;
-}
+
     public function updateApp(Request $request)
     {
         $appModel = new App();
@@ -65,8 +59,7 @@ class AppsController extends Controller {
             $appModel->loadData($request->getBody());
             if(!$appModel->validate())
             {
-                $errorMsgList =$this->convertArraysToString($appModel->errors,',');
-                Application::$app->session->setErrorFlashMessage('İşlem iptal edildi.'.$errorMsgList);
+                Application::$app->session->setErrorFlashMessage('İşlem iptal edildi.'.$appModel->convertErrorMessagesToString());
                 return Application::$app->response->redirect('/apps');
             }
 
