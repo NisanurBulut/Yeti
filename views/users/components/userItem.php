@@ -33,11 +33,11 @@ class UserItem
         </div>
     </div>
     <div class="extra content">
-        <a onclick="event.preventDefault()" class="left floated edit btnModalOpen" href="/users/editUser/%s">
+        <a class="left floated edit btnModalOpen" href="/users/editUser?id=%s">
             <i class="edit blue icon"></i>
         </a>
         <a class="right floated trash btnConfirmModalOpen"
-          id="%s"  href="/users/deleteUser/%s">
+          id="%s"  href="/users/deleteUser?id=%s">
             <i class="trash red icon"></i>
         </a>
     </div>

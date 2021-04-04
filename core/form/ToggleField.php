@@ -27,8 +27,7 @@ class ToggleField
             name="%s"
             %s
             tabindex="0"
-            readonly=""
-            required>
+            readonly="">
             <label  class="ui yellow" >%s</label>
           </div>
         </div>',

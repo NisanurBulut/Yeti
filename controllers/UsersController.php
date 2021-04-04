@@ -64,12 +64,13 @@ class UsersController extends Controller {
             if (!$userEntity->validate()) {
                 $msg = $userEntity->convertErrorMessagesToString();
                 Application::$app->session->setErrorFlashMessage('İşlem iptal edildi.' . $msg);
+                return Application::$app->response->redirect('/users');
             }
 
             if ($userEntity->update()) {
                 Application::$app->session->setSuccessFlashMessage('Kullanıcı başarıyla güncellendi');
+                return Application::$app->response->redirect('/users');
             }
-            return Application::$app->response->redirect('/users');
         }
         Application::$app->session->setErrorFlashMessage('Bir hata ile karşılaşıldı');
         return Application::$app->response->redirect('/users');

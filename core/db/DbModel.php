@@ -32,6 +32,11 @@ abstract class DbModel extends Model
         $statement = "";
         foreach ($attributes as $key)
         {
+            if (!isset($_POST[$key]) && $key === "is_admin")
+            {
+                $statement .= "`$key` = :$key,";
+                $params[$key] = false;
+            }
             if (isset($_POST[$key]) && $key != "id")
             {
                 $statement .= "`$key` = :$key,";
