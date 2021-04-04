@@ -3,7 +3,7 @@
 namespace app\core;
 use app\core\Application;
 class View {
-    public string $title='';
+    public string $title='YETİ';
     public function renderView($view, $params = [])
     {
         $viewContent = $this->renderOnlyView($view, $params);
