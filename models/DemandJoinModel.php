@@ -10,6 +10,7 @@ class DemandJoinModel extends DbModel
     public string $description = '';
     public string $state = '';
     public string $status = '';
+    public string $color = '';
     public string $id = '';
     public string $appName = '';
     public string $takedUsername='';
@@ -38,7 +39,7 @@ class DemandJoinModel extends DbModel
     public function attributes(): array
     {
         return ['id', 'title', 'description', 'state', 'status',
-        'appName','ownerUsername','takedUsername',
+        'appName','ownerUsername','takedUsername','color','status_id',
         'ownerNamesurname','takedNamesurname','differenceTime'];
     }
     public function labels(): array

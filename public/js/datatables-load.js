@@ -17,9 +17,9 @@ function loadDemandsToTable(dataSource) {
                 { data: 'ownerUsername'},
                 {
                   data: "status",
-                  render: function (data, type) {
+                  render: function (data,type,full) {
                       return (
-                        `<div class="ui label orange">
+                        `<div class="ui label ${full.color}">
                         <i class="clock icon"></i> ${data}
                       </div>`
                       );
