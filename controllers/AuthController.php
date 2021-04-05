@@ -2,10 +2,12 @@
 
 namespace app\controllers;
 
-use app\core\Application;
+use LoginForm;
 use app\models\User;
 use app\core\Request;
+use app\core\Response;
 use app\core\Controller;
+use app\core\Application;
 
 class AuthController extends Controller {
 
@@ -15,29 +17,22 @@ public function __construct()
 }
     public function login()
     {
-
-        $params = [
-            'name' => "Selam Nisanur"
-        ];
-        return $this->render('auth/login', $params);
+        return $this->render('auth/login');
     }
-    public function register(Request $request)
+    public function storeLogin(Request $request, Response $response)
     {
-        $registerModel = new User();
+       $loginForm = new LoginForm();
         if($request->isPost())
         {
-            $registerModel->loadData($request->getBody());
-
-            if($registerModel->validate() && $registerModel->save()){
-                Application::$app->response->redirect('/');
-                Application::$app->session->setFlash('success','Thanks for registering');
+            $loginForm->loadData($request->getBody());
+            if (!$loginForm->validate()) {
+                $msg = $loginForm->convertErrorMessagesToString();
+                Application::$app->session->setErrorFlashMessage('İşlem iptal edildi.' . $msg);
             }
-            return $this->render('auth/register',[
-                'model'=>$registerModel
-            ]);
+            if($loginForm->login()){
+                return $response->redirect('/demands');
+            }
         }
-        return $this->render('auth/register',[
-            'model'=>$registerModel
-        ]);
+        return $this->render('auth/login');
     }
 }

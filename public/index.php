@@ -52,8 +52,6 @@ $app->router->post('/demands/updateDemand', [DemandsController::class,'updateDem
 
 
 $app->router->get('/auth/login', [AuthController::class,'login']);
-$app->router->post('/auth/login', [AuthController::class,'login']);
-$app->router->get('/register', [AuthController::class,'register']);
-$app->router->post('/register', [AuthController::class,'register']);
+$app->router->post('/auth/storeLogin', [AuthController::class,'storeLogin']);
 
 $app->run();
