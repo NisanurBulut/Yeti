@@ -29,11 +29,11 @@ class  DemandsController extends Controller
     }
     public function destroyDemand(Request $request)
     {
-        $appEntity = new Demand();
+        $demandEntity = new Demand();
         if ($request->isDelete()) {
             $param = $request->params['id'];
-            if ($appEntity->delete($param)) {
-                Application::$app->session->setSuccessFlashMessage('Uygulama başarıyla silindi');
+            if ($demandEntity->delete($param)) {
+                Application::$app->session->setSuccessFlashMessage('Talep başarıyla silindi');
                 return Application::$app->response->redirect('/demands');
             }
         }
@@ -71,7 +71,7 @@ class  DemandsController extends Controller
             }
 
             if ($appModel->update()) {
-                Application::$app->session->setSuccessFlashMessage('Uygulama başarıyla güncellendi');
+                Application::$app->session->setSuccessFlashMessage('Talep başarıyla güncellendi');
             }
             return Application::$app->response->redirect('/demands');
         }

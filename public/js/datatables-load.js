@@ -40,11 +40,11 @@ function loadDemandsToTable(dataSource) {
                     data: "id",
                     render: function (data, type) {
                         return (
-                          `<a class="btnModalOpen" id='${data}' href="/demands/showDemand/${data}">`
+                          `<a class="btnModalOpen" id='${data}' href="/demands/showDemand?id=${data}">`
                             +`<i class="green eye icon"></i></a>`
-                            +`<a class="btnModalOpen" id='${data}' href="/demands/editDemand/${data}">`
+                            +`<a class="btnModalOpen" id='${data}' href="/demands/editDemand?id=${data}">`
                             +`<i class="blue edit icon"></i></a>`
-                            +`<a class="btnConfirmModalOpen" id='${data}' href="/demands/destroyDemand/${data}">`
+                            +`<a class="btnConfirmModalOpen" id='${data}' href="/demands/destroyDemand?id=${data}">`
                             +`<i class="red trash icon"></i></a>`
                         );
                     },
