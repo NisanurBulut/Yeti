@@ -5,7 +5,7 @@
         Log-in to your account
       </div>
     </h2>
-    <form action="" method="get" class="ui large form">
+    <form action="storeLogin" method="post" class="ui large form">
       <div class="ui stacked secondary  segment">
         <div class="field">
           <div class="ui left icon input">
@@ -19,7 +19,7 @@
             <input type="password" name="password" placeholder="Password">
           </div>
         </div>
-        <div class="ui fluid large violet submit button">Login</div>
+        <button type="submit" class="ui fluid large violet submit button">Login</button>
       </div>
 
       <div class="ui error message"></div>

@@ -1,15 +1,17 @@
 <?php
 
 namespace app\core;
+
 use app\core\View;
 use app\core\Session;
 use app\core\Controller;
 use app\core\db\Database;
+use app\models\User;
 
 class Application
 {
     public static string $ROOT_DIR;
-    public string $layout='main';
+    public string $layout = 'main';
     public Router $router;
     public Request $request;
     public Response $response;
@@ -18,6 +20,7 @@ class Application
     public static Application $app;
     public ?Controller $controller = null;
     public View $view;
+    public ?User $user = null; // User can be null
     public function __construct($rootPath, array $config)
     {
         self::$ROOT_DIR = $rootPath;
@@ -29,6 +32,12 @@ class Application
         $this->controller = new Controller();
         $this->view = new View();
         $this->db = new Database($config['db']);
+        $this->user = new User();
+        $primaryValue = self::$app->session->get('user');
+        $primaryKey = $this->user->primaryKey();
+        if ($primaryValue) {
+           $this->user = $this->user->where([$primaryKey => $primaryValue]);
+        }
     }
     public function getController()
     {
@@ -48,5 +57,14 @@ class Application
                 'exception' => $e
             ]);
         }
+    }
+    public function login(User $user)
+    {
+        // we need to read user from session
+        $this->user = $user;
+        $primaryKey = $user->primaryKey();
+        $primaryValue = $user->{$primaryKey};
+
+        $this->session->set('user', $primaryValue);
     }
 }

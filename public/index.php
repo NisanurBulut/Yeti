@@ -7,6 +7,7 @@ use app\controllers\HomeController;
 use app\controllers\UsersController;
 use app\controllers\DemandsController;
 use app\core\db\Constants;
+use app\models\User;
 
 define("APP_URL","http://localhost:8080/");
 
