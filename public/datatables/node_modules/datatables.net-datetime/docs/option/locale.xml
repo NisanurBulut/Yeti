@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dt-option library="DateTime">
+	<name>locale</name>
+	<summary>The locale that DateTime should use.</summary>
+	<since>DateTime 1.0.0</since>
+
+	<type type="string">
+		<description>
+			Set the locale that the external date parsing library ([Moment](https://momentjs.com/), [Luxon](https://moment.github.io/luxon/) or [DayJS](https://github.com/iamkun/dayjs)) will use for parsing and formatting strings.
+		</description>
+	</type>
+
+	<default value="'en'">
+		The locale that DateTime uses by default is English.
+	</default>
+
+	<description>
+		This allows the _locale_ that DateTime uses to be set - it is only used when using an external parsing and formatting library such as [Moment](https://momentjs.com/), [Luxon](https://moment.github.io/luxon/) or [DayJS](https://github.com/iamkun/dayjs). You must also load the locale you need for your formatting library of choice.
+
+		This option is related to the `de-init i18n` option in the DateTime library in that it is used for internationalisation, but in this case it is used for the input value - letting the library parse and format strings in languages other than English (e.g. names of days or months).
+	</description>
+
+	<example title="Change the locale to French"><![CDATA[
+
+new DateTime(document.getElementById('test'), {
+	locale: 'fr'
+});
+
+]]></example>
+
+</dt-option>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dt-option library="DateTime">
+	<name>i18n.next</name>
+	<summary>String to use in the next button.</summary>
+	<since>DateTime 1.0.0</since>
+
+	<type type="string">
+		<description>
+			The string that is used in the next button.
+	    </description>
+	</type>
+
+	<default value="'Next'">
+		As default `'Next'` is the text used within the next button.
+	</default>
+	<description>
+		<![CDATA[
+		This value is used in the next button to move between months in DateTime.
+		]]>
+	</description>
+
+	<example title="Change the value for `i18n.next`"><![CDATA[
+$(document).ready(function() {
+    new DateTime(document.getElementById('test'), {
+		i18n: {
+			next: '&gt;'
+		}
+	});
+});
+]]></example>
+
+</dt-option>

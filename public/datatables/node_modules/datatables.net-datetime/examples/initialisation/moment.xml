@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dt-example table-type="html" table-class="display nowrap" order="7">
+
+<css lib="datetime"/>
+<js lib="jquery moment datetime">
+<![CDATA[
+
+$(document).ready(function() {
+    new DateTime(document.getElementById('test'), {
+        format: 'D/M/YYYY'
+    });
+});
+
+]]>
+</js>
+
+<title lib="DateTime">Moment formatting</title>
+
+<info><![CDATA[
+
+This example shows the date / time input with [Moment](https://momentjs.com/) used to provide formatting.
+
+]]></info>
+
+<custom-table>
+    <input id="test" type="text" value="17/1/2020" />
+</custom-table>
+
+</dt-example>

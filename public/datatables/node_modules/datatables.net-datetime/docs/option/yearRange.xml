@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dt-option library="DateTime">
+	<name>yearRange</name>
+	<summary>The range of years provided for selection.</summary>
+	<since>DateTime 1.0.0</since>
+
+	<type type="number">
+		<description>
+			The number of years after and before the current year that should be available to be selected.
+	    </description>
+	</type>
+
+	<default value="25">
+		The default range of years that can be selected is plus or minus 25 years.
+	</default>
+	<description>
+		<![CDATA[
+		This option is used if either `-init maxDate` or `-init minDate` are not in use to determine how many years to show to the user for selection.
+
+		To determine the max year that can be selected this value is added to the current year. Similarly for min year this value is subtracted. If `-init maxDate` or `-init minDate` are declared then it will not be used to determine the range in the relative directions.
+		]]>
+	</description>
+
+	<example title="Set the year range to 50"><![CDATA[
+$(document).ready(function() {
+    new DateTime(document.getElementById('test'), {
+		yearRange: 50
+	});
+});
+]]></example>
+
+<related type="option">maxDate</related>
+<related type="option">minDate</related>
+
+</dt-option>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dt-option library="DateTime">
+	<name>i18n.seconds</name>
+	<summary>Label for the seconds selection.</summary>
+	<since>DateTime 1.0.0</since>
+
+	<type type="string">
+		<description>
+			The string value for the label to indicate seconds selection.
+	    </description>
+	</type>
+
+	<default value="'Second'">
+		
+	</default>
+	<description>
+		<![CDATA[
+		This value is used as a label next to the selection for the value of seconds within DateTime.
+		]]>
+	</description>
+
+	<example title="Change the value for `i18n.seconds`"><![CDATA[
+$(document).ready(function() {
+	new DateTime(document.getElementById('test'), {
+		format: 'HH:mm:ss',
+		i18n: {
+			seconds: 's'
+		}
+	});
+});
+]]></example>
+
+</dt-option>

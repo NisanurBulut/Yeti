@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dt-option library="DateTime">
+	<name>onChange</name>
+	<summary>Function that is called whenever the value selected for DateTime changes.</summary>
+	<since>DateTime 1.0.0</since>
+
+	<type type="function">
+		<signature>onChange(value, date, input)</signature>
+		<parameter type="string" name="value">The current value that has been selected as a string.</parameter>
+		<parameter type="Date" name="date">The current value that has been selected as a Date.</parameter>
+		<parameter type="node" name="input">The DateTime input element.</parameter>
+		<description>
+			This function is called whenever the value selected for DateTime changes. It allows for custom functionality to be defined.
+
+			The callback function is executed in the scope of the DateTime instance - i.e. `this` is the DateTime instance and has access to all of its API methods.
+		</description>
+	</type>
+
+	<default value="function">
+		The default value for this option is a function, but it is empty and does nothing.
+	</default>
+	<description>
+		This option allows users to define custom functionality that should occur whenever a change to the selection within a DateTime instance occurs.
+
+		Note that you can also use the [`change` event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event) that your browser will trigger on the `-tag input` element to determine when the value has been changed.
+	</description>
+
+	<example title="Alert the user that they have made a change"><![CDATA[
+
+new DateTime(document.getElementById('test'), {
+	onChange: function (value, date, input) {
+		alert('Your new value is ' + value);
+	}
+});
+
+]]></example>
+
+</dt-option>
