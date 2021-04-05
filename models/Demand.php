@@ -8,8 +8,8 @@ class Demand extends DbModel
 {
     public string $title = '';
     public string $description = '';
-    public string $state_id = '0';
-    public string $status_id = '0';
+    public string $state = 'Bekliyor';
+    public string $status = '';
     public string $app_id = '0';
     public string $id = '0';
     public string $undertaking_id='0';
@@ -50,14 +50,14 @@ class Demand extends DbModel
             'owner_id' => [self::RULE_REQUIRED],
             'undertaking_id' => [self::RULE_REQUIRED],
             'app_id' => [self::RULE_REQUIRED],
-            'status_id' => [self::RULE_REQUIRED],
-            'state_id' => [self::RULE_REQUIRED]
+            'status' => [self::RULE_REQUIRED],
+            'state' => [self::RULE_REQUIRED]
         ];
     }
 
     public function attributes(): array
     {
-        return ['title', 'description', 'owner_id', 'undertaking_id', 'app_id', 'id','state_id','status_id'];
+        return ['title', 'description', 'owner_id', 'undertaking_id', 'app_id', 'id','state','status'];
     }
     public function labels(): array
     {
@@ -67,8 +67,8 @@ class Demand extends DbModel
             'owner_id' => "Talebi Açan Kullanıcı",
             'undertaking_id' => "Kullanıcı üstlenen Kullanıcı",
             'app_id' => "Uygulama",
-            'state_id' => "Aşama",
-            'status_id' => "Durum",
+            'state' => "Aşama",
+            'status' => "Durum",
         ];
     }
 }
