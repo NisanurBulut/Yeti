@@ -30,21 +30,22 @@ $app->router->post('/contact', [HomeController::class,'handleContact']);
 
 $app->router->get('/apps', [AppsController::class,'index']);
 $app->router->post('/apps/storeApp', [AppsController::class,'storeApp']);
-$app->router->delete('/apps/deleteApp', [AppsController::class,'deleteApp']);
+$app->router->delete('/apps/destroyApp', [AppsController::class,'destroyApp']);
 $app->router->get('/apps/editApp', [AppsController::class,'editApp']);
 $app->router->get('/apps/createApp', [AppsController::class,'createApp']);
 $app->router->post('/apps/updateApp', [AppsController::class,'updateApp']);
 
 $app->router->get('/users', [UsersController::class,'index']);
 $app->router->post('/users/storeUser', [UsersController::class,'storeUser']);
-$app->router->delete('/users/deleteUser', [UsersController::class,'deleteUser']);
+$app->router->delete('/users/destroyUser', [UsersController::class,'destroyUser']);
 $app->router->get('/users/editUser', [UsersController::class,'editUser']);
 $app->router->get('/users/createUser', [UsersController::class,'createUser']);
 $app->router->post('/users/updateUser', [UsersController::class,'updateUser']);
 
 $app->router->get('/demands', [DemandsController::class,'index']);
+$app->router->get('/demands/getDemands', [DemandsController::class,'getDemands']);
 $app->router->post('/demands/storeDemand', [DemandsController::class,'storeDemand']);
-$app->router->delete('/demands/deleteDemand', [DemandsController::class,'deleteDemand']);
+$app->router->delete('/demands/destroyDemand', [DemandsController::class,'destroyDemand']);
 $app->router->get('/demands/editDemand', [DemandsController::class,'editDemand']);
 $app->router->get('/demands/createDemand', [DemandsController::class,'createDemand']);
 $app->router->post('/demands/updateDemand', [DemandsController::class,'updateDemand']);

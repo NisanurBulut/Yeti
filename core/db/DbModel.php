@@ -90,7 +90,7 @@ abstract class DbModel extends Model
         $params = array_map(fn ($attr) => ":$attr", $attributes);
         $statement = self::prepare("SELECT * FROM $tableName ORDER BY id DESC");
         $statement->execute();
-        $result = $statement->fetchAll();
+        $result = $statement->fetchAll(PDO::FETCH_CLASS);
         return $result;
     }
     public function countWhere($where)

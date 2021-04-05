@@ -15,16 +15,16 @@ class  DemandsController extends Controller
     {
         Application::$app->view->title='Talepler';
     }
+    public function getDemands(){
+        $demandModel = new Demand();
+        $demandList= $demandModel->select();
+        return json_encode($demandList);
+    }
     public function index()
     {
-        $params = [
-            'red'=>'Kırmızı',
-            'orange'=>'Turuncu',
-            'blue'=>'Mavi'
-        ];
-        return $this->render('demands/index', ['items'=>$params]);
+        return $this->render('demands/index');
     }
-    public function deleteDemand(Request $request)
+    public function destroyDemand(Request $request)
     {
         $appEntity = new Demand();
         if ($request->isDelete()) {

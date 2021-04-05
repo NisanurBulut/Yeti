@@ -7,7 +7,7 @@
     </div>
 </div>
 <div class="ui bottom attached segment" id="divSearchContent">
-    <table id="example" class="ui celled table" style="width:100%">
+    <table id="dtDemand" class="ui celled table" style="width:100%">
         <thead>
             <tr>
                 <th>Title</th>
@@ -15,10 +15,11 @@
                 <th>Durum</th>
                 <th>Aşama</th>
                 <th>Zaman Aşımı</th>
+                <th>işlem Zamanı</th>
                 <th>işlem</th>
             </tr>
         </thead>
-        <tbody>
+        <!-- <tbody>
             <tr>
                 <td>Talep Title</td>
                 <td>Melis Türksever</td>
@@ -227,7 +228,7 @@
                     </a>
                 </td>
             </tr>
-        </tbody>
+        </tbody> -->
     </table>
 </div>
 <?php
