@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\core\Request;
+use app\models\Demand;
 use app\core\Controller;
 use app\core\Application;
 
@@ -10,10 +11,7 @@ class HomeController extends Controller {
 
     public function home()
     {
-        $params = [
-            'name' => "Selam Nisanur"
-        ];
-        return $this->render('home', $params);
+        return $this->render('home');
     }
     public function contact()
     {
