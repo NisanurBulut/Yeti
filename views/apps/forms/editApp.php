@@ -1,8 +1,9 @@
 
 <?php $form = app\core\form\Form::begin('/apps/updateApp', 'post') ?>
-<?php echo $form->hiddenField($model,'id','text','') ?>
+
 <?php echo $form->field($model, 'app_name', 'text','') ?>
 <?php echo $form->field($model, 'description', 'text','') ?>
+<?php echo $form->hiddenField($model,'id') ?>
 <div class="two fields">
     <?php echo $form->field($model, 'db_name', 'text','') ?>
     <?php echo $form->field($model, 'access_url', 'text','') ?>

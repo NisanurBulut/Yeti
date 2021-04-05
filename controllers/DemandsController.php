@@ -59,6 +59,8 @@ class  DemandsController extends Controller
             if (!$demandEntity->validate() || !$demandEntity->save()) {
                 return $this->validateModel($demandEntity, $response);
             }
+            Application::$app->session->setSuccessFlashMessage('Talep başarıyla kaydedildi. ');
+            return Application::$app->response->redirect('/demands');
         }
         Application::$app->session->setErrorFlashMessage('Bir hata ile karşılaşıldı');
         return Application::$app->response->redirect('/demands');
@@ -74,6 +76,7 @@ class  DemandsController extends Controller
                 return $this->validateModel($demandEntity, $response);
             }
             Application::$app->session->setSuccessFlashMessage('Talep başarıyla güncellendi');
+            return Application::$app->response->redirect('/demands');
         }
         Application::$app->session->setErrorFlashMessage('Bir hata ile karşılaşıldı');
         return Application::$app->response->redirect('/demands');
@@ -83,11 +86,12 @@ class  DemandsController extends Controller
         $demandEntity = new Demand();
 
         if ($request->isGet()) {
+            $appModel = new App();
             $param = $request->params['id'];
             $result = $demandEntity->where(['id' => $param]);
-            $appModel = new App();
             $apps = $appModel->selectFields(['id AS "key"', 'app_name AS "name"']);
-            return $this->renderOnlyView('demands/forms/editDemand', ['model' => $result, 'apps' => $apps]);
+            return $this->renderOnlyView('demands/forms/editDemand',
+            ['model' => $result, 'apps' => $apps]);
         }
         Application::$app->session->setErrorFlashMessage('Bir hata ile karşılaşıldı');
         return Application::$app->response->redirect('/demands');

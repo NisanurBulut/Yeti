@@ -1,8 +1,9 @@
 <?php
 
 use app\core\db\Constants;
-
-$form = app\core\form\Form::begin('/demands/updateDemand', 'post') ?>
+?>
+<?php $form = app\core\form\Form::begin('/demands/updateDemand', 'post') ?>
+<?php echo $form->hiddenField($model, 'id') ?>
 <?php echo $form->field($model, 'title', 'text', '') ?>
 <?php echo $form->field($model, 'description', 'text', '') ?>
 <div class="two fields">

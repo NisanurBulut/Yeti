@@ -32,14 +32,10 @@ class AuthController extends Controller
         $loginForm = new LoginForm();
         if ($request->isPost()) {
             $loginForm->loadData($request->getBody());
-            if (!$loginForm->validate()) {
+            if (!$loginForm->validate()  || !$loginForm->login()) {
                 return $this->validateForm($loginForm,$response);
             }
-            if ($loginForm->login()) {
-                return $response->redirect('/demands');
-            }else{
-                return $this->validateForm($loginForm,$response);
-            }
+            return $response->redirect('/demands');
         }
         return $response->redirect('/login', ["model" => $loginForm]);
     }
