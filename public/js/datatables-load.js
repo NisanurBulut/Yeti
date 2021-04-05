@@ -9,15 +9,15 @@ $('#dtDemand').ready(function () {
 });
 
 function loadDemandsToTable(dataSource) {
-
+  console.log(dataSource);
     var table = $('#dtDemand').DataTable({
         data: dataSource,
         columns: [
                 { data: "id"},
                 { data: 'title'},
-                { data: 'description'},
-                { data: 'status'},
+                { data: 'ownerUsername'},
                 { data: 'state'},
+                { data: 'status'},
                 { data: 'created_at'},
                 {
                     data: "id",
