@@ -16,6 +16,10 @@ class App extends DbModel
     {
         return 'tapp';
     }
+    public function primaryKey(): string
+    {
+        return 'id';
+    }
     public function select()
     {
         return parent::select();

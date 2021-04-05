@@ -43,7 +43,10 @@ class Status extends DbModel
 
         ];
     }
-
+    public function primaryKey(): string
+    {
+        return 'id';
+    }
     public function attributes(): array
     {
         return ['id', 'description', 'name', 'color_id'];

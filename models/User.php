@@ -20,6 +20,10 @@ class User extends DbModel
         $this->is_admin = false;
         $this->id = '0';
     }
+    public function primaryKey(): string
+    {
+        return 'id';
+    }
     public function tableName(): string
     {
         return 'tuser';

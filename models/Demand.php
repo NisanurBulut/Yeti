@@ -63,6 +63,10 @@ class Demand extends DbModel
     {
         return ['title', 'description', 'owner_id', 'undertaking_id', 'app_id', 'id','state','status_id'];
     }
+    public function primaryKey(): string
+    {
+        return 'id';
+    }
     public function labels(): array
     {
         return [
