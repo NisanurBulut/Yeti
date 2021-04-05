@@ -85,7 +85,7 @@ class  DemandsController extends Controller
     }
     public function createDemand()
     {
-        $appModel = new Demand();
-        return $this->renderOnlyView('demands/forms/createDemand', ['model' => $appModel]);
+        $demandModel = new Demand();
+        return $this->renderOnlyView('demands/forms/createDemand', ['model' => $demandModel]);
     }
 }

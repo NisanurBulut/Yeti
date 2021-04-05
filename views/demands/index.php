@@ -1,7 +1,7 @@
 <?php ?>
 <div class="ui top attached menu">
     <div class="right menu">
-        <a class="ui item mini btnModalOpen" href="/apps/createDemand">
+        <a class="ui item mini btnModalOpen" href="/demands/createDemand">
             <i class="plus icon large green center aligned"></i>
         </a>
     </div>

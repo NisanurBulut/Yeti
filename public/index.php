@@ -6,8 +6,9 @@ use app\controllers\AuthController;
 use app\controllers\HomeController;
 use app\controllers\UsersController;
 use app\controllers\DemandsController;
+use app\core\db\Constants;
 
- define("APP_URL","http://localhost:8080/");
+define("APP_URL","http://localhost:8080/");
 
 require_once  __DIR__.'/../vendor/autoload.php';
 
@@ -22,7 +23,7 @@ $config=[
     ];
 
 $app = new Application(dirname((__DIR__)), $config);
-
+$constats = new Constants();
 
 $app->router->get('/', [HomeController::class,'home']);
 $app->router->post('/contact', [HomeController::class,'handleContact']);

@@ -57,16 +57,18 @@ class Demand extends DbModel
 
     public function attributes(): array
     {
-        return ['name_surname', 'username', 'image_url', 'is_admin', 'email', 'id','created_at'];
+        return ['title', 'description', 'owner_id', 'undertaking_id', 'app_id', 'id','state_id','status_id'];
     }
     public function labels(): array
     {
         return [
-            'name_surname' => 'İsim Soyisim',
-            'username' => 'Kullanıcı Adı',
-            'image_url' => "Kullanıcı Fotoğrafı Http Adresi",
-            'is_admin' => "Kullanıcı yönetici midir ?",
-            'email' => "Eposta Adresi"
+            'title' => 'Konu',
+            'description' => 'Açıklama',
+            'owner_id' => "Talebi Açan Kullanıcı",
+            'undertaking_id' => "Kullanıcı üstlenen Kullanıcı",
+            'app_id' => "Uygulama",
+            'state_id' => "Aşama",
+            'status_id' => "Durum",
         ];
     }
 }

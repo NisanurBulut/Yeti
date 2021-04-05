@@ -27,4 +27,8 @@ class Form
     {
         return new ToggleField($model, $attribute);
     }
+    public function dropdownField(Model $model, $attribute, $items)
+    {
+        return new DropdownField($model, $attribute, $items);
+    }
 }

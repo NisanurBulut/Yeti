@@ -13,8 +13,6 @@ use app\views\shared\MessageItem;
 
 echo APP_URL . 'css/Semantic-UI-CSS-2.4.1/semantic.min.css'; ?>" />
     <link rel="stylesheet" type="text/css" href="<?php echo APP_URL . 'css/main.css'; ?>" />
-    <script src="<?php echo APP_URL . 'js/jquery-3.6.0.min.js'; ?>"></script>
-    <script src="<?php echo APP_URL . 'css/Semantic-UI-CSS-2.4.1/semantic.min.js'; ?>"></script>
     <script src="<?php echo APP_URL . '/datatables/node_modules/datatables.net-se/css/dataTables.semanticui.min.css'; ?>"></script>
 
 <body>
@@ -65,11 +63,12 @@ echo APP_URL . 'css/Semantic-UI-CSS-2.4.1/semantic.min.css'; ?>" />
 <?php MessageItem::showMessage(); ?>
     {{ content }}
 </div>
-
-<script src="<?php echo APP_URL . 'js/activate.semanticui-components.js'; ?>"></script>
+<script src="<?php echo APP_URL . 'js/jquery-3.6.0.min.js'; ?>"></script>
+<script src="<?php echo APP_URL . 'css/Semantic-UI-CSS-2.4.1/semantic.js'; ?>"></script>
 <script src="<?php echo APP_URL . '/datatables/node_modules/datatables.net/js/jquery.dataTables.min.js'; ?>"></script>
 <script src="<?php echo APP_URL . '/datatables/node_modules/datatables.net-se/js/dataTables.semanticui.min.js'; ?>"></script>
 <script src="<?php echo APP_URL . 'js/main.js'; ?>"></script>
 <script src="<?php echo APP_URL . 'js/datatables-load.js'; ?>"></script>
+<script src="<?php echo APP_URL . 'js/activate.semanticui-components.js'; ?>"></script>
 
 </html>
