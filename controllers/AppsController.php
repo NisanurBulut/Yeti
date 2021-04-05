@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\App;
 use app\core\Request;
+use app\core\Response;
 use app\core\Controller;
 use app\core\Application;
 
@@ -13,6 +14,12 @@ class AppsController extends Controller
     public function __construct()
     {
         Application::$app->view->title='Uygulamalar';
+    }
+    private function validateForm(App $model, Response $response)
+    {
+        $msg = $model->convertErrorMessagesToString();
+        Application::$app->session->setErrorFlashMessage('İşlem iptal edildi.' . $msg);
+        return $response->redirect('/apps');
     }
     public function index()
     {
@@ -36,17 +43,13 @@ class AppsController extends Controller
         Application::$app->session->setFlash('error', 'Bir hata ile karşılaşıldı');
         return Application::$app->response->redirect('/apps');
     }
-    public function storeApp(Request $request)
+    public function storeApp(Request $request, Response $response)
     {
         $appModel = new App();
         if ($request->isPost()) {
             $appModel->loadData($request->getBody());
-            if (!$appModel->validate()) {
-                $msg = $appModel->convertErrorMessagesToString();
-                Application::$app->session->setErrorFlashMessage('İşlem iptal edildi.' . $msg);
-            }
-            if ($appModel->save()) {
-                Application::$app->session->setSuccessFlashMessage('Uygulama başarıyla kaydedildi');
+            if (!$appModel->validate() || !$appModel->save()) {
+                return $this->validateForm($appModel, $response);
             }
             return Application::$app->response->redirect('/apps');
         }
@@ -54,18 +57,13 @@ class AppsController extends Controller
         return Application::$app->response->redirect('/apps');
     }
 
-    public function updateApp(Request $request)
+    public function updateApp(Request $request, Response $response)
     {
         $appModel = new App();
         if ($request->isPost()) {
             $appModel->loadData($request->getBody());
-            if (!$appModel->validate()) {
-                $msg = $appModel->convertErrorMessagesToString();
-                Application::$app->session->setErrorFlashMessage('İşlem iptal edildi.' . $msg);
-            }
-
-            if ($appModel->update()) {
-                Application::$app->session->setSuccessFlashMessage('Uygulama başarıyla güncellendi');
+            if (!$appModel->validate() || !$appModel->update()) {
+                return $this->validateForm($appModel, $response);
             }
             return Application::$app->response->redirect('/apps');
         }
