@@ -13,7 +13,9 @@ use app\views\shared\MessageItem;
 
 echo APP_URL . 'css/Semantic-UI-CSS-2.4.1/semantic.min.css'; ?>" />
     <link rel="stylesheet" type="text/css" href="<?php echo APP_URL . 'css/main.css'; ?>" />
-    <script src="<?php echo APP_URL . '/datatables/node_modules/datatables.net-se/css/dataTables.semanticui.min.css'; ?>"></script>
+    <script
+        src="<?php echo APP_URL . '/datatables/node_modules/datatables.net-se/css/dataTables.semanticui.min.css'; ?>">
+    </script>
 
 <body>
     <div id="idHeader" class="ui violet inverted borderless top fixed fluid pointing menu">
@@ -31,9 +33,10 @@ echo APP_URL . 'css/Semantic-UI-CSS-2.4.1/semantic.min.css'; ?>" />
             <a class="item" href="/apps">
                 <i class="rocket icon large tooltip" data-content="Uygulamalar"></i>
             </a>
-
             <a class="item" href="/demands">
-                <i class="tasks icon large tooltip" data-content="Talepler"></i>
+                <div class="ui violet label">
+                    <i class="tasks icon large tooltip" data-content="Talepler"></i>22
+                </div>
             </a>
             <div role="listbox" aria-expanded="false" class="ui item inline dropdown" tabindex="0">
                 <div aria-atomic="true" aria-live="polite" role="alert" class="divider text">
@@ -50,7 +53,8 @@ echo APP_URL . 'css/Semantic-UI-CSS-2.4.1/semantic.min.css'; ?>" />
                     </div>
                     <div style="cursor:pointer;" role="option" aria-checked="true" aria-selected="true" class="item">
                         <a class="ui" href="{{ route('auth.storeLogout') }}">
-                            <i type="submit" class="sign out purple alternate icon large tooltip" data-content="Oturumu kapat"></i>
+                            <i type="submit" class="sign out purple alternate icon large tooltip"
+                                data-content="Oturumu kapat"></i>
                             <label class="text ui purple label basic">Oturumu kapat</label>
                         </a>
                     </div>
@@ -60,8 +64,8 @@ echo APP_URL . 'css/Semantic-UI-CSS-2.4.1/semantic.min.css'; ?>" />
     </div>
 </body>
 <div class="contentBody">
-<?php MessageItem::showMessage(); ?>
-<?php
+    <?php MessageItem::showMessage(); ?>
+    <?php
 use app\views\shared\BreadcrumbItem;
 BreadcrumbItem::showBreadcrumb();
 ?>
@@ -70,7 +74,8 @@ BreadcrumbItem::showBreadcrumb();
 <script src="<?php echo APP_URL . 'js/jquery-3.6.0.min.js'; ?>"></script>
 <script src="<?php echo APP_URL . 'css/Semantic-UI-CSS-2.4.1/semantic.js'; ?>"></script>
 <script src="<?php echo APP_URL . '/datatables/node_modules/datatables.net/js/jquery.dataTables.min.js'; ?>"></script>
-<script src="<?php echo APP_URL . '/datatables/node_modules/datatables.net-se/js/dataTables.semanticui.min.js'; ?>"></script>
+<script src="<?php echo APP_URL . '/datatables/node_modules/datatables.net-se/js/dataTables.semanticui.min.js'; ?>">
+</script>
 <script src="<?php echo APP_URL . 'js/main.js'; ?>"></script>
 <script src="<?php echo APP_URL . 'js/datatables-load.js'; ?>"></script>
 <script src="<?php echo APP_URL . 'js/activate.semanticui-components.js'; ?>"></script>
