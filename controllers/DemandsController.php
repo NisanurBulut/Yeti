@@ -15,12 +15,13 @@ class  DemandsController extends Controller
 
     public function __construct()
     {
-        Application::$app->view->title='Talepler';
+        Application::$app->view->title = 'Talepler';
     }
-    public function getDemands(){
+    public function getDemands()
+    {
         $query = Constants::tDemandJoinWithtApp;
         $demandJoinModel = new DemandJoinModel();
-        $demandList=$demandJoinModel->executeRawQuery($query);
+        $demandList = $demandJoinModel->executeRawQuery($query);
         return json_encode($demandList);
     }
     public function index()
@@ -87,7 +88,9 @@ class  DemandsController extends Controller
         if ($request->isGet()) {
             $param = $request->params['id'];
             $result = $demandEntity->where(['id' => $param]);
-            return $this->renderOnlyView('demands/forms/editDemand', ['model' => $result]);
+            $appModel = new App();
+            $apps = $appModel->selectFields(['id AS "key"', 'app_name AS "name"']);
+            return $this->renderOnlyView('demands/forms/editDemand', ['model' => $result, 'apps' => $apps]);
         }
         Application::$app->session->setErrorFlashMessage('Bir hata ile karşılaşıldı');
         return Application::$app->response->redirect('/demands');
@@ -96,7 +99,7 @@ class  DemandsController extends Controller
     {
         $demandModel = new Demand();
         $appModel = new App();
-        $apps = $appModel->selectFields(['id AS "key"','app_name AS "name"']);
-        return $this->renderOnlyView('demands/forms/createDemand', ['model' => $demandModel, 'apps'=>$apps]);
+        $apps = $appModel->selectFields(['id AS "key"', 'app_name AS "name"']);
+        return $this->renderOnlyView('demands/forms/createDemand', ['model' => $demandModel, 'apps' => $apps]);
     }
 }

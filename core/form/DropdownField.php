@@ -20,14 +20,16 @@ class DropdownField extends BaseField
     }
     public function renderInput(): string
     {
+        $test = $this->model->{$this->attribute};
         $itemTags = '';
         foreach ($this->items as  $key => $value) {
             $itemTags = $itemTags . ' ' . sprintf(
                 '
-                <div class="item" data-value="%s">
+                <div class="item" data-value="%s" %s>
             <a class="ui %s empty circular label"></a> %s
         </div>',
                 $value->key,
+                $this->model->{$this->attribute}==$key ?'selected':'',
                 property_exists($value, 'color') ? $value->color : 'violet',
                 $value->name
             );
@@ -35,7 +37,7 @@ class DropdownField extends BaseField
         return sprintf(
             '
         <div class="ui item selection search %s">
-        <input type="hidden" name="%s">
+        <input type="hidden" name="%s" value="%s">
         <i class="dropdown icon"></i>
         <div class="default text">%s</div>
         <div class="menu">
@@ -44,6 +46,7 @@ class DropdownField extends BaseField
       </div>',
             self::TYPE_Dropdown,
             $this->attribute,
+            $this->model->{$this->attribute},
             $this->model->getLabel($this->attribute),
             $itemTags
         );
