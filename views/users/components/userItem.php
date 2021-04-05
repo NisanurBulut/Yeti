@@ -8,7 +8,7 @@ class UserItem
     {
         $finalPrint = '<div class="four wide column centerGridItems">
         <div class="ui card"><div class="content">';
-        if ($user['is_admin']) {
+        if ($user->is_admin) {
             $finalPrint = $finalPrint . '<i class="right floated star yellow icon"></i>';
         }
         $finalPrint = $finalPrint . '
@@ -37,7 +37,8 @@ class UserItem
         </a>
     </div>
 </div>';
-        echo sprintf($finalPrint, $user['name_surname'], $user['image_url'], $user['username'], $user['email'], $user['id'], $user['id'], $user['id']);
+        echo sprintf($finalPrint, $user->name_surname, $user->image_url,
+        $user->username, $user->email, $user->id, $user->id, $user->id);
         return new UserItem();
     }
     public static function end()
