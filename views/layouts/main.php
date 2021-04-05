@@ -9,16 +9,15 @@
 
     <link rel="stylesheet" type="text/css" href="<?php
 
-use app\views\shared\MessageItem;
+                                                    use app\views\shared\MessageItem;
 
-echo APP_URL . 'css/Semantic-UI-CSS-2.4.1/semantic.min.css'; ?>" />
+                                                    echo APP_URL . 'css/Semantic-UI-CSS-2.4.1/semantic.min.css'; ?>" />
     <link rel="stylesheet" type="text/css" href="<?php echo APP_URL . 'css/main.css'; ?>" />
-    <script
-        src="<?php echo APP_URL . '/datatables/node_modules/datatables.net-se/css/dataTables.semanticui.min.css'; ?>">
+    <script src="<?php echo APP_URL . '/datatables/node_modules/datatables.net-se/css/dataTables.semanticui.min.css'; ?>">
     </script>
 
 <body>
-    <div id="idHeader" class="ui violet inverted borderless top fixed fluid pointing menu">
+    <div id="idHeader" class="ui violet inverted borderless top fixed fluid pointing menu large">
         <a class="header item" href="/">YETİ</a>
         <div class="right menu">
             <div class="item">
@@ -34,9 +33,8 @@ echo APP_URL . 'css/Semantic-UI-CSS-2.4.1/semantic.min.css'; ?>" />
                 <i class="rocket icon large tooltip" data-content="Uygulamalar"></i>
             </a>
             <a class="item" href="/demands">
-                <div class="ui violet label">
-                    <i class="tasks icon large tooltip" data-content="Talepler"></i>22
-                </div>
+                <i class="tasks icon large tooltip" data-content="Talepler"></i>
+                <div class="ui label">51</div>
             </a>
             <div role="listbox" aria-expanded="false" class="ui item inline dropdown" tabindex="0">
                 <div aria-atomic="true" aria-live="polite" role="alert" class="divider text">
@@ -53,8 +51,7 @@ echo APP_URL . 'css/Semantic-UI-CSS-2.4.1/semantic.min.css'; ?>" />
                     </div>
                     <div style="cursor:pointer;" role="option" aria-checked="true" aria-selected="true" class="item">
                         <a class="ui" href="{{ route('auth.storeLogout') }}">
-                            <i type="submit" class="sign out purple alternate icon large tooltip"
-                                data-content="Oturumu kapat"></i>
+                            <i type="submit" class="sign out purple alternate icon large tooltip" data-content="Oturumu kapat"></i>
                             <label class="text ui purple label basic">Oturumu kapat</label>
                         </a>
                     </div>
@@ -66,9 +63,11 @@ echo APP_URL . 'css/Semantic-UI-CSS-2.4.1/semantic.min.css'; ?>" />
 <div class="contentBody">
     <?php MessageItem::showMessage(); ?>
     <?php
-use app\views\shared\BreadcrumbItem;
-BreadcrumbItem::showBreadcrumb();
-?>
+
+    use app\views\shared\BreadcrumbItem;
+
+    BreadcrumbItem::showBreadcrumb();
+    ?>
     {{ content }}
 </div>
 <script src="<?php echo APP_URL . 'js/jquery-3.6.0.min.js'; ?>"></script>

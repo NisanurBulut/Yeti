@@ -38,6 +38,10 @@ class Demand extends DbModel
     {
         return parent::where($where);
     }
+    public function countWhere($where)
+    {
+        return parent::countWhere($where);
+    }
     public function delete($value)
     {
         return parent::delete($value);
