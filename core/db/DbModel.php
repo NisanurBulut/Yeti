@@ -105,6 +105,12 @@ abstract class DbModel extends Model
         $statement->execute();
         return $statement->fetchObject();
     }
+    public static function runCustomExecute($sql)
+    {
+        $statement = self::prepare($sql);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_CLASS);
+    }
     public static function prepare($sql)
     {
         return Application::$app->db->pdo->prepare($sql);
