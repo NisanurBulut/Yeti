@@ -10,10 +10,10 @@ class Demand extends DbModel
     public string $description = '';
     public string $state = 'Bekliyor';
     public string $status_id = '';
-    public string $app_id = '0';
-    public string $id = '0';
-    public string $undertaking_id='0';
-    public string $owner_id='0';
+    public string $app_id = '';
+    public string $id = '';
+    public string $undertaking_id='';
+    public string $owner_id='';
 
     public function __constructor()
     {
@@ -52,7 +52,7 @@ class Demand extends DbModel
             'title' => [self::RULE_REQUIRED],
             'description' => [self::RULE_REQUIRED],
             'owner_id' => [self::RULE_REQUIRED],
-            'undertaking_id' => [self::RULE_REQUIRED],
+            'undertaking_id' => [],
             'app_id' => [self::RULE_REQUIRED],
             'status_id' => [self::RULE_REQUIRED],
             'state' => [self::RULE_REQUIRED]
@@ -73,7 +73,7 @@ class Demand extends DbModel
             'title' => 'Konu',
             'description' => 'Açıklama',
             'owner_id' => "Talebi Açan Kullanıcı",
-            'undertaking_id' => "Kullanıcı üstlenen Kullanıcı",
+            'undertaking_id' => "Talebi üstlenen Kullanıcı",
             'app_id' => "Uygulama",
             'state' => "Aşama",
             'status_id' => "Durum",
