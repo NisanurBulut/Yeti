@@ -13,6 +13,10 @@ class StatusJoinColor extends DbModel
     {
         return '';
     }
+    public function primaryKey(): string
+    {
+        return 'id';
+    }
     public function select()
     {
         return parent::select();

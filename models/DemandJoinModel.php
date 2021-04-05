@@ -21,6 +21,10 @@ class DemandJoinModel extends DbModel
     public string $takedImageUrl='';
     public string $ownerImageUrl='';
 
+    public function primaryKey(): string
+    {
+        return 'id';
+    }
     public function __constructor()
     {
     }
