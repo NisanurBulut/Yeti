@@ -46,20 +46,20 @@ abstract class Model
                     $ruleName = $rule[0];
                 }
                 if ($ruleName === self::RULE_REQUIRED && !$value) {
-                    $this->addErrorForRule($attribute, self::RULE_REQUIRED);
+                    $this->addErrorForRule($attribute, self::RULE_REQUIRED, ['field' => $this->getLabel($attribute)]);
                 }
                 if ($ruleName === self::RULE_EMAIL && !filter_var($value, FILTER_VALIDATE_EMAIL)) {
-                    $this->addErrorForRule($attribute, self::RULE_EMAIL);
+                    $this->addErrorForRule($attribute, self::RULE_EMAIL, ['field' => $this->getLabel($attribute)]);
                 }
                 if ($ruleName === self::RULE_MIN && strlen($value) < $rule['min']) {
-                    $this->addErrorForRule($attribute, self::RULE_MIN, $rule);
+                    $this->addErrorForRule($attribute, self::RULE_MIN, $rule,['field' => $this->getLabel($attribute)]);
                 }
                 if ($ruleName === self::RULE_MAX && strlen($value) > $rule['max']) {
-                    $this->addErrorForRule($attribute, self::RULE_MAX, $rule);
+                    $this->addErrorForRule($attribute, self::RULE_MAX, $rule, ['field' => $this->getLabel($attribute)]);
                 }
                 if ($ruleName === self::RULE_MATCH && $value !== $this->{$rule['match']}) {
                     $rule['match'] = $this->getLabel($rule['match']);
-                    $this->addErrorForRule($attribute, self::RULE_MATCH, $rule);
+                    $this->addErrorForRule($attribute, self::RULE_MATCH, $rule, ['field' => $this->getLabel($attribute)]);
                 }
                 if ($ruleName === self::RULE_UNIQUE && $this->isUpdating == false) {
                     $className = $rule['class'];
@@ -92,12 +92,12 @@ abstract class Model
     public function errorMessages()
     {
         return [
-            self::RULE_REQUIRED => 'This field is required',
-            self::RULE_EMAIL => 'This field must be valid email address',
-            self::RULE_MATCH => 'This field must be the same as {match}',
-            self::RULE_MIN => 'Min length of this field must be {min}',
-            self::RULE_MAX => 'Max length of this field must be {max}',
-            self::RULE_UNIQUE => 'Record with this {field} already exists'
+            self::RULE_REQUIRED => '{field} alanı gereklidir. ',
+            self::RULE_EMAIL => '{field} uyumlu bir adres olmalıdır. ',
+            self::RULE_MATCH => '{match} alanının karşılığı bulunamadı. ',
+            self::RULE_MIN => '{min} karakter sayısı sağlanmalıdır. ',
+            self::RULE_MAX => 'Maksimum {max} karakter sayısı aşılmamalıdır. ',
+            self::RULE_UNIQUE => '{field} alanı zaten kayıtlıdır. '
         ];
     }
 
