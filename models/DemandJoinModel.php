@@ -16,7 +16,7 @@ class DemandJoinModel extends DbModel
     public string $takedNamesurname='';
     public string $ownerUsername='';
     public string $ownerNamesurname='';
-
+    public string $differenceTime='';
     public function __constructor()
     {
     }
@@ -39,12 +39,10 @@ class DemandJoinModel extends DbModel
     {
         return ['id', 'title', 'description', 'state', 'status',
         'appName','ownerUsername','takedUsername',
-        'ownerNamesurname','takedNamesurname'];
+        'ownerNamesurname','takedNamesurname','differenceTime'];
     }
     public function labels(): array
     {
-        return [
-
-        ];
+        return [];
     }
 }

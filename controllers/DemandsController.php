@@ -20,7 +20,7 @@ class  DemandsController extends Controller
     public function getDemands(){
         $query = Constants::tDemandJoinWithtApp;
         $demandJoinModel = new DemandJoinModel();
-        $demandList=$demandJoinModel->runCustomExecute($query);
+        $demandList=$demandJoinModel->executeRawQuery($query);
         return json_encode($demandList);
     }
     public function index()

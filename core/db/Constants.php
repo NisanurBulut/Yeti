@@ -31,9 +31,9 @@ class Constants
     public function getSituations()
     {
         return [
-            new SelectModel("green", "Normal","0"),
-            new SelectModel("orange", "Acil","1"),
-            new SelectModel("red", "Çok Acil","2")
+            new SelectModel("green", "Normal","Normal"),
+            new SelectModel("orange", "Acil","Acil"),
+            new SelectModel("red", "Çok Acil","Çok Acil")
         ];
     }
     public function getStates()

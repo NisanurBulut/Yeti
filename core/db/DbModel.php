@@ -105,7 +105,7 @@ abstract class DbModel extends Model
         $statement->execute();
         return $statement->fetchObject();
     }
-    public static function runCustomExecute($sql)
+    public static function executeRawQuery($sql)
     {
         $statement = self::prepare($sql);
         $statement->execute();
@@ -116,8 +116,3 @@ abstract class DbModel extends Model
         return Application::$app->db->pdo->prepare($sql);
     }
 }
-
-        // echo '<pre>';
-        // var_dump($statement, $params, $attributes);
-        // '</pre>';
-        // exit;

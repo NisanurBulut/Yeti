@@ -13,17 +13,36 @@ function loadDemandsToTable(dataSource) {
     var table = $('#dtDemand').DataTable({
         data: dataSource,
         columns: [
-                { data: "id"},
                 { data: 'title'},
                 { data: 'ownerUsername'},
+                {
+                  data: "status",
+                  render: function (data, type) {
+                      return (
+                        `<div class="ui label orange">
+                        <i class="clock icon"></i> ${data}
+                      </div>`
+                      );
+                  },
+              },
                 { data: 'state'},
-                { data: 'status'},
-                { data: 'created_at'},
+                {
+                  data: "differenceTime",
+                  render: function (data, type) {
+                      return (
+                        `<div class="ui label">
+                        <i class="clock icon"></i> ${data} saat önce
+                      </div>`
+                      );
+                  },
+              },
                 {
                     data: "id",
                     render: function (data, type) {
                         return (
-                            `<a class="btnModalOpen" id='${data}' href="/demands/editDemand/${data}">`
+                          `<a class="btnModalOpen" id='${data}' href="/demands/showDemand/${data}">`
+                            +`<i class="green eye icon"></i></a>`
+                            +`<a class="btnModalOpen" id='${data}' href="/demands/editDemand/${data}">`
                             +`<i class="blue edit icon"></i></a>`
                             +`<a class="btnConfirmModalOpen" id='${data}' href="/demands/destroyDemand/${data}">`
                             +`<i class="red trash icon"></i></a>`
