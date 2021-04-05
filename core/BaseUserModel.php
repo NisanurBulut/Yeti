@@ -9,4 +9,5 @@ abstract class BaseUserModel extends DbModel
 
     abstract public function getDisplayName(): string;
     abstract public function isAdmin(): bool;
+    abstract public function getUserImageUrl():string;
 }

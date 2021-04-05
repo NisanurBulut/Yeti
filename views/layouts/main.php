@@ -9,7 +9,8 @@
 
     <link rel="stylesheet" type="text/css" href="<?php
 
-                                                    use app\views\shared\MessageItem;
+use app\core\Application;
+use app\views\shared\MessageItem;
 
                                                     echo APP_URL . 'css/Semantic-UI-CSS-2.4.1/semantic.min.css'; ?>" />
     <link rel="stylesheet" type="text/css" href="<?php echo APP_URL . 'css/main.css'; ?>" />
@@ -38,15 +39,16 @@
             </a>
             <div role="listbox" aria-expanded="false" class="ui item inline dropdown" tabindex="0">
                 <div aria-atomic="true" aria-live="polite" role="alert" class="divider text">
-                    <img src="" class="ui avatar image" />
-                    Nisanur
+                    <img class="ui avatar image"
+                    src="<?php echo Application::$app->user->getUserImageUrl() ?>" />
+                    <i><?php echo Application::$app->user->getDisplayName() ?></i>
                 </div>
                 <i aria-hidden="true" class="dropdown icon"></i>
                 <div class="menu transition">
                     <div style="cursor:pointer;" role="option" aria-checked="true" aria-selected="true" class="item">
                         <a class="ui" href="/auth/logout">
-                            <i type="submit" class="sign out purple alternate icon large tooltip" data-content="Oturumu kapat"></i>
-                            <label class="text ui purple label basic">Oturumu kapat</label>
+                            <i type="submit" class="sign out violet alternate icon large tooltip" data-content="Oturumu kapat"></i>
+                            <label class="text ui violet label basic">Oturumu kapat</label>
                         </a>
                     </div>
                 </div>

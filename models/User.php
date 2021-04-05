@@ -21,6 +21,10 @@ class User extends BaseUserModel
         $this->is_admin = false;
         $this->id = '0';
     }
+    public function getUserImageUrl(): string
+    {
+        return $this->image_url;
+    }
     public function getDisplayName(): string
     {
         return $this->username;
