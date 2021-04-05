@@ -15,6 +15,7 @@ echo APP_URL . 'css/Semantic-UI-CSS-2.4.1/semantic.min.css'; ?>" />
     <link rel="stylesheet" type="text/css" href="<?php echo APP_URL . 'css/main.css'; ?>" />
     <script src="<?php echo APP_URL . 'js/jquery-3.6.0.min.js'; ?>"></script>
     <script src="<?php echo APP_URL . 'css/Semantic-UI-CSS-2.4.1/semantic.min.js'; ?>"></script>
+    <script src="<?php echo APP_URL . '/datatables/node_modules/datatables.net-se/css/dataTables.semanticui.min.css'; ?>"></script>
 
 <body>
     <div id="idHeader" class="ui violet inverted borderless top fixed fluid pointing menu">
@@ -66,5 +67,9 @@ echo APP_URL . 'css/Semantic-UI-CSS-2.4.1/semantic.min.css'; ?>" />
 </div>
 
 <script src="<?php echo APP_URL . 'js/activate.semanticui-components.js'; ?>"></script>
+<script src="<?php echo APP_URL . '/datatables/node_modules/datatables.net/js/jquery.dataTables.min.js'; ?>"></script>
+<script src="<?php echo APP_URL . '/datatables/node_modules/datatables.net-se/js/dataTables.semanticui.min.js'; ?>"></script>
 <script src="<?php echo APP_URL . 'js/main.js'; ?>"></script>
+<script src="<?php echo APP_URL . 'js/datatables-load.js'; ?>"></script>
+
 </html>
