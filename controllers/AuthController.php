@@ -9,10 +9,13 @@ use app\core\Controller;
 
 class AuthController extends Controller {
 
-
+public function __construct()
+{
+    $this->setLayout('auth');
+}
     public function login()
     {
-        $this->setLayout('main');
+
         $params = [
             'name' => "Selam Nisanur"
         ];
