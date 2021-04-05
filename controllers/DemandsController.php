@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\App;
 use app\core\Request;
+use app\core\Response;
 use app\models\Demand;
 use app\core\Controller;
 use app\core\Application;
@@ -16,6 +17,12 @@ class  DemandsController extends Controller
     public function __construct()
     {
         Application::$app->view->title = 'Talepler';
+    }
+    private function validateModel(Demand $demanModel, Response $response)
+    {
+        $msg = $demanModel->convertErrorMessagesToString();
+        Application::$app->session->setErrorFlashMessage('İşlem iptal edildi.' . $msg);
+        return $response->redirect('/demands');
     }
     public function getDemands()
     {
@@ -43,42 +50,30 @@ class  DemandsController extends Controller
 
         return Application::$app->response->redirect('/demands');
     }
-    public function storeDemand(Request $request)
+    public function storeDemand(Request $request, Response $response)
     {
-        $demanModel = new Demand();
+        $demandEntity = new Demand();
         if ($request->isPost()) {
-            $demanModel->loadData($request->getBody());
-            if (!$demanModel->validate()) {
-                $msg = $demanModel->convertErrorMessagesToString();
-                Application::$app->session->setErrorFlashMessage('İşlem iptal edildi.' . $msg);
+            $demandEntity->loadData($request->getBody());
+            if (!$demandEntity->validate() || !$demandEntity->save()) {
+                return $this->validateModel($demandEntity, $response);
             }
-            if ($demanModel->save()) {
-                Application::$app->session->setSuccessFlashMessage('Talep başarıyla kaydedildi');
-            }
-            return Application::$app->response->redirect('/demands');
         }
         Application::$app->session->setErrorFlashMessage('Bir hata ile karşılaşıldı');
-
         return Application::$app->response->redirect('/demands');
     }
 
-    public function updateDemand(Request $request)
+    public function updateDemand(Request $request, Response $response)
     {
-        $appModel = new Demand();
+        $demandEntity = new Demand();
         if ($request->isPost()) {
-            $appModel->loadData($request->getBody());
-            if (!$appModel->validate()) {
-                $msg = $appModel->convertErrorMessagesToString();
-                Application::$app->session->setErrorFlashMessage('İşlem iptal edildi.' . $msg);
+            $demandEntity->loadData($request->getBody());
+            if (!$demandEntity->validate() || !$demandEntity->update()) {
+                return $this->validateModel($demandEntity, $response);
             }
-
-            if ($appModel->update()) {
-                Application::$app->session->setSuccessFlashMessage('Talep başarıyla güncellendi');
-            }
-            return Application::$app->response->redirect('/demands');
+            Application::$app->session->setSuccessFlashMessage('Talep başarıyla güncellendi');
         }
         Application::$app->session->setErrorFlashMessage('Bir hata ile karşılaşıldı');
-
         return Application::$app->response->redirect('/demands');
     }
     public function editDemand(Request $request)
