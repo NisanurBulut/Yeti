@@ -2,10 +2,11 @@
 
 namespace app\models;
 
+use app\core\BaseUserModel;
 use app\core\db\DbModel;
 use DateTime;
 
-class User extends DbModel
+class User extends BaseUserModel
 {
     public string $name_surname = '';
     public string $username = '';
@@ -19,6 +20,14 @@ class User extends DbModel
     {
         $this->is_admin = false;
         $this->id = '0';
+    }
+    public function getDisplayName(): string
+    {
+        return $this->username;
+    }
+    public function isAdmin(): bool
+    {
+        return $this->is_admin;
     }
     public function primaryKey(): string
     {
