@@ -20,6 +20,10 @@ class App extends DbModel
     {
         return parent::select();
     }
+    public function selectFields($fields)
+    {
+        return parent::selectFields($fields);
+    }
     public function save()
     {
         return parent::save();

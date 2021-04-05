@@ -74,6 +74,15 @@ abstract class DbModel extends Model
         $statement->execute();
         return true;
     }
+    public function selectFields($fields)
+    {
+        $sql = implode(", ",$fields);
+        $tableName = $this->tableName();
+        $statement = self::prepare("SELECT $sql FROM $tableName ORDER BY id DESC");
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_CLASS);
+        return $result;
+    }
     public function select()
     {
         $tableName = $this->tableName();

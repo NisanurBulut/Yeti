@@ -88,7 +88,7 @@ class  DemandsController extends Controller
     {
         $demandModel = new Demand();
         $appModel = new App();
-        $apps = $appModel->select();
-        return $this->renderOnlyView('demands/forms/createDemand', ['model' => $demandModel]);
+        $apps = $appModel->selectFields(['id AS "key"','app_name AS "name"']);
+        return $this->renderOnlyView('demands/forms/createDemand', ['model' => $demandModel, 'apps'=>$apps]);
     }
 }
