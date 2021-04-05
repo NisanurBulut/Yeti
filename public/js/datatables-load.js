@@ -9,7 +9,6 @@ $('#dtDemand').ready(function () {
 });
 
 function loadDemandsToTable(dataSource) {
-  console.log(dataSource);
   var table = $('#dtDemand').DataTable({
     data: dataSource,
     columns: [
