@@ -29,6 +29,7 @@ class AuthController extends Controller
             if (!$loginForm->validate()) {
                 $msg = $loginForm->convertErrorMessagesToString();
                 Application::$app->session->setErrorFlashMessage('İşlem iptal edildi.' . $msg);
+                return $this->render('auth/login', ["model" => $loginForm]);
             }
             if ($loginForm->login()) {
                 return $response->redirect('/demands');
