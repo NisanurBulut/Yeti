@@ -1,5 +1,5 @@
 <?php $form = app\core\form\Form::begin('/users/updateUser', 'post') ?>
-<?php echo $form->hiddenField($model,'id','text','') ?>
+<?php echo $form->hiddenField($model,'id') ?>
 <div class="two fields">
     <?php echo $form->field($model, 'name_surname', 'text', '') ?>
     <?php echo $form->field($model, 'username', 'text', '') ?>
