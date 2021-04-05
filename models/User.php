@@ -13,8 +13,8 @@ class User extends DbModel
     public string $image_url = '';
     public bool $is_admin = false;
     public string $id = '0';
-    public string $created_at='';
-
+    public string $created_at = '';
+    public string $password = '';
     public function __constructor()
     {
         $this->is_admin = false;
@@ -50,13 +50,14 @@ class User extends DbModel
             'username' => [self::RULE_REQUIRED, [self::RULE_UNIQUE, 'class' => self::class]],
             'name_surname' => [self::RULE_REQUIRED],
             'email' => [self::RULE_REQUIRED],
-            'image_url' => [self::RULE_REQUIRED]
+            'image_url' => [self::RULE_REQUIRED],
+            'password' => [self::RULE_REQUIRED]
         ];
     }
 
     public function attributes(): array
     {
-        return ['name_surname', 'username', 'image_url', 'is_admin', 'email', 'id','created_at'];
+        return ['name_surname', 'username', 'image_url', 'is_admin', 'email', 'id', 'created_at', 'password'];
     }
     public function labels(): array
     {
@@ -65,7 +66,8 @@ class User extends DbModel
             'username' => 'Kullanıcı Adı',
             'image_url' => "Kullanıcı Fotoğrafı Http Adresi",
             'is_admin' => "Kullanıcı yönetici midir ?",
-            'email' => "Eposta Adresi"
+            'email' => "Eposta Adresi",
+            'password' => "Parola"
         ];
     }
 }
