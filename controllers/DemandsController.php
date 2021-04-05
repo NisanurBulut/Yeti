@@ -2,8 +2,9 @@
 
 namespace app\controllers;
 
-use app\models\Demand;
+use app\models\App;
 use app\core\Request;
+use app\models\Demand;
 use app\core\Controller;
 use app\core\Application;
 
@@ -86,6 +87,8 @@ class  DemandsController extends Controller
     public function createDemand()
     {
         $demandModel = new Demand();
+        $appModel = new App();
+        $apps = $appModel->select();
         return $this->renderOnlyView('demands/forms/createDemand', ['model' => $demandModel]);
     }
 }
