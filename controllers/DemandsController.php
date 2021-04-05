@@ -27,6 +27,20 @@ class  DemandsController extends Controller
     {
         return $this->render('demands/index');
     }
+    // public function showDemand(Request $request)
+    // {
+    //     $demandEntity = new Demand();
+    //     if ($request->isGet()) {
+    //         $param = $request->params['id'];
+    //         $demandItem = $demandEntity->where(["id"=>$param]);
+    //         if($demandItem){
+    //             return $this->renderOnlyView('demands/forms/createDemand', ['model' => $demandItem]);
+    //         }
+    //     }
+    //     Application::$app->session->setErrorFlashMessage('Bir hata ile karşılaşıldı');
+
+    //     return Application::$app->response->redirect('/demands');
+    // }
     public function destroyDemand(Request $request)
     {
         $demandEntity = new Demand();

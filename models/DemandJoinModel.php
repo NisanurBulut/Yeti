@@ -18,6 +18,9 @@ class DemandJoinModel extends DbModel
     public string $ownerUsername='';
     public string $ownerNamesurname='';
     public string $differenceTime='';
+    public string $takedImageUrl='';
+    public string $ownerImageUrl='';
+
     public function __constructor()
     {
     }
@@ -40,7 +43,7 @@ class DemandJoinModel extends DbModel
     {
         return ['id', 'title', 'description', 'state', 'status',
         'appName','ownerUsername','takedUsername','color','status_id',
-        'ownerNamesurname','takedNamesurname','differenceTime'];
+        'ownerNamesurname','takedNamesurname','differenceTime','takedImageUrl','ownerImageUrl'];
     }
     public function labels(): array
     {

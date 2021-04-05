@@ -49,8 +49,8 @@ class Constants
 
     public const tDemandJoinWithtApp = '
     SELECT td.id, td.title, td.description, td.state,td.status_id, ts.name AS "status", tc.name AS "color",
-    tp.app_name AS "appName", tu1.username AS "ownerUsername",
-    tu2.username AS "takedUsername", tu1.name_surname AS "ownerNamesurname",
+    tp.app_name AS "appName", tu1.username AS "ownerUsername",tu1.image_url AS "ownerImageUrl",
+    tu2.username AS "takedUsername", tu1.name_surname AS "ownerNamesurname",tu2.image_url AS "takedImageUrl",
     tu2.name_surname AS "takedNamesurname",
     TIMESTAMPDIFF(HOUR, td.created_at, NOW())
        as "differenceTime"

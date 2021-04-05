@@ -12,6 +12,7 @@
             <tr>
                 <th>Title</th>
                 <th>Talebi Açan</th>
+                <th>Talebi Üstlenen</th>
                 <th>Durum</th>
                 <th>Aşama</th>
                 <th>Zaman Aşımı</th>
