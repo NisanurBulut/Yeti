@@ -19,7 +19,7 @@
             <input type="password" name="password" placeholder="Password">
           </div>
         </div>
-        <div class="ui fluid large teal submit button">Login</div>
+        <div class="ui fluid large violet submit button">Login</div>
       </div>
 
       <div class="ui error message"></div>
