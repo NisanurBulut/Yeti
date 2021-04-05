@@ -35,4 +35,7 @@ class AuthController extends Controller
         }
         return $this->render('auth/login', ["model" => $loginForm]);
     }
+    public function logout(){
+
+    }
 }

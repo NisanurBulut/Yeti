@@ -36,7 +36,9 @@ class Application
         $primaryValue = self::$app->session->get('user');
         $primaryKey = $this->user->primaryKey();
         if ($primaryValue) {
-           $this->user = $this->user->where([$primaryKey => $primaryValue]);
+            $this->user = $this->user->where([$primaryKey => $primaryValue]);
+        } else {
+            $this->user = null;
         }
     }
     public function getController()
@@ -66,5 +68,10 @@ class Application
         $primaryValue = $user->{$primaryKey};
 
         $this->session->set('user', $primaryValue);
+    }
+    public function logout()
+    {
+        $this->user = null;
+        $this->session->remove('user');
     }
 }
