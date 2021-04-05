@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\User;
 use app\core\Request;
+use app\core\Response;
 use app\core\Controller;
 use app\core\Application;
 
@@ -21,6 +22,12 @@ class UsersController extends Controller {
         ];
         return $this->render('users/index', $params);
     }
+    private function validateForm(User $model, Response $response)
+    {
+        $msg = $model->convertErrorMessagesToString();
+        Application::$app->session->setErrorFlashMessage('İşlem iptal edildi.' . $msg);
+        return $response->redirect('/users');
+    }
     public function createUser()
     {
         $userEntity = new User();
@@ -36,43 +43,35 @@ class UsersController extends Controller {
                 return Application::$app->response->redirect('/users');
             }
         }
-        Application::$app->session->setFlash('error', 'Bir hata ile karşılaşıldı');
+        Application::$app->session->setErrorFlashMessage('Bir hata ile karşılaşıldı');
         return Application::$app->response->redirect('/users');
     }
-    public function storeUser(Request $request)
+    public function storeUser(Request $request, Response $response)
     {
         $userEntity = new User();
         if ($request->isPost()) {
             $userEntity->loadData($request->getBody());
             $userEntity->password =  password_hash($userEntity->password, PASSWORD_DEFAULT);
-            if (!$userEntity->validate()) {
-                $msg = $userEntity->convertErrorMessagesToString();
-                Application::$app->session->setErrorFlashMessage('İşlem iptal edildi.' . $msg);
+            if (!$userEntity->validate() || !$userEntity->save()) {
+                return $this->validateForm($userEntity, $response);
             }
-            if ($userEntity->save()) {
-                Application::$app->session->setSuccessFlashMessage('Kullanıcı başarıyla kaydedildi');
-            }
+            Application::$app->session->setSuccessFlashMessage('Kullanıcı başarılı şekilde kaydedildi.');
             return Application::$app->response->redirect('/users');
         }
-        Application::$app->session->setFlash('error', 'Bir hata ile karşılaşıldı');
+        Application::$app->session->setErrorFlashMessage('Bir hata ile karşılaşıldı');
         return Application::$app->response->redirect('/users');
     }
 
-    public function updateUser(Request $request)
+    public function updateUser(Request $request, Response $response)
     {
         $userEntity = new User();
         if ($request->isPost()) {
             $userEntity->loadData($request->getBody());
-            if (!$userEntity->validate()) {
-                $msg = $userEntity->convertErrorMessagesToString();
-                Application::$app->session->setErrorFlashMessage('İşlem iptal edildi.' . $msg);
-                return Application::$app->response->redirect('/users');
+            if (!$userEntity->validate() || !$userEntity->update()) {
+                return $this->validateForm($userEntity, $response);
             }
-            $userEntity->password =  password_hash($userEntity->password, PASSWORD_DEFAULT);
-            if ($userEntity->update()) {
-                Application::$app->session->setSuccessFlashMessage('Kullanıcı başarıyla güncellendi');
-                return Application::$app->response->redirect('/users');
-            }
+            Application::$app->session->setSuccessFlashMessage('Kullanıcı başarılı şekilde güncellendi.');
+            return Application::$app->response->redirect('/users');
         }
         Application::$app->session->setErrorFlashMessage('Bir hata ile karşılaşıldı');
         return Application::$app->response->redirect('/users');
@@ -86,7 +85,7 @@ class UsersController extends Controller {
             $result = $appEntity->where(['id' => $param]);
             return $this->renderOnlyView('users/forms/editUser', ['model' => $result]);
         }
-        Application::$app->session->setFlash('error', 'Bir hata ile karşılaşıldı');
+        Application::$app->session->setErrorFlashMessage('Bir hata ile karşılaşıldı');
         return Application::$app->response->redirect('/users');
     }
  }

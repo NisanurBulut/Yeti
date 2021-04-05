@@ -32,7 +32,7 @@ class UserItem
             <i class="edit blue icon"></i>
         </a>
         <a class="right floated trash btnConfirmModalOpen"
-          id="%s"  href="/users/deleteUser?id=%s">
+          id="%s"  href="/users/destroyUser?id=%s">
             <i class="trash red icon"></i>
         </a>
     </div>

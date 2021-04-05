@@ -6,7 +6,7 @@
 </div>
 <div class="two fields">
     <?php echo $form->field($model, 'email', 'text', '')->emailField() ?>
-    <?php echo $form->field($model, 'password', 'text', 'disabled') ?>
+    <?php echo $form->field($model, 'password', 'text', '') ?>
 </div>
 
 <div class="two fields">
@@ -21,6 +21,6 @@
 <?php echo $form->toggleField($model, 'is_admin') ?>
 </div>
 <div class="formBtnRightAlligned">
-    <button class="ui button purple" type="submit">Kaydet</button>
+    <button class="ui button violet" type="submit">Kaydet</button>
 </div>
 <?php echo app\core\form\Form::end() ?>
