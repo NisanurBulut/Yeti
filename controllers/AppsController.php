@@ -12,6 +12,7 @@ class AppsController extends Controller
 
     public function __construct()
     {
+        Application::$app->view->title='Uygulamalar';
     }
     public function index()
     {

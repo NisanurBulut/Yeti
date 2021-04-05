@@ -10,6 +10,7 @@ use app\core\Application;
 class UsersController extends Controller {
     public function __construct()
     {
+        Application::$app->view->title='Kullanıcılar';
     }
     public function index()
     {

@@ -13,6 +13,7 @@ class  DemandsController extends Controller
 
     public function __construct()
     {
+        Application::$app->view->title='Talepler';
     }
     public function index()
     {

@@ -1,7 +1,6 @@
 <?php
-
-use app\views\users\components\UserItem; ?>
-
+use app\views\users\components\UserItem;
+?>
 <div class="ui top attached menu">
   <div class="left menu">
     <div class="ui left aligned category search item">
