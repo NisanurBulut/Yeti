@@ -6,7 +6,7 @@ $form = app\core\form\Form::begin('/demands/storeDemand', 'post') ?>
 <?php echo $form->field($model, 'title', 'text', '') ?>
 <?php echo $form->field($model, 'description', 'text', '') ?>
 <div class="two fields">
-    <?php echo $form->dropdownField($model, 'status', Constants::$contants->getSituations()) ?>
+    <?php echo $form->dropdownField($model, 'status_id', Constants::$contants->getSituations()) ?>
     <?php echo $form->dropdownField($model, 'app_id', $apps) ?>
 </div>
 </div>
