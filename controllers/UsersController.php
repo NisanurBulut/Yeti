@@ -26,7 +26,7 @@ class UsersController extends Controller {
         $userEntity = new User();
         return $this->renderOnlyView('users/forms/createUser', ['model' => $userEntity]);
     }
-    public function deleteUser(Request $request)
+    public function DestroyUser(Request $request)
     {
         $userEntity = new User();
         if ($request->isDelete()) {

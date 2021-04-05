@@ -23,7 +23,7 @@ class AppsController extends Controller
         ];
         return $this->render('apps/index', $params);
     }
-    public function deleteApp(Request $request)
+    public function DestroyApp(Request $request)
     {
         $appEntity = new App();
         if ($request->isDelete()) {
