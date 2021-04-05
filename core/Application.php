@@ -74,4 +74,12 @@ class Application
         $this->user = null;
         $this->session->remove('user');
     }
+    public static function isGuest()
+    {
+        return self::$app->user;
+    }
+    public static function isAdmin()
+    {
+        return self::$app->user->is_admin;
+    }
 }
