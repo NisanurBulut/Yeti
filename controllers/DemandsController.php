@@ -33,7 +33,8 @@ class  DemandsController extends Controller
                 return Application::$app->response->redirect('/demands');
             }
         }
-        Application::$app->session->setFlash('error', 'Bir hata ile karşılaşıldı');
+        Application::$app->session->setErrorFlashMessage('Bir hata ile karşılaşıldı');
+
         return Application::$app->response->redirect('/demands');
     }
     public function storeDemand(Request $request)
@@ -50,7 +51,8 @@ class  DemandsController extends Controller
             }
             return Application::$app->response->redirect('/demands');
         }
-        Application::$app->session->setFlash('error', 'Bir hata ile karşılaşıldı');
+        Application::$app->session->setErrorFlashMessage('Bir hata ile karşılaşıldı');
+
         return Application::$app->response->redirect('/demands');
     }
 
@@ -70,18 +72,19 @@ class  DemandsController extends Controller
             return Application::$app->response->redirect('/demands');
         }
         Application::$app->session->setErrorFlashMessage('Bir hata ile karşılaşıldı');
+
         return Application::$app->response->redirect('/demands');
     }
     public function editDemand(Request $request)
     {
-        $appEntity = new Demand();
+        $demandEntity = new Demand();
 
         if ($request->isGet()) {
             $param = $request->params['id'];
-            $result = $appEntity->where(['id' => $param]);
+            $result = $demandEntity->where(['id' => $param]);
             return $this->renderOnlyView('demands/forms/editDemand', ['model' => $result]);
         }
-        Application::$app->session->setFlash('error', 'Bir hata ile karşılaşıldı');
+        Application::$app->session->setErrorFlashMessage('Bir hata ile karşılaşıldı');
         return Application::$app->response->redirect('/demands');
     }
     public function createDemand()
