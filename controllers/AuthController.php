@@ -7,6 +7,7 @@ use app\core\Request;
 use app\core\Response;
 use app\core\Controller;
 use app\core\Application;
+use app\core\middlewares\AuthMiddleware;
 use app\models\LoginForm;
 
 class AuthController extends Controller
@@ -14,6 +15,7 @@ class AuthController extends Controller
 
     public function __construct()
     {
+        $this->registerMiddleware(new AuthMiddleware(['demands']));
         $this->setLayout('auth');
     }
     public function login()

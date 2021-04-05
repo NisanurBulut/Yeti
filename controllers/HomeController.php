@@ -6,9 +6,14 @@ use app\core\Request;
 use app\models\Demand;
 use app\core\Controller;
 use app\core\Application;
+use app\core\middlewares\AuthMiddleware;
 
 class HomeController extends Controller {
 
+    public function __construct()
+    {
+        $this->registerMiddleware(new AuthMiddleware(['home']));
+    }
     public function home()
     {
         return $this->render('home');

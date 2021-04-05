@@ -10,6 +10,7 @@ use app\core\Controller;
 use app\core\Application;
 use app\core\db\Constants;
 use app\models\DemandJoinModel;
+use app\core\middlewares\AuthMiddleware;
 
 class  DemandsController extends Controller
 {

@@ -55,6 +55,7 @@ class Application
             echo $this->router->resolve();
         } catch (\Exception $e) {
             $this->response->setStatusCode($e->getCode());
+            $this->controller->setLayout('auth');
             echo $this->view->renderView('_error', [
                 'exception' => $e
             ]);
@@ -76,7 +77,7 @@ class Application
     }
     public static function isGuest()
     {
-        return self::$app->user;
+        return self::$app->user===null ? true : false;
     }
     public static function isAdmin()
     {
