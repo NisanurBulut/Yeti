@@ -10,7 +10,7 @@ class SelectModel
     {
         $this->name = $name;
         $this->color = $color;
-        $this->key=$key;
+        $this->key = $key;
     }
     public string $color = "";
     public string $name = "";
@@ -20,7 +20,8 @@ class SelectModel
 class Constants
 {
     public static Constants $contants;
-    public function __construct(){
+    public function __construct()
+    {
         self::$contants = $this;
     }
 
@@ -31,18 +32,18 @@ class Constants
     public function getSituations()
     {
         return [
-            new SelectModel("green", "Normal","Normal"),
-            new SelectModel("orange", "Acil","Acil"),
-            new SelectModel("red", "Çok Acil","Çok Acil")
+            new SelectModel("green", "Normal", "Normal"),
+            new SelectModel("orange", "Acil", "Acil"),
+            new SelectModel("red", "Çok Acil", "Çok Acil")
         ];
     }
     public function getStates()
     {
         return [
-            new SelectModel("green", "Bekliyor","0"),
-            new SelectModel("orange", "Görüldü","1"),
-            new SelectModel("red", "Devam Ediyor","2"),
-            new SelectModel("red", "Tamamlandı","2")
+            new SelectModel("green", "Bekliyor", "0"),
+            new SelectModel("orange", "Görüldü", "1"),
+            new SelectModel("red", "Devam Ediyor", "2"),
+            new SelectModel("red", "Tamamlandı", "2")
         ];
     }
 
@@ -55,4 +56,6 @@ class Constants
     FROM tdemand td left join tapp AS tp on tp.id=td.app_id
     left join tuser AS tu1 on tu1.id=td.owner_id left join tuser
     AS tu2 on tu2.id=td.undertaking_id';
+
+    public const tDemandJoinWithtColor = 'SELECT ts.id, ts.name,  ts.color_id,tc.name AS "colorCode", tc.description as  "color" FROM `tstatus`  As ts inner join tColor tc on tc.id=ts.color_id';
 }
