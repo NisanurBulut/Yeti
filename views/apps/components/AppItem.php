@@ -46,7 +46,9 @@ class AppItem
             </div>
             <div class="content">
                 <div class="meta right floated"></div>
-            </div>', $app['id'],$app['id'],$app['image_url'],$app['app_name'],$app['description'],$app['db_name'],$app['access_url']);
+            </div>', $app->id,
+            $app->id,
+            $app->image_url,$app->app_name,$app->description,$app->db_name,$app->access_url);
         return new AppItem();
     }
     public static function end()
