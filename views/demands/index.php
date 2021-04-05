@@ -1,4 +1,4 @@
-<?php ?>
+
 <div class="ui top attached menu">
     <div class="right menu">
         <a class="ui item mini btnModalOpen" href="/demands/createDemand">

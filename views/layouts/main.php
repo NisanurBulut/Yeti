@@ -61,6 +61,10 @@ echo APP_URL . 'css/Semantic-UI-CSS-2.4.1/semantic.min.css'; ?>" />
 </body>
 <div class="contentBody">
 <?php MessageItem::showMessage(); ?>
+<?php
+use app\views\shared\BreadcrumbItem;
+BreadcrumbItem::showBreadcrumb();
+?>
     {{ content }}
 </div>
 <script src="<?php echo APP_URL . 'js/jquery-3.6.0.min.js'; ?>"></script>
