@@ -1,6 +1,7 @@
 <?php
 
 namespace app\controllers;
+
 use app\models\User;
 use app\core\Request;
 use app\core\Response;
@@ -35,7 +36,9 @@ class AuthController extends Controller
         }
         return $this->render('auth/login', ["model" => $loginForm]);
     }
-    public function logout(){
-
+    public function logout(Request $request, Response $response)
+    {
+        Application::$app->logout();
+        $response->redirect('/');
     }
 }
