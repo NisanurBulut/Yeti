@@ -21,21 +21,27 @@ class AuthController extends Controller
         $loginForm = new LoginForm();
         return $this->render('auth/login', ["model" => $loginForm]);
     }
+    private function validateForm(LoginForm $loginForm, Response $response)
+    {
+        $msg = $loginForm->convertErrorMessagesToString();
+        Application::$app->session->setErrorFlashMessage('İşlem iptal edildi.' . $msg);
+        return $response->redirect('login', ["model" => $loginForm]);
+    }
     public function storeLogin(Request $request, Response $response)
     {
         $loginForm = new LoginForm();
         if ($request->isPost()) {
             $loginForm->loadData($request->getBody());
             if (!$loginForm->validate()) {
-                $msg = $loginForm->convertErrorMessagesToString();
-                Application::$app->session->setErrorFlashMessage('İşlem iptal edildi.' . $msg);
-                return $this->render('auth/login', ["model" => $loginForm]);
+                return $this->validateForm($loginForm,$response);
             }
             if ($loginForm->login()) {
                 return $response->redirect('/demands');
+            }else{
+                return $this->validateForm($loginForm,$response);
             }
         }
-        return $this->render('auth/login', ["model" => $loginForm]);
+        return $response->redirect('/login', ["model" => $loginForm]);
     }
     public function logout(Request $request, Response $response)
     {

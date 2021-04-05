@@ -32,7 +32,7 @@ class LoginForm extends Model
             $this->addError('email', 'Kullanıcı bulunamadı.');
             return false;
         }
-        if (password_verify($this->password, $user->password)) {
+        if (!password_verify($this->password, $user->password)) {
             $this->addError('password', 'Kullanıcı parolası eşleştirilemedi.');
             return false;
         }
