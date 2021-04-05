@@ -24,8 +24,11 @@ class DropdownField extends BaseField
         foreach ($this->items as  $key => $value) {
             $itemTags = $itemTags . ' ' . sprintf(
                 '
-            <div class="item" data-value="%s">%s</div>',
+                <div class="item" data-value="%s">
+            <a class="ui %s empty circular label"></a> %s
+        </div>',
                 $value->key,
+                property_exists($value, 'color') ? $value->color : 'violet',
                 $value->name
             );
         }

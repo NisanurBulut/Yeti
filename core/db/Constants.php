@@ -3,6 +3,7 @@
 namespace app\core\db;
 
 use app\core\Application;
+use app\models\StatusJoinColor;
 
 class SelectModel
 {
@@ -31,11 +32,10 @@ class Constants
      */
     public function getSituations()
     {
-        return [
-            new SelectModel("green", "Normal", "Normal"),
-            new SelectModel("orange", "Acil", "Acil"),
-            new SelectModel("red", "Çok Acil", "Çok Acil")
-        ];
+        $statusJoinModel = new StatusJoinColor();
+        $query = self::tStatusJoinWithtColor;
+        $list = $statusJoinModel->executeRawQuery($query);
+        return $list;
     }
     public function getStates()
     {
@@ -57,5 +57,5 @@ class Constants
     left join tuser AS tu1 on tu1.id=td.owner_id left join tuser
     AS tu2 on tu2.id=td.undertaking_id';
 
-    public const tDemandJoinWithtColor = 'SELECT ts.id, ts.name,  ts.color_id,tc.name AS "colorCode", tc.description as  "color" FROM `tstatus`  As ts inner join tColor tc on tc.id=ts.color_id';
+    public const tStatusJoinWithtColor = 'SELECT ts.id AS "key", ts.name AS "name", tc.name AS "color" FROM `tstatus`  As ts inner join tColor tc on tc.id=ts.color_id';
 }
