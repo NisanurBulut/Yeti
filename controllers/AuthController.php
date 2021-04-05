@@ -9,30 +9,31 @@ use app\core\Response;
 use app\core\Controller;
 use app\core\Application;
 
-class AuthController extends Controller {
-
-public function __construct()
+class AuthController extends Controller
 {
-    $this->setLayout('auth');
-}
+
+    public function __construct()
+    {
+        $this->setLayout('auth');
+    }
     public function login()
     {
-        return $this->render('auth/login');
+        $loginForm = new LoginForm();
+        return $this->render('auth/login', ["model" => $loginForm]);
     }
     public function storeLogin(Request $request, Response $response)
     {
-       $loginForm = new LoginForm();
-        if($request->isPost())
-        {
+        $loginForm = new LoginForm();
+        if ($request->isPost()) {
             $loginForm->loadData($request->getBody());
             if (!$loginForm->validate()) {
                 $msg = $loginForm->convertErrorMessagesToString();
                 Application::$app->session->setErrorFlashMessage('İşlem iptal edildi.' . $msg);
             }
-            if($loginForm->login()){
+            if ($loginForm->login()) {
                 return $response->redirect('/demands');
             }
         }
-        return $this->render('auth/login');
+        return $this->render('auth/login', ["model" => $loginForm]);
     }
 }

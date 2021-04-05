@@ -6,24 +6,31 @@ use app\models\User;
 
 class LoginForm extends Model
 {
-    public string $email;
-    public string $password;
+    public string $email = '';
+    public string $password = '';
 
-    public function rules():array{
+    public function rules(): array
+    {
         return [
-            'email'=>[self::RULE_UNIQUE, self::RULE_EMAIL],
-            'password'=>[self::RULE_REQUIRED]
+            'email' => [self::RULE_UNIQUE, self::RULE_EMAIL],
+            'password' => [self::RULE_REQUIRED]
         ];
     }
-    public function login(){
+    public function login()
+    {
         // need to find user
         $userEntity = new User();
-        $user=$userEntity->where(['email'=>$this->email]);
-        if(!$user)
-        {
-          $this->addError('email','Kullanıcı bulunamadı');
+        $user = $userEntity->where(['email' => $this->email]);
+        if (!$user) {
+            $this->addError('email', 'Kullanıcı bulunamadı.');
+            return false;
+        }
+        if (password_verify($this->password, $user->password)) {
+            $this->addError('password', 'Kullanıcı parolası eşleştirilemedi.');
+            return false;
         }
 
-        Application::$app->login();
+        Application::$app->login($user);
+        return true;
     }
 }
