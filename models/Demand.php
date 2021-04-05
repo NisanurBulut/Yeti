@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\core\Application;
 use app\core\db\DbModel;
 
 class Demand extends DbModel

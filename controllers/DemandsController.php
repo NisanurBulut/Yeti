@@ -55,6 +55,7 @@ class  DemandsController extends Controller
         $demandEntity = new Demand();
         if ($request->isPost()) {
             $demandEntity->loadData($request->getBody());
+            $demandEntity->owner_id=Application::$app->user->id;
             if (!$demandEntity->validate() || !$demandEntity->save()) {
                 return $this->validateModel($demandEntity, $response);
             }
@@ -68,6 +69,7 @@ class  DemandsController extends Controller
         $demandEntity = new Demand();
         if ($request->isPost()) {
             $demandEntity->loadData($request->getBody());
+            $demandEntity->owner_id=Application::$app->user->id;
             if (!$demandEntity->validate() || !$demandEntity->update()) {
                 return $this->validateModel($demandEntity, $response);
             }
