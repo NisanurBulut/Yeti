@@ -26,7 +26,7 @@ class InputField extends BaseField
     public function renderInput(): string
     {
         return sprintf(
-            '<input type="%s" name="%s" id="%s" value="%s" placeholder="%s" class="ui input %s" required></input>',
+            '<input type="%s" name="%s" id="%s" value="%s" placeholder="%s" class="ui input" %s required></input>',
             $this->type,
             $this->attribute,
             $this->attribute,
@@ -43,6 +43,11 @@ class InputField extends BaseField
     public function hiddenField()
     {
         $this->type = self::TYPE_HIDDEN;
+        return $this;
+    }
+    public function passwordField()
+    {
+        $this->type = self::TYPE_PASSWORD;
         return $this;
     }
 }

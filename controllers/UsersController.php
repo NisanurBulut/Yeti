@@ -44,6 +44,7 @@ class UsersController extends Controller {
         $userEntity = new User();
         if ($request->isPost()) {
             $userEntity->loadData($request->getBody());
+            $userEntity->password =  password_hash($userEntity->password, PASSWORD_DEFAULT);
             if (!$userEntity->validate()) {
                 $msg = $userEntity->convertErrorMessagesToString();
                 Application::$app->session->setErrorFlashMessage('İşlem iptal edildi.' . $msg);
@@ -67,7 +68,7 @@ class UsersController extends Controller {
                 Application::$app->session->setErrorFlashMessage('İşlem iptal edildi.' . $msg);
                 return Application::$app->response->redirect('/users');
             }
-
+            $userEntity->password =  password_hash($userEntity->password, PASSWORD_DEFAULT);
             if ($userEntity->update()) {
                 Application::$app->session->setSuccessFlashMessage('Kullanıcı başarıyla güncellendi');
                 return Application::$app->response->redirect('/users');
