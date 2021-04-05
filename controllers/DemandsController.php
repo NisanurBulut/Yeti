@@ -7,6 +7,7 @@ use app\core\Request;
 use app\models\Demand;
 use app\core\Controller;
 use app\core\Application;
+use app\core\db\Constants;
 use app\models\DemandJoinModel;
 
 class  DemandsController extends Controller
@@ -17,18 +18,9 @@ class  DemandsController extends Controller
         Application::$app->view->title='Talepler';
     }
     public function getDemands(){
-        $query = 'SELECT td.id, td.title, td.description, td.state, td.status,
-        tp.app_name AS "appName", tu1.username AS "ownerUsername",
-        tu2.username AS "takedUsername", tu1.name_surname AS "ownerNamesurname",
-        tu2.name_surname AS "takedNamesurname",
-        TIMESTAMPDIFF(HOUR, td.created_at, NOW())
-           as "differenceTime"
-        FROM tdemand td left join tapp AS tp on tp.id=td.app_id
-        left join tuser AS tu1 on tu1.id=td.owner_id left join tuser
-        AS tu2 on tu2.id=td.undertaking_id';
+        $query = Constants::tDemandJoinWithtApp;
         $demandJoinModel = new DemandJoinModel();
         $demandList=$demandJoinModel->runCustomExecute($query);
-
         return json_encode($demandList);
     }
     public function index()

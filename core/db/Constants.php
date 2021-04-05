@@ -36,10 +36,6 @@ class Constants
             new SelectModel("red", "Çok Acil","2")
         ];
     }
-
-    /**
-     * Get the value of states
-     */
     public function getStates()
     {
         return [
@@ -49,4 +45,14 @@ class Constants
             new SelectModel("red", "Tamamlandı","2")
         ];
     }
+
+    public const tDemandJoinWithtApp = 'SELECT td.id, td.title, td.description, td.state, td.status,
+    tp.app_name AS "appName", tu1.username AS "ownerUsername",
+    tu2.username AS "takedUsername", tu1.name_surname AS "ownerNamesurname",
+    tu2.name_surname AS "takedNamesurname",
+    TIMESTAMPDIFF(HOUR, td.created_at, NOW())
+       as "differenceTime"
+    FROM tdemand td left join tapp AS tp on tp.id=td.app_id
+    left join tuser AS tu1 on tu1.id=td.owner_id left join tuser
+    AS tu2 on tu2.id=td.undertaking_id';
 }
