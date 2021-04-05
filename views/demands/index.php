@@ -34,13 +34,13 @@
                 </td>
                 <td>2 saat önce</td>
                 <td>
-                    <a class="btnModalOpen" href="/apps/showDemand?id=%s">
+                    <a class="btnModalOpen" href="/demands/showDemand?id=%s">
                         <i class="right floated eye green icon"></i>
                     </a>
-                    <a class="btnModalOpen" href="/apps/editDemand?id=%s">
+                    <a class="btnModalOpen" href="/demands/editDemand?id=%s">
                         <i class="right floated edit blue icon"></i>
                     </a>
-                    <a class="btnConfirmModalOpen" href="/apps/deleteDemand?id=%s">
+                    <a class="btnConfirmModalOpen" href="/demands/deleteDemand?id=%s">
                         <i class="right floated trash red icon"></i>
                     </a>
                 </td>
