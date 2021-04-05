@@ -16,6 +16,13 @@ class LoginForm extends Model
             'password' => [self::RULE_REQUIRED]
         ];
     }
+    public function labels(): array
+    {
+        return  [
+            'email'=>'Eposta Adresi',
+            'password'=>"Parola"
+        ];
+    }
     public function login()
     {
         // need to find user
