@@ -44,13 +44,7 @@
                 <i aria-hidden="true" class="dropdown icon"></i>
                 <div class="menu transition">
                     <div style="cursor:pointer;" role="option" aria-checked="true" aria-selected="true" class="item">
-                        <a class="ui" href="{{ route('auth.storeLogout') }}">
-                            <i class="question circle icon large tooltip purple" data-content="Destek"></i>
-                            <label class="text ui purple label basic">Destek</label>
-                        </a>
-                    </div>
-                    <div style="cursor:pointer;" role="option" aria-checked="true" aria-selected="true" class="item">
-                        <a class="ui" href="{{ route('auth.storeLogout') }}">
+                        <a class="ui" href="/auth/logout">
                             <i type="submit" class="sign out purple alternate icon large tooltip" data-content="Oturumu kapat"></i>
                             <label class="text ui purple label basic">Oturumu kapat</label>
                         </a>
