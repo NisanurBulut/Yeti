@@ -16,7 +16,7 @@ class  DemandsController extends Controller
 {
     public function __construct()
     {
-        $this->registerMiddleware(new AdminMiddleware(['destroyDemand','storeDemand','updateDemand','editDemand','createDemand']));
+        $this->registerMiddleware(new AdminMiddleware(['destroyDemand', 'storeDemand', 'updateDemand', 'editDemand', 'createDemand']));
         Application::$app->view->title = 'Talepler';
     }
     private function validateModel(Demand $demanModel, Response $response)
@@ -122,7 +122,11 @@ class  DemandsController extends Controller
         $demandEntity = new Demand();
         $demandEntity->loadData($request->getBody());
         $demandItem = $demandEntity->where(["id" => $demandEntity->id]);
-        $result = $demandItem->updateWhere(["state" => $demandEntity->state],[ $demandEntity->primaryKey() => $demandEntity->id]);
+        $demandItem->undertaking_id = Application::$app->user->id;
+        $result = $demandItem->updateWhere([
+            "state" => $demandEntity->state,
+            "undertaking_id" => $demandItem->undertaking_id
+        ], [$demandEntity->primaryKey() => $demandEntity->id]);
         if ($result) {
             Application::$app->session->setSuccessFlashMessage('Talep aşaması başarıyla değiştirildi.');
             return Application::$app->response->redirect('/demands');

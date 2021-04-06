@@ -1,29 +1,37 @@
 body {
-
-    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
-    font-size: 14px;
-    line-height: 1.4285em;
-    color: rgba(0,0,0,.87);
-
+  font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.4285em;
+  color: rgba(0, 0, 0, 0.87);
 }
 
 .loginGrid {
-    display: flex;
-    justify-content: center;
-    justify-items: center;
-    height: 70vh !important;
-  }
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  height: 70vh !important;
+}
 
-  .loginColumn {
-    max-width: 450px;
-  }
+.loginColumn {
+  max-width: 450px;
+}
 .contentBody {
-    margin-top: 5rem;
-    margin-left: 2rem;
-    margin-right: 2rem;
-    margin-bottom: 5rem;
+  margin-top: 5rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-bottom: 5rem;
 }
 .formBtnRightAlligned {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.centerGridItems {
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.inputTextAreaHeight
+{
+  height: 50px !important;
 }

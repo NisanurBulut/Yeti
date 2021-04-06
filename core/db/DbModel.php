@@ -49,7 +49,7 @@ abstract class DbModel extends Model
     {
         $tableName = $this->tableName();
         $attrFields = array_keys($fields);
-        $sqlF = implode("AND", array_map(fn ($attr) => "$attr = :$attr", $attrFields));
+        $sqlF = implode(", ", array_map(fn ($attr) => "$attr = :$attr", $attrFields));
         $attrWhere = array_keys($where);
         $sqlW = implode("AND", array_map(fn ($attr) => "$attr = :$attr", $attrWhere));
         $final="UPDATE $tableName SET $sqlF WHERE $sqlW";
