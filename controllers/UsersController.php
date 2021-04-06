@@ -14,7 +14,7 @@ class UsersController extends Controller
 {
     public function __construct()
     {
-        $this->registerMiddleware(new AdminMiddleware(['index']));
+        $this->registerMiddleware(new AdminMiddleware(['index','createUser','updateUser','destroyUser','storeUser','editUser']));
         Application::$app->view->title = 'Kullanıcılar';
     }
     public function index()
