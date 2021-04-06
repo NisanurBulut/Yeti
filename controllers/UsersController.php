@@ -41,7 +41,7 @@ class UsersController extends Controller {
         $userEntity = new User();
         $demandEntity = new Demand();
 
-        if ($request->isDelete()) {
+        if ($request->isDelete() && Application::$app->isAdmin()) {
             $param = $request->params['id'];
             $ownerUser = $demandEntity->where(["owner_id"],$param);
             $underTakingUser = $demandEntity->where(["undertaking_id"],$param);
