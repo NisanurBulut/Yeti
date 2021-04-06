@@ -6,6 +6,7 @@ use app\core\View;
 use app\core\Session;
 use app\core\Controller;
 use app\core\db\Database;
+use app\models\Demand;
 use app\models\User;
 
 class Application
@@ -85,5 +86,14 @@ class Application
             self::$app->user->is_admin == 0 ||
             self::$app->user->is_admin == "0" ||
             self::$app->user->is_admin == false) ? false : true;
+    }
+    public static function getWaitingDemandsCount()
+    {
+        if (self::$app->isAdmin()) {
+            $demandEntity = new Demand();
+            $waitedDemandCount = $demandEntity->countWhere(["state" => "Bekliyor"]);
+            return $waitedDemandCount->count;
+        }
+        return 0;
     }
 }

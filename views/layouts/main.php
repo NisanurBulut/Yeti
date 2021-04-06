@@ -35,7 +35,10 @@ use app\views\shared\MessageItem;
             </a>
             <a class="item" href="/demands">
                 <i class="tasks icon large tooltip" data-content="Talepler"></i>
-                <div class="ui label">51</div>
+                <?php
+                if(Application::$app->isAdmin()):?>
+                <div class="ui label"><?php echo Application::$app->getWaitingDemandsCount() ?></div>
+                <?php endif; ?>
             </a>
             <div role="listbox" aria-expanded="false" class="ui item inline dropdown" tabindex="0">
                 <div aria-atomic="true" aria-live="polite" role="alert" class="divider text">

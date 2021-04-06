@@ -99,7 +99,7 @@ abstract class DbModel extends Model
         $tableName = $this->tableName();
         $attributes = array_keys($where);
         $sql = implode("AND ",array_map(fn($attr)=>"$attr = :$attr", $attributes));
-        $statement = self::prepare("SELECT COUNT(*) FROM $tableName WHERE $sql");
+        $statement = self::prepare("SELECT COUNT(*) AS 'count' FROM $tableName WHERE $sql");
         foreach($where as $key=>$value){
             $statement->bindValue(":$key",$value);
         }
