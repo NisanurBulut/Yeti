@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\User;
 use app\core\Request;
 use app\core\Response;
+use app\models\Demand;
 use app\core\Controller;
 use app\core\Application;
 use app\core\middlewares\AdminMiddleware;
@@ -38,8 +39,17 @@ class UsersController extends Controller {
     public function DestroyUser(Request $request)
     {
         $userEntity = new User();
+        $demandEntity = new Demand();
+
         if ($request->isDelete()) {
             $param = $request->params['id'];
+            $ownerUser = $demandEntity->where(["owner_id"],$param);
+            $underTakingUser = $demandEntity->where(["undertaking_id"],$param);
+            if($ownerUser || $underTakingUser){
+                Application::$app->session->setErrorFlashMessage('Kullanıcıyla ilişkili talep bulunmuştır. İşlem iptal edilmiştir.');
+                return Application::$app->response->redirect('/users');
+            }
+
             if ($userEntity->delete($param)) {
                 Application::$app->session->setSuccessFlashMessage('Kullanıcı başarıyla silindi');
                 return Application::$app->response->redirect('/users');
@@ -80,11 +90,11 @@ class UsersController extends Controller {
     }
     public function editUser(Request $request)
     {
-        $appEntity = new User();
+        $userEntity = new User();
 
         if ($request->isGet()) {
             $param = $request->params['id'];
-            $result = $appEntity->where(['id' => $param]);
+            $result = $userEntity->where(['id' => $param]);
             return $this->renderOnlyView('users/forms/editUser', ['model' => $result]);
         }
         Application::$app->session->setErrorFlashMessage('Bir hata ile karşılaşıldı');
