@@ -51,6 +51,6 @@ class Constants
     public const spTstatusJoinWithtColor = 'CALL sp_getSituationsFull';
     public const spGetDailyDemandsForChart = 'CALL sp_getDailyDemandsForChart';
     public const spGetAppDemandCountForChart = 'CALL sp_getAppDemandCountForChart';
-    public const spGetAppDemandStateCount = 'CALL sp_getAppDemandStateCount';
+    public const spGetDemandStateCount = 'CALL sp_getDemandStateCount';
 
 }
