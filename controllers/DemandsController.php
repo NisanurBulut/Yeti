@@ -29,7 +29,13 @@ class  DemandsController extends Controller
     {
         $query = Constants::tDemandJoinWithtApp;
         $demandJoinModel = new DemandJoinModel();
-        $demandList = $demandJoinModel->executeRawQuery($query);
+        if (!Application::$app->isAdmin()) {
+            $paramid = Application::$app->user->id;
+            $query = Constants::tUserDemandJoinWithtApp;
+            $demandList = $demandJoinModel->executeRawQueryWithParams($query,["paramid"=>$paramid]);
+        }else{
+            $demandList = $demandJoinModel->executeRawQuery($query);
+        }
         return json_encode($demandList);
     }
     public function index()
@@ -56,7 +62,7 @@ class  DemandsController extends Controller
         $demandEntity = new Demand();
         if ($request->isPost()) {
             $demandEntity->loadData($request->getBody());
-            $demandEntity->owner_id=Application::$app->user->id;
+            $demandEntity->owner_id = Application::$app->user->id;
             if (!$demandEntity->validate() || !$demandEntity->save()) {
                 return $this->validateModel($demandEntity, $response);
             }
@@ -72,7 +78,7 @@ class  DemandsController extends Controller
         $demandEntity = new Demand();
         if ($request->isPost()) {
             $demandEntity->loadData($request->getBody());
-            $demandEntity->owner_id=Application::$app->user->id;
+            $demandEntity->owner_id = Application::$app->user->id;
             if (!$demandEntity->validate() || !$demandEntity->update()) {
                 return $this->validateModel($demandEntity, $response);
             }
@@ -91,8 +97,10 @@ class  DemandsController extends Controller
             $param = $request->params['id'];
             $result = $demandEntity->where(['id' => $param]);
             $apps = $appModel->selectFields(['id AS "key"', 'app_name AS "name"']);
-            return $this->renderOnlyView('demands/forms/editDemand',
-            ['model' => $result, 'apps' => $apps]);
+            return $this->renderOnlyView(
+                'demands/forms/editDemand',
+                ['model' => $result, 'apps' => $apps]
+            );
         }
         Application::$app->session->setErrorFlashMessage('Bir hata ile karşılaşıldı');
         return Application::$app->response->redirect('/demands');

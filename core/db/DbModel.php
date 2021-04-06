@@ -112,6 +112,17 @@ abstract class DbModel extends Model
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_CLASS);
     }
+    public static function executeRawQueryWithParams($sql, $where)
+    {
+        $attributes = array_keys($where);
+        $params = array_map(fn ($attr) => ":$attr", $attributes);
+        $statement = self::prepare($sql);
+        foreach($where as $key=>$value){
+            $statement->bindValue(":$key",$value);
+        }
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_CLASS);
+    }
     public static function prepare($sql)
     {
         return Application::$app->db->pdo->prepare($sql);

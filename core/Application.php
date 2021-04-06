@@ -77,10 +77,13 @@ class Application
     }
     public static function isGuest()
     {
-        return self::$app->user===null ? true : false;
+        return self::$app->user === null ? true : false;
     }
     public static function isAdmin()
     {
-        return self::$app->user->is_admin;
+        return (self::$app->user == null ||
+            self::$app->user->is_admin == 0 ||
+            self::$app->user->is_admin == "0" ||
+            self::$app->user->is_admin == false) ? false : true;
     }
 }
