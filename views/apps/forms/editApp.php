@@ -2,6 +2,9 @@
 <?php $form = app\core\form\Form::begin('/apps/updateApp', 'post') ?>
 
 <?php echo $form->hiddenField($model,'id') ?>
+<?php echo $form->hiddenField($model,'owner_id') ?>
+<?php echo $form->hiddenField($model,'undertaking_id') ?>
+
 <?php echo $form->field($model, 'app_name', 'text','') ?>
 <?php echo $form->field($model, 'description', 'text','') ?>
 <div class="two fields">
