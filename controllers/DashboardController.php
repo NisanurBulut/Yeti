@@ -40,7 +40,7 @@ class DashboardController extends Controller {
     }
     public function getAppDemandStateCount()
     {
-        $query = Constants::spGetAppDemandStateCount;
+        $query = Constants::spGetDemandStateCount;
         $demandEntity = new Demand();
         $results = $demandEntity->executeRawQuery($query);
         $data=array();
