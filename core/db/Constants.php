@@ -33,7 +33,7 @@ class Constants
     public function getSituations()
     {
         $statusJoinModel = new StatusJoinColor();
-        $query = self::tStatusJoinWithtColor;
+        $query = self::spTstatusJoinWithtColor;
         $list = $statusJoinModel->executeRawQuery($query);
         return $list;
     }
@@ -46,7 +46,9 @@ class Constants
             new SelectModel("red", "Tamamlandı", "2")
         ];
     }
-    public const tDemandJoinWithtApp = 'CALL sp_getDemandsFull';
-    public const tUserDemandJoinWithtApp = 'CALL sp_getUserDemandsFull(:paramid)';
-    public const tStatusJoinWithtColor = 'CALL sp_getSituationsFull';
+    public const spTdemandJoinWithtApp = 'CALL sp_getDemandsFull';
+    public const spTuserDemandJoinWithtApp = 'CALL sp_getUserDemandsFull(:paramid)';
+    public const spTstatusJoinWithtColor = 'CALL sp_getSituationsFull';
+    public const spGetDailyDemandsForChart = 'CALL sp_getDailyDemandsForChart';
+
 }
