@@ -3,7 +3,10 @@
 use app\core\db\Constants;
 ?>
 <?php $form = app\core\form\Form::begin('/demands/updateDemand', 'post') ?>
+<h4 class="ui dividing header">Talep Bilgileri</h4>
 <?php echo $form->hiddenField($model, 'id') ?>
+<?php echo $form->hiddenField($model,'owner_id') ?>
+<?php echo $form->hiddenField($model,'undertaking_id') ?>
 <?php echo $form->field($model, 'title', 'text', '') ?>
 <?php echo $form->field($model, 'description', 'text', '') ?>
 <div class="two fields">

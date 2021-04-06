@@ -1,5 +1,5 @@
 <?php $form = app\core\form\Form::begin('/users/storeUser', 'post') ?>
-
+<h4 class="ui dividing header">Kullanıcı Bilgileri</h4>
 <div class="two fields">
     <?php echo $form->field($model, 'name_surname', 'text', '') ?>
     <?php echo $form->field($model, 'username', 'text', '') ?>

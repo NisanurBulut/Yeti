@@ -1,4 +1,5 @@
 <?php $form = app\core\form\Form::begin('/users/updateUser', 'post') ?>
+<h4 class="ui dividing header">Kullanıcı Bilgileri</h4>
 <?php echo $form->hiddenField($model,'id') ?>
 <div class="two fields">
     <?php echo $form->field($model, 'name_surname', 'text', '') ?>
