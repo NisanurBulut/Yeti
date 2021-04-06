@@ -28,13 +28,13 @@ class  DemandsController extends Controller
     public function getDemands()
     {
         $query = Constants::spTdemandJoinWithtApp;
-        $demandJoinModel = new DemandJoinModel();
+        $demandEntity = new Demand();
         if (!Application::$app->isAdmin()) {
             $paramid = Application::$app->user->id;
             $query = Constants::spTuserDemandJoinWithtApp;
-            $demandList = $demandJoinModel->executeRawQueryWithParams($query,["paramid"=>$paramid]);
+            $demandList = $demandEntity->executeRawQueryWithParams($query,["paramid"=>$paramid]);
         }else{
-            $demandList = $demandJoinModel->executeRawQuery($query);
+            $demandList = $demandEntity->executeRawQuery($query);
         }
         return json_encode($demandList);
     }
