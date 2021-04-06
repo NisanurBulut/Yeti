@@ -54,6 +54,8 @@ $app->router->delete('/demands/destroyDemand', [DemandsController::class,'destro
 $app->router->get('/demands/editDemand', [DemandsController::class,'editDemand']);
 $app->router->get('/demands/createDemand', [DemandsController::class,'createDemand']);
 $app->router->post('/demands/updateDemand', [DemandsController::class,'updateDemand']);
+$app->router->get('/demands/showDemand', [DemandsController::class,'showDemand']);
+$app->router->post('/demands/changeStateDemand', [DemandsController::class,'changeStateDemand']);
 
 
 $app->router->get('/auth/login', [AuthController::class,'login']);

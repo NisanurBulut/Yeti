@@ -31,8 +31,8 @@ class  DemandsController extends Controller
         if (!Application::$app->isAdmin()) {
             $paramid = Application::$app->user->id;
             $query = Constants::spTuserDemandJoinWithtApp;
-            $demandList = $demandEntity->executeRawQueryWithParams($query,["paramid"=>$paramid]);
-        }else{
+            $demandList = $demandEntity->executeRawQueryWithParams($query, ["paramid" => $paramid]);
+        } else {
             $demandList = $demandEntity->executeRawQuery($query);
         }
         return json_encode($demandList);
@@ -44,8 +44,7 @@ class  DemandsController extends Controller
 
     public function destroyDemand(Request $request)
     {
-        if(!Application::$app->isAdmin())
-        {
+        if (!Application::$app->isAdmin()) {
             throw new ForbiddenException();
         }
         $demandEntity = new Demand();
@@ -105,6 +104,23 @@ class  DemandsController extends Controller
                 ['model' => $result, 'apps' => $apps]
             );
         }
+        Application::$app->session->setErrorFlashMessage('Bir hata ile karşılaşıldı');
+        return Application::$app->response->redirect('/demands');
+    }
+    public function showDemand(Request $request)
+    {
+        $demandEntity = new Demand();
+
+        if ($request->isGet()) {
+            $param = $request->params['id'];
+            $result = $demandEntity->where(['id' => $param]);
+            return $this->renderOnlyView('demands/forms/showDemand', ["model" => $result]);
+        }
+        Application::$app->session->setErrorFlashMessage('Bir hata ile karşılaşıldı');
+        return Application::$app->response->redirect('/demands');
+    }
+    public function changeStateDemand(Request $request)
+    {
         Application::$app->session->setErrorFlashMessage('Bir hata ile karşılaşıldı');
         return Application::$app->response->redirect('/demands');
     }
