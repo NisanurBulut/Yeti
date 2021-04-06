@@ -25,6 +25,10 @@ class DashboardController extends Controller {
         $query = Constants::spGetDailyDemandsForChart;
         $demandEntity = new Demand();
         $result = $demandEntity->executeRawQuery($query);
-        return json_encode($result);
+        $data = [
+            "xAxis"=>array_column($result,"x"),
+            "yAxis"=>array_column($result,"y")
+        ];
+        return json_encode($data);
     }
 }

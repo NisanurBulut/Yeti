@@ -4,7 +4,7 @@
         <div class="column">
             <div class="ui segment">
             <?php
-                $dashboardItem = DashboardItem::begin('baseLine',"aciklama");
+                $dashboardItem = DashboardItem::begin('baseLine',"Günlük toplam talep sayısı gösterimi");
                 $dashboardItem->end();
                 ?>
             </div>
