@@ -21,9 +21,6 @@ use app\views\shared\MessageItem;
     <div id="idHeader" class="ui violet inverted borderless top fixed fluid pointing menu large">
         <a class="header item" href="/">YETİ</a>
         <div class="right menu">
-            <div class="item">
-                <div class="ui small input"><input placeholder="Search..." /></div>
-            </div>
             <a class="item" href="/dashboard">
                 <i class="bolt icon large tooltip" data-content="Dashboard"></i>
             </a>
