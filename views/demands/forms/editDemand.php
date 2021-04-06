@@ -8,7 +8,7 @@ use app\core\db\Constants;
 <?php echo $form->hiddenField($model,'owner_id') ?>
 <?php echo $form->hiddenField($model,'undertaking_id') ?>
 <?php echo $form->field($model, 'title', 'text', '') ?>
-<?php echo $form->field($model, 'description', 'text', '') ?>
+<?php echo $form->field($model, 'description', 'text', 'inputTextAreaHeight') ?>
 <div class="two fields">
     <?php echo $form->dropdownField($model, 'status_id', Constants::$contants->getSituations()) ?>
     <?php echo $form->dropdownField($model, 'app_id', $apps) ?>

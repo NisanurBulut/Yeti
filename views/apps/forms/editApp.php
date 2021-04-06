@@ -3,7 +3,7 @@
 <h4 class="ui dividing header">Uygulama Bilgileri</h4>
 <?php echo $form->hiddenField($model,'id') ?>
 <?php echo $form->field($model, 'app_name', 'text','') ?>
-<?php echo $form->field($model, 'description', 'text','') ?>
+<?php echo $form->field($model, 'description', 'text','inputTextAreaHeight') ?>
 <div class="two fields">
     <?php echo $form->field($model, 'db_name', 'text','') ?>
     <?php echo $form->field($model, 'access_url', 'text','') ?>
