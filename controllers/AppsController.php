@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\App;
 use app\core\Request;
 use app\core\Response;
+use app\models\Demand;
 use app\core\Controller;
 use app\core\Application;
 use app\core\middlewares\AdminMiddleware;
@@ -32,11 +33,16 @@ class AppsController extends Controller
         ];
         return $this->render('apps/index', $params);
     }
+
     public function DestroyApp(Request $request)
     {
         $appEntity = new App();
         if ($request->isDelete()) {
             $param = $request->params['id'];
+            $demandEntity = new Demand();
+            if($demandEntity->hasRelation(["app_id" => $param],$param)){
+                return Application::$app->response->redirect('/apps');
+            }
             if ($appEntity->delete($param)) {
                 Application::$app->session->setSuccessFlashMessage('Uygulama başarıyla silindi');
                 return Application::$app->response->redirect('/apps');

@@ -13,8 +13,8 @@ class Demand extends DbModel
     public string $status_id = '';
     public string $app_id = '';
     public string $id = '';
-    public string $undertaking_id='';
-    public string $owner_id='';
+    public string $undertaking_id = '';
+    public string $owner_id = '';
 
     public function __constructor()
     {
@@ -59,10 +59,17 @@ class Demand extends DbModel
             'state' => [self::RULE_REQUIRED]
         ];
     }
-
+    public function hasRelation($where): bool
+    {
+        $relation = $this->isExist($where, $this->tableName());
+        if ($relation) {
+            Application::$app->session->setErrorFlashMessage('Kayıtla lişkili talep bulunmuştur. İşlem iptal edilmiştir.');
+        }
+        return $relation;
+    }
     public function attributes(): array
     {
-        return ['title', 'description', 'owner_id', 'undertaking_id', 'app_id', 'id','state','status_id'];
+        return ['title', 'description', 'owner_id', 'undertaking_id', 'app_id', 'id', 'state', 'status_id'];
     }
     public function primaryKey(): string
     {

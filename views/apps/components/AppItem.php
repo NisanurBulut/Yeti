@@ -13,7 +13,7 @@ class AppItem
                     <a class="btnModalOpen" href="/apps/editApp?id=%s">
                         <i class="right floated edit blue icon"></i>
                     </a>
-                    <a class="btnConfirmModalOpen" href="/apps/deleteApp?id=%s">
+                    <a class="btnConfirmModalOpen" href="/apps/destroyApp?id=%s">
                         <i class="right floated trash red icon"></i>
                     </a>
                 </div>

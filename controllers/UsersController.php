@@ -37,24 +37,14 @@ class UsersController extends Controller
         $userEntity = new User();
         return $this->renderOnlyView('users/forms/createUser', ['model' => $userEntity]);
     }
-    public function hasUserRelation($user, $param)
-    {
-        $demandEntity = new Demand();
-        $isOwnerDemand = $user->isExist(["owner_id" => $param], $demandEntity->tableName());
-        $isUnderTakeDemand = $user->isExist(["undertaking_id" => $param], $demandEntity->tableName());
 
-        if ($isOwnerDemand || $isUnderTakeDemand) {
-            Application::$app->session->setErrorFlashMessage('Kullanıcıyla ilişkili talep bulunmuştur. İşlem iptal edilmiştir.');
-            return true;
-        }
-        return false;
-    }
     public function destroyUser(Request $request)
     {
         $userEntity = new User();
         if ($request->isDelete() && Application::$app->isAdmin()) {
             $param = $request->params['id'];
-            if($this->hasUserRelation($userEntity,$param)){
+            $demandEntity = new Demand();
+            if($demandEntity->hasRelation(["owner_id" => $param, "undertaking_id" => $param])){
                 return Application::$app->response->redirect('/users');
             }
             if ($userEntity->delete($param)) {
