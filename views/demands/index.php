@@ -7,7 +7,7 @@
     </div>
 </div>
 <div class="ui bottom attached segment" id="divSearchContent">
-    <table id="dtDemand" class="ui celled table" style="width:100%">
+    <table id="dtDemand" class="ui celled table center aligned" style="width:100%">
         <thead>
             <tr>
                 <th>Title</th>
