@@ -27,12 +27,14 @@ use app\views\shared\MessageItem;
             <a class="item" href="/dashboard">
                 <i class="bolt icon large tooltip" data-content="Dashboard"></i>
             </a>
+            <?php if(Application::isAdmin()): ?>
             <a class="item" href="/users">
                 <i class="users icon large tooltip" data-content="Kullanıcılar"></i>
             </a>
             <a class="item" href="/apps">
                 <i class="rocket icon large tooltip" data-content="Uygulamalar"></i>
             </a>
+            <?php endif; ?>
             <a class="item" href="/demands">
                 <i class="tasks icon large tooltip" data-content="Talepler"></i>
                 <?php
