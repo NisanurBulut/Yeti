@@ -46,11 +46,6 @@ class Constants
             new SelectModel("red", "Tamamlandı", "2")
         ];
     }
-    public function getWithParamQuery($paramid, $query):string{
-         $concat = implode('',array($query,'(',$paramid,')'));
-
-        return $concat;
-    }
     public const tDemandJoinWithtApp = 'CALL sp_getDemandsFull';
     public const tUserDemandJoinWithtApp = 'CALL sp_getUserDemandsFull(:paramid)';
     public const tStatusJoinWithtColor = 'CALL sp_getSituationsFull';
