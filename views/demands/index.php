@@ -10,6 +10,7 @@
     <table id="dtDemand" class="ui celled table center aligned" style="width:100%">
         <thead>
             <tr>
+                <th>Uygulama</th>
                 <th>Title</th>
                 <th>Talebi Açan</th>
                 <th>Talebi Üstlenen</th>

@@ -12,9 +12,19 @@ $('#dtDemand').ready(function () {
 
 
 function loadDemandsToTable(dataSource) {
+  console.log(dataSource);
   var table = $('#dtDemand').DataTable({
     data: dataSource,
     columns: [
+      {
+        data:'appName',
+        render: function (data, type, full) {
+          return `<div class="ui label">
+                        <i class="ui icon rocket violet"></i>
+                        ${data}
+                      </div>`;
+        },
+      },
       {
         data: 'title'
       },
