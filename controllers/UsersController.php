@@ -39,17 +39,13 @@ class UsersController extends Controller {
     public function DestroyUser(Request $request)
     {
         $userEntity = new User();
-        $demandEntity = new Demand();
-
         if ($request->isDelete() && Application::$app->isAdmin()) {
             $param = $request->params['id'];
-            $ownerUser = $demandEntity->where(["owner_id"],$param);
-            $underTakingUser = $demandEntity->where(["undertaking_id"],$param);
-            if($ownerUser || $underTakingUser){
+
+            if(!$userEntity->isExist(["owner_id"=>$param],"tdemand") || !$userEntity->isExist(["undertaking_id"=>$param],"tdemand")){
                 Application::$app->session->setErrorFlashMessage('Kullanıcıyla ilişkili talep bulunmuştır. İşlem iptal edilmiştir.');
                 return Application::$app->response->redirect('/users');
             }
-
             if ($userEntity->delete($param)) {
                 Application::$app->session->setSuccessFlashMessage('Kullanıcı başarıyla silindi');
                 return Application::$app->response->redirect('/users');

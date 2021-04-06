@@ -67,6 +67,16 @@ abstract class DbModel extends Model
         $statement->execute();
         return $statement->fetchObject(static::class); // gives me instance
     }
+    public function isExist($where, $table) {
+        $attributes = array_keys($where);
+        $sql = implode("AND ",array_map(fn($attr)=>"$attr = :$attr", $attributes));
+        $statement = self::prepare("SELECT * FROM $table WHERE $sql LIMIT 1");
+        foreach($where as $key=>$value){
+            $statement->bindValue(":$key",$value);
+        }
+        $statement->execute();
+        return empty($statement->fetchAll()); // gives me instance
+    }
     public function delete($value)
     {
         $tableName = $this->tableName();
