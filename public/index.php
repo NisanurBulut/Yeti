@@ -29,6 +29,7 @@ $constats = new Constants();
 
 $app->router->get('/', [DashboardController::class,'dashboard']);
 $app->router->get('/dashboard', [DashboardController::class,'dashboard']);
+$app->router->get('/getDaiylDemands', [DashboardController::class,'getDaiylDemands']);
 
 
 $app->router->get('/apps', [AppsController::class,'index']);
