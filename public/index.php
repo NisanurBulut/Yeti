@@ -1,13 +1,14 @@
 <?php
 
+use app\models\User;
 use app\core\Application;
+use app\core\db\Constants;
 use app\controllers\AppsController;
 use app\controllers\AuthController;
 use app\controllers\HomeController;
 use app\controllers\UsersController;
 use app\controllers\DemandsController;
-use app\core\db\Constants;
-use app\models\User;
+use app\controllers\DashboardController;
 
 define("APP_URL","http://localhost:8080/");
 
@@ -26,8 +27,9 @@ $config=[
 $app = new Application(dirname((__DIR__)), $config);
 $constats = new Constants();
 
-$app->router->get('/', [HomeController::class,'home']);
-$app->router->post('/contact', [HomeController::class,'handleContact']);
+$app->router->get('/', [DashboardController::class,'dashboard']);
+$app->router->get('/dashboard', [DashboardController::class,'dashboard']);
+
 
 $app->router->get('/apps', [AppsController::class,'index']);
 $app->router->post('/apps/storeApp', [AppsController::class,'storeApp']);
