@@ -7,13 +7,11 @@ use app\models\StatusJoinColor;
 
 class SelectModel
 {
-    public function __construct($color, $name, $key)
+    public function __construct($name, $key)
     {
         $this->name = $name;
-        $this->color = $color;
         $this->key = $key;
     }
-    public string $color = "";
     public string $name = "";
     public string $key = "";
 }
@@ -40,10 +38,10 @@ class Constants
     public function getStates()
     {
         return [
-            new SelectModel("green", "Bekliyor", "Bekliyor"),
-            new SelectModel("orange", "Görüldü", "Görüldü"),
-            new SelectModel("red", "Devam ediyor", "Devam ediyor"),
-            new SelectModel("red", "Tamamlandı", "Tamamlandı")
+            new SelectModel("Bekliyor", "Bekliyor"),
+            new SelectModel("Görüldü", "Görüldü"),
+            new SelectModel("Devam ediyor", "Devam ediyor"),
+            new SelectModel("Tamamlandı", "Tamamlandı")
         ];
     }
     public const spTdemandJoinWithtApp = 'CALL sp_getDemandsFull';
