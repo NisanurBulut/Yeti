@@ -15,13 +15,14 @@ function loadDemandsToTable(dataSource) {
       {
         data: 'title',
         render: function (data, type, full) {
-          return `<p data-tooltip="${full.description}">${data}</p>`;
+          return `<p data-tooltip="Açıklama: ${full.description}">${data}</p>`;
         },
       },
       {
         data: 'ownerUsername',
         render: function (data, type, full) {
-          return `<a class="ui label">
+          console.log(full);
+          return `<a class="ui label" data-tooltip="${full.ownerNamesurname}">
                         <img class="ui right spaced avatar image" src="${full.ownerImageUrl}">
                         ${data}
                       </a>`;
@@ -30,7 +31,7 @@ function loadDemandsToTable(dataSource) {
       {
         data: 'takedUsername',
         render: function (data, type, full) {
-          return `<a class="ui label">
+          return `<a class="ui label" data-tooltip="${full.takedNamesurname}">
                         <img class="ui right spaced avatar image" src="${full.takedImageUrl}">
                         ${data}
                       </a>`;
@@ -39,7 +40,7 @@ function loadDemandsToTable(dataSource) {
       {
         data: 'status',
         render: function (data, type, full) {
-          return `<div class="ui label ${full.color}">
+          return `<div class="ui label ${full.color}" data-tooltip="Açıklama: ${full.description}">
                         <i class="clock icon"></i> ${data}
                       </div>`;
         },
@@ -47,8 +48,8 @@ function loadDemandsToTable(dataSource) {
       { data: 'state' },
       {
         data: 'differenceTime',
-        render: function (data, type) {
-          return `<div class="ui label">
+        render: function (data, type, full) {
+          return `<div class="ui label" data-tooltip="Açıklama: ${full.description}">
                         <i class="clock icon"></i> ${data} saat önce
                       </div>`;
         },
