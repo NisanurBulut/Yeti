@@ -16,7 +16,8 @@ class AppsController extends Controller
 
     public function __construct()
     {
-        $this->registerMiddleware(new AdminMiddleware(['index']));
+        $this->registerMiddleware(new AdminMiddleware([
+            'index', 'DestroyApp','storeApp','updateApp','editApp','createApp']));
         Application::$app->view->title='Uygulamalar';
     }
     private function validateForm(App $model, Response $response)
