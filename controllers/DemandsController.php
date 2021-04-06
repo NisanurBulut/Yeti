@@ -9,6 +9,7 @@ use app\models\Demand;
 use app\core\Controller;
 use app\core\Application;
 use app\core\db\Constants;
+use app\core\middlewares\AuthMiddleware;
 use app\core\middlewares\AdminMiddleware;
 use app\core\exceptions\ForbiddenException;
 
@@ -16,6 +17,7 @@ class  DemandsController extends Controller
 {
     public function __construct()
     {
+        $this->registerMiddleware(new AuthMiddleware(['index']));
         $this->registerMiddleware(new AdminMiddleware(['destroyDemand', 'storeDemand','changeStateDemand','updateDemand', 'editDemand', 'createDemand']));
         Application::$app->view->title = 'Talepler';
     }

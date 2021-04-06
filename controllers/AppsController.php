@@ -8,6 +8,7 @@ use app\core\Response;
 use app\models\Demand;
 use app\core\Controller;
 use app\core\Application;
+use app\core\middlewares\AuthMiddleware;
 use app\core\middlewares\AdminMiddleware;
 use app\core\exceptions\ForbiddenException;
 
@@ -18,7 +19,8 @@ class AppsController extends Controller
     {
         $this->registerMiddleware(new AdminMiddleware([
             'index', 'DestroyApp','storeApp','updateApp','editApp','createApp']));
-        Application::$app->view->title='Uygulamalar';
+            $this->registerMiddleware(new AuthMiddleware(['index']));
+            Application::$app->view->title='Uygulamalar';
     }
     private function validateForm(App $model, Response $response)
     {

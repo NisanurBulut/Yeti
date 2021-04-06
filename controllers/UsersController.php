@@ -8,12 +8,14 @@ use app\core\Response;
 use app\models\Demand;
 use app\core\Controller;
 use app\core\Application;
+use app\core\middlewares\AuthMiddleware;
 use app\core\middlewares\AdminMiddleware;
 
 class UsersController extends Controller
 {
     public function __construct()
     {
+        $this->registerMiddleware(new AuthMiddleware(['index']));
         $this->registerMiddleware(new AdminMiddleware(['index','createUser','updateUser','destroyUser','storeUser','editUser']));
         Application::$app->view->title = 'Kullanıcılar';
     }
