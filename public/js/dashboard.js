@@ -29,7 +29,7 @@ $(document).ready(function () {
 function drawChart(data) {
     Highcharts.chart('baseLine', {
         title: {
-            text: 'Günlük toplam talep sayısı gösterimi'
+            text: 'Günlük Toplam Talep Sayısı'
         },
         subtitle: {
             text: 'Kaynak: Yeti talep listesi'
@@ -42,12 +42,6 @@ function drawChart(data) {
         },
         xAxis: {
             categories: data.xAxis
-        },
-
-        legend: {
-            layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'middle'
         },
         chart: {
             type: 'line'
@@ -68,7 +62,7 @@ function drawAppDemandPieChart(data) {
             type: 'pie'
         },
         title: {
-            text: 'Uygulamaya düşen toplam talep sayısı'
+            text: 'Uygulamaya Düşen Toplam Talep Sayısı'
         },
         tooltip: {
             pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -89,7 +83,7 @@ function drawAppDemandPieChart(data) {
             }
         },
         series: [{
-            name: 'Brands',
+            name: 'Uygulama',
             colorByPoint: true,
             data: data
         }]
