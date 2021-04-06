@@ -12,6 +12,7 @@ class DashboardController extends Controller {
 
     public function __construct()
     {
+        $this->registerMiddleware(new AuthMiddleware(['dashboard']));
         Application::$app->view->title = 'Dashboard';
     }
     public function dashboard()
