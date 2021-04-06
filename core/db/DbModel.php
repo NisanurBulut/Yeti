@@ -89,8 +89,6 @@ abstract class DbModel extends Model
     public function select()
     {
         $tableName = $this->tableName();
-        $attributes = $this->attributes();
-        $params = array_map(fn ($attr) => ":$attr", $attributes);
         $statement = self::prepare("SELECT * FROM $tableName ORDER BY id DESC");
         $statement->execute();
         $result = $statement->fetchAll(PDO::FETCH_CLASS);
