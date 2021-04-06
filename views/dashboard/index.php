@@ -1,10 +1,10 @@
+<?php use app\views\dashboard\components\DashboardItem;?>
 <div class="ui column cards grid centerGridItems">
     <div class="five wide column">
         <div class="column">
             <div class="ui segment">
             <?php
-                use app\views\dashboard\components\DashboardItem;
-                $dashboardItem = DashboardItem::begin('basicBarChart',"aciklama");
+                $dashboardItem = DashboardItem::begin('baseLine',"aciklama");
                 $dashboardItem->end();
                 ?>
             </div>
@@ -12,7 +12,7 @@
     </div>
     <div class="five wide column">
         <div class="ui segment">
-            <x-dashboard.columndrilldown-chart />
+
         </div>
     </div>
     <div class="five wide column">

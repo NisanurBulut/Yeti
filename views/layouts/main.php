@@ -71,6 +71,7 @@ use app\views\shared\MessageItem;
 <script src="<?php echo APP_URL . '/datatables/node_modules/datatables.net/js/jquery.dataTables.min.js'; ?>"></script>
 <script src="<?php echo APP_URL . '/datatables/node_modules/datatables.net-se/js/dataTables.semanticui.min.js'; ?>">
 </script>
+
 <script src="<?php echo APP_URL . '/node_modules/highcharts/highcharts.js'; ?>"></script>
 <script src="<?php echo APP_URL . '/node_modules/highcharts/highcharts-3d.js'; ?>"></script>
 <script src="<?php echo APP_URL . '/node_modules/highcharts/modules/series-label.js'; ?>"></script>
