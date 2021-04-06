@@ -83,6 +83,9 @@ use app\views\shared\MessageItem;
 <script src="<?php echo APP_URL . '/node_modules/highcharts/modules/exporting.js'; ?>"></script>
 <script src="<?php echo APP_URL . '/node_modules/highcharts/modules/export-data.js'; ?>"></script>
 <script src="<?php echo APP_URL . '/node_modules/highcharts/modules/accessibility.js'; ?>"></script>
+<script src="<?php echo APP_URL . '/node_modules/highcharts/modules/cylinder.js'; ?>"></script>
+<script src="<?php echo APP_URL . '/node_modules/highcharts/modules/funnel3d.js'; ?>"></script>
+<script src="<?php echo APP_URL . '/node_modules/highcharts/modules/pyramid3d.js'; ?>"></script>
 
 <script src="<?php echo APP_URL . 'js/main.js'; ?>"></script>
 <script src="<?php echo APP_URL . 'js/datatables-load.js'; ?>"></script>

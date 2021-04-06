@@ -31,7 +31,7 @@ $app->router->get('/', [DashboardController::class,'dashboard']);
 $app->router->get('/dashboard', [DashboardController::class,'dashboard']);
 $app->router->get('/getDailyDemands', [DashboardController::class,'getDailyDemands']);
 $app->router->get('/getAppDemandCountList', [DashboardController::class,'getAppDemandCountList']);
-
+$app->router->get('/getAppDemandStateCount', [DashboardController::class,'getAppDemandStateCount']);
 
 $app->router->get('/apps', [AppsController::class,'index']);
 $app->router->post('/apps/storeApp', [AppsController::class,'storeApp']);

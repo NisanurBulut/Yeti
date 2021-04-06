@@ -38,4 +38,29 @@ class DashboardController extends Controller {
         $result = $demandEntity->executeRawQuery($query);
         return json_encode($result);
     }
+    public function getAppDemandStateCount()
+    {
+        $query = Constants::spGetAppDemandStateCount;
+        $demandEntity = new Demand();
+        $results = $demandEntity->executeRawQuery($query);
+        $data=array();
+        foreach($results as $result){
+            $new=[$result->state, floatval($result->count)];
+            array_push($data,$new);
+        }
+        return json_encode($data);
+    }
+    function object_to_array($data)
+    {
+        if (is_array($data) || is_object($data))
+        {
+            $result = array();
+            foreach ($data as $key => $value)
+            {
+                $result[$key] = $this->object_to_array($value);
+            }
+            return $result;
+        }
+        return $data;
+    }
 }

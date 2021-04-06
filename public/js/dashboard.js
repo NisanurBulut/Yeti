@@ -17,13 +17,24 @@ $(document).ready(function () {
     async: true,
     dataType: 'json',
     success: function (data) {
-        console.log(data);
         data.forEach((element,key) => {
             data[key].y= parseFloat(element.y);
         });
       drawAppDemandPieChart(data);
     },
   });
+  $.ajax({
+    url: '/getAppDemandStateCount',
+    type: 'GET',
+    async: true,
+    dataType: 'json',
+    success: function (data) {
+        console.log(data);
+        drawFixedChart(data);
+    },
+  });
+
+
 });
 
 function drawChart(data) {
@@ -88,4 +99,42 @@ function drawAppDemandPieChart(data) {
             data: data
         }]
     });
+ }
+
+function drawFixedChart(data) {
+console.log(data);
+   // Set up the chart
+Highcharts.chart('pyramid', {
+    chart: {
+        type: 'pyramid3d',
+        options3d: {
+            enabled: true,
+            alpha: 10,
+            depth: 50,
+            viewDistance: 50
+        }
+    },
+    title: {
+        text: 'Talep Durum Toplam Sayıları'
+    },
+    plotOptions: {
+        series: {
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b> ({point.y:,.0f})',
+                allowOverlap: true,
+                x: 10,
+                y: -5
+            },
+            width: '60%',
+            height: '80%',
+            center: ['50%', '45%']
+        }
+    },
+    series: [{
+        name: 'Talep',
+        data: data
+    }]
+});
+
  }
