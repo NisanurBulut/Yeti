@@ -21,7 +21,6 @@ function loadDemandsToTable(dataSource) {
       {
         data: 'ownerUsername',
         render: function (data, type, full) {
-          console.log(full);
           return `<a class="ui label" data-tooltip="${full.ownerNamesurname}">
                         <img class="ui right spaced avatar image" src="${full.ownerImageUrl}">
                         ${data}
