@@ -20,7 +20,7 @@ class DashboardController extends Controller {
     {
         return $this->render('dashboard/index');
     }
-    public function getDaiylDemands()
+    public function getDailyDemands()
     {
         $query = Constants::spGetDailyDemandsForChart;
         $demandEntity = new Demand();
@@ -30,5 +30,12 @@ class DashboardController extends Controller {
             "yAxis"=>array_column($result,"y")
         ];
         return json_encode($data);
+    }
+    public function getAppDemandCountList()
+    {
+        $query = Constants::spGetAppDemandCountForChart;
+        $demandEntity = new Demand();
+        $result = $demandEntity->executeRawQuery($query);
+        return json_encode($result);
     }
 }

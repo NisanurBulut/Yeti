@@ -1,6 +1,6 @@
 $(document).ready(function () {
   $.ajax({
-    url: '/getDaiylDemands',
+    url: '/getDailyDemands',
     type: 'GET',
     async: true,
     dataType: 'json',
@@ -9,6 +9,19 @@ $(document).ready(function () {
           data.yAxis[key]= parseFloat(element);
       });
       drawChart(data);
+    },
+  });
+  $.ajax({
+    url: '/getAppDemandCountList',
+    type: 'GET',
+    async: true,
+    dataType: 'json',
+    success: function (data) {
+        console.log(data);
+        data.forEach((element,key) => {
+            data[key].y= parseFloat(element.y);
+        });
+      drawAppDemandPieChart(data);
     },
   });
 });
@@ -46,56 +59,39 @@ function drawChart(data) {
     });
 }
 
-
-Highcharts.chart('pie', {
-    chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false,
-        type: 'pie'
-    },
-    title: {
-        text: 'Browser market shares in January, 2018'
-    },
-    tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-    },
-    accessibility: {
-        point: {
-            valueSuffix: '%'
-        }
-    },
-    plotOptions: {
-        pie: {
-            allowPointSelect: true,
-            cursor: 'pointer',
-            dataLabels: {
-                enabled: false
-            },
-            showInLegend: true
-        }
-    },
-    series: [{
-        name: 'Brands',
-        colorByPoint: true,
-        data: [{
-            name: 'Chrome',
-            y: 61.41,
-        }, {
-            name: 'Internet Explorer',
-            y: 11.84
-        }, {
-            name: 'Firefox',
-            y: 10.85
-        }, {
-            name: 'Edge',
-            y: 4.67
-        }, {
-            name: 'Safari',
-            y: 4.18
-        }, {
-            name: 'Other',
-            y: 7.05
+function drawAppDemandPieChart(data) {
+    Highcharts.chart('pie', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Uygulamaya düşen toplam talep sayısı'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: false
+                },
+                showInLegend: true
+            }
+        },
+        series: [{
+            name: 'Brands',
+            colorByPoint: true,
+            data: data
         }]
-    }]
-});
+    });
+ }
