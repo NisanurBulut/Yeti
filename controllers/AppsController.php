@@ -9,6 +9,7 @@ use app\models\Demand;
 use app\core\Controller;
 use app\core\Application;
 use app\core\middlewares\AdminMiddleware;
+use app\core\exceptions\ForbiddenException;
 
 class AppsController extends Controller
 {

@@ -9,8 +9,7 @@ use app\models\Demand;
 use app\core\Controller;
 use app\core\Application;
 use app\core\db\Constants;
-use app\models\DemandJoinModel;
-use app\core\middlewares\AuthMiddleware;
+use app\core\exceptions\ForbiddenException;
 
 class  DemandsController extends Controller
 {
@@ -45,6 +44,10 @@ class  DemandsController extends Controller
 
     public function destroyDemand(Request $request)
     {
+        if(!Application::$app->isAdmin())
+        {
+            throw new ForbiddenException();
+        }
         $demandEntity = new Demand();
         if ($request->isDelete()) {
             $param = $request->params['id'];
