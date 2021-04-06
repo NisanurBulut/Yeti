@@ -4,15 +4,12 @@ namespace app\views\dashboard\components;
 
 class DashboardItem
 {
-    public static function begin($id, $description)
+    public static function begin($id)
     {
         echo sprintf('
         <figure class="highcharts-figure">
         <div id="%s"></div>
-        <p class="highcharts-description">
-            %s
-        </p>
-        ',$id, $description);
+        ',$id);
         return new DashboardItem();
     }
     public static function end()

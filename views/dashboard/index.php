@@ -4,7 +4,7 @@
         <div class="column">
             <div class="ui segment">
             <?php
-                $dashboardItem = DashboardItem::begin('baseLine',"Günlük toplam talep sayısı gösterimi");
+                $dashboardItem = DashboardItem::begin('baseLine');
                 $dashboardItem->end();
                 ?>
             </div>
@@ -12,7 +12,11 @@
     </div>
     <div class="five wide column">
         <div class="ui segment">
-
+        <?php
+                $dashboardItem = DashboardItem::begin('pie');
+                $dashboardItem->end();
+                ?>
+            </div>
         </div>
     </div>
     <div class="five wide column">
