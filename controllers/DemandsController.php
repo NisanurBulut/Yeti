@@ -9,13 +9,14 @@ use app\models\Demand;
 use app\core\Controller;
 use app\core\Application;
 use app\core\db\Constants;
+use app\core\middlewares\AdminMiddleware;
 use app\core\exceptions\ForbiddenException;
 
 class  DemandsController extends Controller
 {
-
     public function __construct()
     {
+        $this->registerMiddleware(new AdminMiddleware(['destroyDemand','storeDemand','updateDemand','editDemand','createDemand']));
         Application::$app->view->title = 'Talepler';
     }
     private function validateModel(Demand $demanModel, Response $response)
@@ -44,9 +45,6 @@ class  DemandsController extends Controller
 
     public function destroyDemand(Request $request)
     {
-        if (!Application::$app->isAdmin()) {
-            throw new ForbiddenException();
-        }
         $demandEntity = new Demand();
         if ($request->isDelete()) {
             $param = $request->params['id'];
@@ -126,7 +124,7 @@ class  DemandsController extends Controller
         $demandItem = $demandEntity->where(["id" => $demandEntity->id]);
         $result = $demandItem->updateWhere(["state" => $demandEntity->state],[ $demandEntity->primaryKey() => $demandEntity->id]);
         if ($result) {
-            Application::$app->session->setSuccessFlashMessage('Talep aşaması değiştirildi.');
+            Application::$app->session->setSuccessFlashMessage('Talep aşaması başarıyla değiştirildi.');
             return Application::$app->response->redirect('/demands');
         }
         Application::$app->session->setErrorFlashMessage('Bir hata ile karşılaşıldı');

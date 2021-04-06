@@ -37,7 +37,7 @@ class AuthController extends Controller
             if (!$loginForm->validate()  || !$loginForm->login()) {
                 return $this->validateForm($loginForm,$response);
             }
-            return $response->redirect('/demands');
+            return $response->redirect('/dashboard');
         }
         return $response->redirect('/login', ["model" => $loginForm]);
     }
