@@ -39,16 +39,18 @@ abstract class DbModel extends Model
                 $statement .= "`$key` = :$key,";
                 $params[$key] = false;
             }
-            if (isset($_POST[$key]) && $key != "id")
-            {
-                $statement .= "`$key` = :$key,";
-                $params[$key] = $this->{$key};
-            }
-            if (isset($_POST[$key]) && $key == "id")
-            {
-                $statement .= "`$key` = :$key,";
-                $params[$key] = $this->{$key};
-            }
+            $statement .= "`$key` = :$key,";
+            $params[$key] = $this->{$key};
+            // if (isset($_POST[$key]) && $key != "id")
+            // {
+            //     $statement .= "`$key` = :$key,";
+            //     $params[$key] = $this->{$key};
+            // }
+            // if (isset($_POST[$key]) && $key == "id")
+            // {
+            //     $statement .= "`$key` = :$key,";
+            //     $params[$key] = $this->{$key};
+            // }
         }
         $statement = rtrim($statement, ",");
         self::prepare("UPDATE $tableName SET $statement WHERE id = :id")->execute($params);
