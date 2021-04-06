@@ -20,7 +20,9 @@
     <div id="idHeader" class="ui violet inverted borderless top fixed fluid pointing menu large">
         <a class="header item" href="/">YETİ</a>
         <div class="right menu">
-
+        <a class="item" href="/auth/login">
+                <i class="sign-in icon large tooltip" data-content="Oturum Açın"></i>
+            </a>
         </div>
     </div>
 </body>
