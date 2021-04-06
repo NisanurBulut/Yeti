@@ -14,7 +14,7 @@
     </div>
     <div class="four wide field">
         <img id="icon_img" class="ui middle aligned tiny image"
-            src="https://cdn03.ciceksepeti.com/cicek/kc9124966-1/L/turuncu-araba-sari-kalanchoe-kc9124966-1-304c4c57dbe34e63a431f46f3cab98e8.jpg" />
+            src="<?php echo APP_URL . 'images/userplaceholder.jpg'; ?>" />
     </div>
 </div>
 <div class="ui segment">
