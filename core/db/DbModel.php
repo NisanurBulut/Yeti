@@ -10,7 +10,7 @@ abstract class DbModel extends Model
 {
     abstract public function tableName(): string;
     abstract public function attributes(): array;
-    abstract public function primaryKey():string;
+    abstract public function primaryKey(): string;
     public function save()
     {
         $tableName = $this->tableName();
@@ -32,8 +32,7 @@ abstract class DbModel extends Model
         $attributes = $this->attributes();
         $params = [];
         $statement = "";
-        foreach ($attributes as $key)
-        {
+        foreach ($attributes as $key) {
             if (!isset($_POST[$key]) && $key === "is_admin") // PHP doesnt see checkbox's value
             {
                 $statement .= "`$key` = :$key,";
@@ -56,32 +55,36 @@ abstract class DbModel extends Model
         self::prepare("UPDATE $tableName SET $statement WHERE id = :id")->execute($params);
         return true;
     }
-    public function where($where) { // [email=>nisanurrunasin@gmail.com, firstName=> Nisanur]
+    public function where($where)
+    { // [email=>nisanurrunasin@gmail.com, firstName=> Nisanur]
         $tableName = $this->tableName();
         $attributes = array_keys($where);
-        $sql = implode("AND ",array_map(fn($attr)=>"$attr = :$attr", $attributes));
+        $sql = implode("AND ", array_map(fn ($attr) => "$attr = :$attr", $attributes));
         $statement = self::prepare("SELECT * FROM $tableName WHERE $sql");
-        foreach($where as $key=>$value){
-            $statement->bindValue(":$key",$value);
+        foreach ($where as $key => $value) {
+            $statement->bindValue(":$key", $value);
         }
         $statement->execute();
         return $statement->fetchObject(static::class); // gives me instance
     }
-    public function isExist($where, $table) {
+    public function isExist($where, $table)
+    {
         $attributes = array_keys($where);
-        $sql = implode("AND ",array_map(fn($attr)=>"$attr = :$attr", $attributes));
+        $sql = implode("AND ", array_map(fn ($attr) => "$attr = :$attr", $attributes));
         $statement = self::prepare("SELECT * FROM $table WHERE $sql LIMIT 1");
-        foreach($where as $key=>$value){
-            $statement->bindValue(":$key",$value);
+        foreach ($where as $key => $value) {
+            $statement->bindValue(":$key", $value);
         }
         $statement->execute();
-        return empty($statement->fetchAll()); // gives me instance
+        $result = $statement->fetchAll();
+        $isExist = count($result) > 0 ? true : false;
+        return $isExist; // gives me instance
     }
     public function delete($value)
     {
         $tableName = $this->tableName();
 
-        $query="DELETE FROM $tableName WHERE id=".($value);
+        $query = "DELETE FROM $tableName WHERE id=" . ($value);
 
         $statement = self::prepare($query);
         $statement->execute();
@@ -89,7 +92,7 @@ abstract class DbModel extends Model
     }
     public function selectFields($fields)
     {
-        $sql = implode(", ",$fields);
+        $sql = implode(", ", $fields);
         $tableName = $this->tableName();
         $statement = self::prepare("SELECT $sql FROM $tableName ORDER BY id DESC");
         $statement->execute();
@@ -108,10 +111,10 @@ abstract class DbModel extends Model
     {
         $tableName = $this->tableName();
         $attributes = array_keys($where);
-        $sql = implode("AND ",array_map(fn($attr)=>"$attr = :$attr", $attributes));
+        $sql = implode("AND ", array_map(fn ($attr) => "$attr = :$attr", $attributes));
         $statement = self::prepare("SELECT COUNT(*) AS 'count' FROM $tableName WHERE $sql");
-        foreach($where as $key=>$value){
-            $statement->bindValue(":$key",$value);
+        foreach ($where as $key => $value) {
+            $statement->bindValue(":$key", $value);
         }
         $statement->execute();
         return $statement->fetchObject();
@@ -127,8 +130,8 @@ abstract class DbModel extends Model
         $attributes = array_keys($where);
         $params = array_map(fn ($attr) => ":$attr", $attributes);
         $statement = self::prepare($sql);
-        foreach($where as $key=>$value){
-            $statement->bindValue(":$key",$value);
+        foreach ($where as $key => $value) {
+            $statement->bindValue(":$key", $value);
         }
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_CLASS);

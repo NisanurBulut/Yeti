@@ -10,11 +10,12 @@ use app\core\Controller;
 use app\core\Application;
 use app\core\middlewares\AdminMiddleware;
 
-class UsersController extends Controller {
+class UsersController extends Controller
+{
     public function __construct()
     {
         $this->registerMiddleware(new AdminMiddleware(['index']));
-        Application::$app->view->title='Kullanıcılar';
+        Application::$app->view->title = 'Kullanıcılar';
     }
     public function index()
     {
@@ -36,14 +37,24 @@ class UsersController extends Controller {
         $userEntity = new User();
         return $this->renderOnlyView('users/forms/createUser', ['model' => $userEntity]);
     }
-    public function DestroyUser(Request $request)
+    public function hasUserRelation($user, $param)
+    {
+        $demandEntity = new Demand();
+        $isOwnerDemand = $user->isExist(["owner_id" => $param], $demandEntity->tableName());
+        $isUnderTakeDemand = $user->isExist(["undertaking_id" => $param], $demandEntity->tableName());
+
+        if ($isOwnerDemand || $isUnderTakeDemand) {
+            Application::$app->session->setErrorFlashMessage('Kullanıcıyla ilişkili talep bulunmuştur. İşlem iptal edilmiştir.');
+            return true;
+        }
+        return false;
+    }
+    public function destroyUser(Request $request)
     {
         $userEntity = new User();
         if ($request->isDelete() && Application::$app->isAdmin()) {
             $param = $request->params['id'];
-
-            if(!$userEntity->isExist(["owner_id"=>$param],"tdemand") || !$userEntity->isExist(["undertaking_id"=>$param],"tdemand")){
-                Application::$app->session->setErrorFlashMessage('Kullanıcıyla ilişkili talep bulunmuştır. İşlem iptal edilmiştir.');
+            if($this->hasUserRelation($userEntity,$param)){
                 return Application::$app->response->redirect('/users');
             }
             if ($userEntity->delete($param)) {
@@ -96,4 +107,4 @@ class UsersController extends Controller {
         Application::$app->session->setErrorFlashMessage('Bir hata ile karşılaşıldı');
         return Application::$app->response->redirect('/users');
     }
- }
+}

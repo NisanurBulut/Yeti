@@ -14,6 +14,7 @@ class Controller
     {
 
     }
+
     public function registerMiddleware(BaseMiddleware $middleware)
     {
         $this->middlewares[] = $middleware;
