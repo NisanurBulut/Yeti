@@ -7,12 +7,14 @@ use app\core\Request;
 use app\core\Response;
 use app\core\Controller;
 use app\core\Application;
+use app\core\middlewares\AdminMiddleware;
 
 class AppsController extends Controller
 {
 
     public function __construct()
     {
+        $this->registerMiddleware(new AdminMiddleware(['index']));
         Application::$app->view->title='Uygulamalar';
     }
     private function validateForm(App $model, Response $response)
