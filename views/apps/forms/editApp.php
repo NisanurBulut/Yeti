@@ -14,7 +14,7 @@
     </div>
     <div class="four wide field">
         <img id="icon_img" class="ui middle aligned tiny image"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMhGjtzojjaZI-4ugGXPfL8jWIHLBfSFxKyA&usqp=CAU" />
+            src="<?php echo $model->image_url; ?>" />
     </div>
 </div>
 </div>
