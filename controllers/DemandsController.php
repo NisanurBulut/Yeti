@@ -27,11 +27,11 @@ class  DemandsController extends Controller
     }
     public function getDemands()
     {
-        $query = Constants::tDemandJoinWithtApp;
+        $query = Constants::spTdemandJoinWithtApp;
         $demandJoinModel = new DemandJoinModel();
         if (!Application::$app->isAdmin()) {
             $paramid = Application::$app->user->id;
-            $query = Constants::tUserDemandJoinWithtApp;
+            $query = Constants::spTuserDemandJoinWithtApp;
             $demandList = $demandJoinModel->executeRawQueryWithParams($query,["paramid"=>$paramid]);
         }else{
             $demandList = $demandJoinModel->executeRawQuery($query);
