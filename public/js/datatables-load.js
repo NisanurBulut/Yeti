@@ -45,7 +45,12 @@ function loadDemandsToTable(dataSource) {
                       </div>`;
         },
       },
-      { data: 'state' },
+      {
+        data: 'state',
+        render: function (data, type, full) {
+          return `<p class="ui ${full.color} basic label" data-tooltip="Açıklama: ${full.description}">${data}</p>`;
+        },
+      },
       {
         data: 'differenceTime',
         render: function (data, type, full) {
