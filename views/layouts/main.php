@@ -81,5 +81,6 @@ use app\views\shared\MessageItem;
 <script src="<?php echo APP_URL . 'js/main.js'; ?>"></script>
 <script src="<?php echo APP_URL . 'js/datatables-load.js'; ?>"></script>
 <script src="<?php echo APP_URL . 'js/activate.semanticui-components.js'; ?>"></script>
+<script src="<?php echo APP_URL . 'js/dashboard.js'; ?>"></script>
 
 </html>

@@ -12,8 +12,8 @@ class DashboardItem
         <p class="highcharts-description">
             %s
         </p>
-        ');
-        return new DashboardItem($id, $description);
+        ',$id, $description);
+        return new DashboardItem();
     }
     public static function end()
     {
