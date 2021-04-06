@@ -40,10 +40,10 @@ class Constants
     public function getStates()
     {
         return [
-            new SelectModel("green", "Bekliyor", "0"),
-            new SelectModel("orange", "Görüldü", "1"),
-            new SelectModel("red", "Devam Ediyor", "2"),
-            new SelectModel("red", "Tamamlandı", "2")
+            new SelectModel("green", "Bekliyor", "Bekliyor"),
+            new SelectModel("orange", "Görüldü", "Görüldü"),
+            new SelectModel("red", "Devam ediyor", "Devam ediyor"),
+            new SelectModel("red", "Tamamlandı", "Tamamlandı")
         ];
     }
     public const spTdemandJoinWithtApp = 'CALL sp_getDemandsFull';

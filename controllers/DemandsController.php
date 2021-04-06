@@ -121,6 +121,14 @@ class  DemandsController extends Controller
     }
     public function changeStateDemand(Request $request)
     {
+        $demandEntity = new Demand();
+        $demandEntity->loadData($request->getBody());
+        $demandItem = $demandEntity->where(["id" => $demandEntity->id]);
+        $result = $demandItem->updateWhere(["state" => $demandEntity->state],[ $demandEntity->primaryKey() => $demandEntity->id]);
+        if ($result) {
+            Application::$app->session->setSuccessFlashMessage('Talep aşaması değiştirildi.');
+            return Application::$app->response->redirect('/demands');
+        }
         Application::$app->session->setErrorFlashMessage('Bir hata ile karşılaşıldı');
         return Application::$app->response->redirect('/demands');
     }

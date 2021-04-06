@@ -1,3 +1,5 @@
+var dropdownField = '';
+console.log(dropdownField);
 $('#dtDemand').ready(function () {
   $.ajax({
     url: 'demands/getDemands',
@@ -8,15 +10,13 @@ $('#dtDemand').ready(function () {
   });
 });
 
+
 function loadDemandsToTable(dataSource) {
   var table = $('#dtDemand').DataTable({
     data: dataSource,
     columns: [
       {
-        data: 'title',
-        render: function (data, type, full) {
-          return `<p data-tooltip="Açıklama: ${full.description}">${data}</p>`;
-        },
+        data: 'title'
       },
       {
         data: 'ownerUsername',
@@ -39,7 +39,7 @@ function loadDemandsToTable(dataSource) {
       {
         data: 'status',
         render: function (data, type, full) {
-          return `<div class="ui label ${full.color}" data-tooltip="Açıklama: ${full.description}">
+          return `<div class="ui label ${full.color}">
                         <i class="clock icon"></i> ${data}
                       </div>`;
         },
@@ -47,13 +47,13 @@ function loadDemandsToTable(dataSource) {
       {
         data: 'state',
         render: function (data, type, full) {
-          return `<p class="ui ${full.color} basic label" data-tooltip="Açıklama: ${full.description}">${data}</p>`;
+          return `<p class="ui ${full.color} basic label">${data}</p>`;
         },
       },
       {
         data: 'differenceTime',
         render: function (data, type, full) {
-          return `<div class="ui label" data-tooltip="Açıklama: ${full.description}">
+          return `<div class="ui label">
                         <i class="clock icon"></i> ${data} saat önce
                       </div>`;
         },
@@ -65,7 +65,9 @@ function loadDemandsToTable(dataSource) {
             `<a class="btnModalOpen" id='${data}' href="/demands/editDemand?id=${data}">` +
             `<i class="blue edit icon"></i></a>` +
             `<a class="btnConfirmModalOpen" id='${data}' href="/demands/destroyDemand?id=${data}">` +
-            `<i class="red trash icon"></i></a>`
+            `<i class="red trash icon"></i></a>`+
+            `<a class="btnModalOpen" data-html="<p></p>Talep açıklamasını görüntüle aşamasını değiştir.</p>" id='${data}' href="/demands/showDemand?id=${data}">` +
+            `<i class="green gem icon"></i></a>`
           );
         },
       },

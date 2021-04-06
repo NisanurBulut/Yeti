@@ -10,9 +10,3 @@ $('.message .close')
       .transition('fade')
     ;
   });
-
-  $(document).ready(function(){
-
-    $('#seDropdown').dropdown();
-
-  });

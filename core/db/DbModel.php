@@ -40,23 +40,31 @@ abstract class DbModel extends Model
             }
             $statement .= "`$key` = :$key,";
             $params[$key] = $this->{$key};
-            // if (isset($_POST[$key]) && $key != "id")
-            // {
-            //     $statement .= "`$key` = :$key,";
-            //     $params[$key] = $this->{$key};
-            // }
-            // if (isset($_POST[$key]) && $key == "id")
-            // {
-            //     $statement .= "`$key` = :$key,";
-            //     $params[$key] = $this->{$key};
-            // }
         }
         $statement = rtrim($statement, ",");
         self::prepare("UPDATE $tableName SET $statement WHERE id = :id")->execute($params);
         return true;
     }
+    public function updateWhere($fields, $where)
+    {
+        $tableName = $this->tableName();
+        $attrFields = array_keys($fields);
+        $sqlF = implode("AND", array_map(fn ($attr) => "$attr = :$attr", $attrFields));
+        $attrWhere = array_keys($where);
+        $sqlW = implode("AND", array_map(fn ($attr) => "$attr = :$attr", $attrWhere));
+        $final="UPDATE $tableName SET $sqlF WHERE $sqlW";
+        $statement = self::prepare($final);
+        foreach ($fields as $key => $value) {
+            $statement->bindValue(":$key", $value);
+        }
+        foreach ($where as $key => $value) {
+            $statement->bindValue(":$key", $value);
+        }
+        $statement->execute();
+        return true;
+    }
     public function where($where)
-    { // [email=>nisanurrunasin@gmail.com, firstName=> Nisanur]
+    {
         $tableName = $this->tableName();
         $attributes = array_keys($where);
         $sql = implode("AND ", array_map(fn ($attr) => "$attr = :$attr", $attributes));
