@@ -29,7 +29,6 @@ $(document).ready(function () {
     async: true,
     dataType: 'json',
     success: function (data) {
-        console.log(data);
         drawFixedChart(data);
     },
   });
@@ -102,8 +101,6 @@ function drawAppDemandPieChart(data) {
  }
 
 function drawFixedChart(data) {
-console.log(data);
-   // Set up the chart
 Highcharts.chart('pyramid', {
     chart: {
         type: 'pyramid3d',
