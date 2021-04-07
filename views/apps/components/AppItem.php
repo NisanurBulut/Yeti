@@ -39,7 +39,7 @@ class AppItem
                     <div class="item">
                         <i class="linkify icon large grey"></i>
                         <div class="content">
-                            <a class="header">%s</a>
+                            <a class="header" href="%s">%s</a>
                         </div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@ class AppItem
                 <div class="meta right floated"></div>
             </div>', $app->id,
             $app->id,
-            $app->image_url,$app->app_name,$app->description,$app->db_name,$app->access_url);
+            $app->image_url,$app->app_name,$app->description,$app->db_name,$app->access_url,$app->access_url);
         return new AppItem();
     }
     public static function end()

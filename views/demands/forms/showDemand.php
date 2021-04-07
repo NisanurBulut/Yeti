@@ -15,5 +15,5 @@
     <button class="ui button purple" type="submit">Kaydet</button>
 </div>
 <?php echo app\core\form\Form::end() ?>
-<script src="<?php echo APP_URL . 'css/Semantic-UI-CSS-2.4.1/semantic.js'; ?>"></script>
-<script src="<?php echo APP_URL . 'js/activate.semanticui-components.js'; ?>"></script>
+<script src="<?php echo APP_URL . 'public/semanticui/semantic.js'; ?>"></script>
+<script src="<?php echo APP_URL . 'public/js/activate.semanticui-components.js'; ?>"></script>

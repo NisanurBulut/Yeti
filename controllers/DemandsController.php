@@ -18,7 +18,7 @@ class  DemandsController extends Controller
     public function __construct()
     {
         $this->registerMiddleware(new AuthMiddleware(['index']));
-        $this->registerMiddleware(new AdminMiddleware(['destroyDemand', 'storeDemand','changeStateDemand','updateDemand', 'editDemand', 'createDemand']));
+        $this->registerMiddleware(new AdminMiddleware(['changeStateDemand']));
         Application::$app->view->title = 'Talepler';
     }
     private function validateModel(Demand $demanModel, Response $response)
