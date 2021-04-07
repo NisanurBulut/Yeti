@@ -1,4 +1,7 @@
-<?php use app\views\shared\MessageItem; ?>
+<?php
+
+use app\core\Application;
+use app\views\shared\MessageItem; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,18 +18,23 @@
 
 <body>
     <div id="idHeader" class="ui violet inverted borderless top fixed fluid pointing menu large">
-        <a class="header item" href="/">YETİ
-        <i style="margin-left: 5px;" class="icon home large"></i>
-        </a>
+        <a class="header item" href="#">YETİ</a>
 
         <div class="right menu">
-        <a class="item" href="/auth/login">
-                <i class="sign-in icon large tooltip" data-content="Oturum Açın"></i>
-            </a>
+            <?php if (Application::$app->isGuest()) : ?>
+                <a class="item" href="/auth/login">
+                    <i class="sign-in icon large tooltip" data-content="Oturum Açın"></i>
+                </a>
         </div>
+    <?php else : ?>
+        <a class="item" href="/dashboard">
+            <i class="icon home large tooltip" data-content="Dashboard ekranına dönün"></i>
+        </a>
     </div>
+<?php endif; ?>
+</div>
 </body>
-<div class="contentBody">
+<div class="">
     <?php MessageItem::showMessage(); ?>
     {{ content }}
 </div>
