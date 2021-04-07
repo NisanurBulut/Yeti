@@ -6,7 +6,8 @@ class AppItem
 {
     public static function begin($app)
     {
-        echo sprintf('<div class="four wide column centerGridItems">
+        echo sprintf(
+            '<div class="four wide column centerGridItems">
         <div class="ui fluid card">
             <div class="content">
                 <div class="hoverBtns">
@@ -33,22 +34,31 @@ class AppItem
                     <div class="item">
                         <i class="database icon grey large"></i>
                         <div class="content">
-                            <a class="header">%s</a>
+                            <a class="header text-break">%s</a>
                         </div>
                     </div>
                     <div class="item">
-                        <i class="linkify icon large grey"></i>
-                        <div class="content">
-                            <a class="header" href="%s">%s</a>
+                    <div class="content">
+                 <label class="ui ">
+                 <i class="linkify icon large grey"></i>
+                 <a class="" href="%s" target="_blank">
+                 %s </a></label>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="content">
                 <div class="meta right floated"></div>
-            </div>', $app->id,
+            </div>',
             $app->id,
-            $app->image_url,$app->app_name,$app->description,$app->db_name,$app->access_url,$app->access_url);
+            $app->id,
+            $app->image_url,
+            $app->app_name,
+            $app->description,
+            $app->db_name,
+            $app->access_url,
+            $app->access_url
+        );
         return new AppItem();
     }
     public static function end()
