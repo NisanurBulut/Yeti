@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $this->title ?>
     </title>
-    <link rel="stylesheet" type="text/css" href="<?php echo APP_URL . 'public/css/Semantic-UI-CSS-2.4.1/semantic.min.css'; ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo APP_URL . 'public/semanticui/semantic.min.css'; ?>" />
     <link rel="stylesheet" type="text/css" href="<?php echo APP_URL . 'public/css/main.css'; ?>" />
-    <script src="<?php echo APP_URL . 'public/datatables/node_modules/datatables.net-se/css/dataTables.semanticui.min.css'; ?>">
+    <script src="<?php echo APP_URL . 'public/datatables/datatables.net-se/css/dataTables.semanticui.min.css'; ?>">
     </script>
 
 <body>
@@ -31,7 +31,7 @@
     {{ content }}
 </div>
 <script src="<?php echo APP_URL . 'public/js/jquery-3.6.0.min.js'; ?>"></script>
-<script src="<?php echo APP_URL . 'public/css/Semantic-UI-CSS-2.4.1/semantic.js'; ?>"></script>
+<script src="<?php echo APP_URL . 'public/semanticui/semantic.js'; ?>"></script>
 
 <script src="<?php echo APP_URL . 'public/js/main.js'; ?>"></script>
 <script src="<?php echo APP_URL . 'public/js/datatables-load.js'; ?>"></script>
