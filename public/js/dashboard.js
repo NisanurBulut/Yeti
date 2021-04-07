@@ -30,13 +30,10 @@ $(document).ready(function () {
     dataType: 'json',
     success: function (data) {
         drawFixedChart(data);
+        debugger;
     },
   });
-
-
-});
-
-function drawChart(data) {
+  function drawChart(data) {
     Highcharts.chart('baseLine', {
         title: {
             text: 'Günlük Toplam Talep Sayısı'
@@ -135,3 +132,4 @@ Highcharts.chart('pyramid', {
 });
 
  }
+});

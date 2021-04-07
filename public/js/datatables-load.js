@@ -1,10 +1,10 @@
-var dropdownField = '';
-console.log(dropdownField);
+
 $('#dtDemand').ready(function () {
   $.ajax({
     url: 'demands/getDemands',
     contentType: 'application/json; charset=utf-8',
     success: function (data) {
+      debugger;
       loadDemandsToTable(JSON.parse(data));
     },
   });

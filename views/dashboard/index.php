@@ -1,7 +1,7 @@
 <?php
 
 use app\views\dashboard\components\DashboardItem; ?>
-<div class="" style="padding-top:4rem;!important">
+<div class="" style="padding-top:4rem;">
 <div class="ui column cards grid centerGridItems">
     <div class="five wide column">
         <div class="column">

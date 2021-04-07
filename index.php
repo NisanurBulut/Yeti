@@ -11,9 +11,6 @@ use app\controllers\DashboardController;
 define("APP_URL","http://localhost:8080/");
 
 require_once  __DIR__.'/vendor/autoload.php';
-
-
-
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__.'/../'));
 $dotenv->load();
 $config=[
@@ -23,7 +20,7 @@ $config=[
         'password' => $_ENV['DB_PASSWORD'],
     ]
     ];
-    echo dirname(__DIR__.'/../');
+
 $app = new Application(dirname((__DIR__.'/../')), $config);
 $constats = new Constants();
 

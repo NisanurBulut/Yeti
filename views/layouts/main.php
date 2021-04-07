@@ -12,9 +12,9 @@
 use app\core\Application;
 use app\views\shared\MessageItem;
 
-    echo APP_URL . 'public/css/Semantic-UI-CSS-2.4.1/semantic.min.css'; ?>" />
+    echo APP_URL . 'public/semanticui/semantic.min.css'; ?>" />
     <link rel="stylesheet" type="text/css" href="<?php echo APP_URL . 'public/css/main.css'; ?>" />
-    <link rel="stylesheet" href="<?php echo APP_URL . 'public/datatables/node_modules/datatables.net-se/css/dataTables.semanticui.min.css'; ?>">
+    <link rel="stylesheet" href="<?php echo APP_URL . 'public/datatables/datatables.net-se/css/dataTables.semanticui.min.css'; ?>">
     </link>
 <script src="<?php echo APP_URL . 'public/js/jquery-3.6.0.min.js'; ?>"></script>
 <body>
@@ -69,20 +69,20 @@ use app\views\shared\MessageItem;
     {{ content }}
 </div>
 
-<script src="<?php echo APP_URL . 'public/css/Semantic-UI-CSS-2.4.1/semantic.js'; ?>"></script>
-<script src="<?php echo APP_URL . 'public//datatables/node_modules/datatables.net/js/jquery.dataTables.min.js'; ?>"></script>
-<script src="<?php echo APP_URL . 'public//datatables/node_modules/datatables.net-se/js/dataTables.semanticui.min.js'; ?>">
+<script src="<?php echo APP_URL . 'public/semanticui/semantic.js'; ?>"></script>
+<script src="<?php echo APP_URL . 'public/datatables/datatables.net/js/jquery.dataTables.min.js'; ?>"></script>
+<script src="<?php echo APP_URL . 'public/datatables/datatables.net-se/js/dataTables.semanticui.min.js'; ?>">
 </script>
 
-<script src="<?php echo APP_URL . 'public/node_modules/highcharts/highcharts.js'; ?>"></script>
-<script src="<?php echo APP_URL . 'public/node_modules/highcharts/highcharts-3d.js'; ?>"></script>
-<script src="<?php echo APP_URL . 'public/node_modules/highcharts/modules/series-label.js'; ?>"></script>
-<script src="<?php echo APP_URL . 'public/node_modules/highcharts/modules/exporting.js'; ?>"></script>
-<script src="<?php echo APP_URL . 'public/node_modules/highcharts/modules/export-data.js'; ?>"></script>
-<script src="<?php echo APP_URL . 'public/node_modules/highcharts/modules/accessibility.js'; ?>"></script>
-<script src="<?php echo APP_URL . 'public/node_modules/highcharts/modules/cylinder.js'; ?>"></script>
-<script src="<?php echo APP_URL . 'public/node_modules/highcharts/modules/funnel3d.js'; ?>"></script>
-<script src="<?php echo APP_URL . 'public/node_modules/highcharts/modules/pyramid3d.js'; ?>"></script>
+<script src="<?php echo APP_URL . 'public/highcharts/highcharts.js'; ?>"></script>
+<script src="<?php echo APP_URL . 'public/highcharts/highcharts-3d.js'; ?>"></script>
+<script src="<?php echo APP_URL . 'public/highcharts/modules/series-label.js'; ?>"></script>
+<script src="<?php echo APP_URL . 'public/highcharts/modules/exporting.js'; ?>"></script>
+<script src="<?php echo APP_URL . 'public/highcharts/modules/export-data.js'; ?>"></script>
+<script src="<?php echo APP_URL . 'public/highcharts/modules/accessibility.js'; ?>"></script>
+<script src="<?php echo APP_URL . 'public/highcharts/modules/cylinder.js'; ?>"></script>
+<script src="<?php echo APP_URL . 'public/highcharts/modules/funnel3d.js'; ?>"></script>
+<script src="<?php echo APP_URL . 'public/highcharts/modules/pyramid3d.js'; ?>"></script>
 
 <script src="<?php echo APP_URL . 'public/js/main.js'; ?>"></script>
 <script src="<?php echo APP_URL . 'public/js/datatables-load.js'; ?>"></script>
