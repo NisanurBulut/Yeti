@@ -35,3 +35,4 @@ body {
 {
   height: 50px !important;
 }
+.text-break{ word-wrap: break-word; }
