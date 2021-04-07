@@ -14,7 +14,7 @@
     </div>
     <div class="four wide field">
         <img id="icon_img" class="ui middle aligned tiny image"
-            src="<?php echo APP_URL . 'images/userplaceholder.jpg'; ?>" />
+            src="<?php echo APP_URL . 'public/images/userplaceholder.jpg'; ?>" />
     </div>
 </div>
 <div class="ui segment">
