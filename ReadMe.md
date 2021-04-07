@@ -12,4 +12,16 @@ Non-admin users, other users, can only see their own demands and take action. Ap
 
 Written on the basis of the MVC (Model-Viewv-Controller) design pattern using modern PHP language. MSQL-MariaDB is used as database. In practice, no ready-made library or ORM tool is used for database operations. Migration processes are based on filing and raw SQL queries are executed. In the application, one-step sql queries such as where, update, insert into, select are defined as generic.However, a store procedure is used for queries that contain join. In the application, only the raw SQL query was written in the migration steps.
 
+* By imitating Laravel Framework, we tried to prepare custom Laravel Framework.
+
+| Developing       | Tool           |
+|------------------|----------------|
+| Graphics         | HighCharts     |
+| Theme Components | Semantic UI    |
+| Javascript       | Jquery         |
+| Datatables       | Datatables.net |
+|                  |                |
+| Database         | MariaDB        |
+| Backend          | Modern PHP     |
+
 ![Yeti](https://github.com/NisanurBulut/Yeti/blob/master/Trailers/Trailer_Yeti.gif)
