@@ -18,7 +18,7 @@ class UserItem
         $finalPrint = '<div class="four wide column centerGridItems">
         <div class="ui card"><div class="content">';
         if ($user->is_admin) {
-            $finalPrint = $finalPrint . '<i class="right floated star yellow icon"></i>';
+            $finalPrint = $finalPrint . '<i class="right floated star yellow icon tooltip" data-content="Admin kullanıcı"></i>';
         }
         $finalPrint = $finalPrint . '
         <div class="header"> %s </div>
