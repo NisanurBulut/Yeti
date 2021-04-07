@@ -24,4 +24,10 @@ Written on the basis of the MVC (Model-Viewv-Controller) design pattern using mo
 | Database         | MariaDB        |
 | Backend          | Modern PHP     |
 
+* While developing the application, it tried to comply with the principles of SOLID KISSS and DRY.
+- Static classes are derived for fixed objects.
+  Used stored procedures  and the constant data filling the dropdopwn list are kept in the Constant class.
+- Making abstraction between classes that are related to each other.
+  Each database model is derived from the DbModel class.Thus, each model has been able to call DbModel methods as they wish, and each model must have tableName, primaryKey .. methods.
+
 ![Yeti](https://github.com/NisanurBulut/Yeti/blob/master/Trailers/Trailer_Yeti.gif)
