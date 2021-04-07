@@ -15,7 +15,6 @@ class AuthController extends Controller
 
     public function __construct()
     {
-        $this->registerMiddleware(new AuthMiddleware(['demands']));
         $this->setLayout('auth');
     }
     public function login()
