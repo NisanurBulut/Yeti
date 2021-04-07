@@ -7,6 +7,8 @@ $('.message .close')
   .on('click', function() {
     $(this)
       .closest('.message')
-      .transition('fade')
-    ;
+      .transition('fade');
+  });
+  $('#sessionMessage').delay(5000).queue(function(n) {
+    $(this).hide(); n();
   });
