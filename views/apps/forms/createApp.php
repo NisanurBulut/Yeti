@@ -11,8 +11,8 @@
         <?php echo $form->field($model, 'image_url', 'text','imageChange') ?>
     </div>
     <div class="four wide field">
-        <img id="icon_img" class="ui middle aligned tiny image"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMhGjtzojjaZI-4ugGXPfL8jWIHLBfSFxKyA&usqp=CAU" />
+        <img id="icon_img" class="ui middle aligned small image"
+        src="<?php echo APP_URL . 'public/images/yeti.jpg'; ?>" />
     </div>
 </div>
 </div>
