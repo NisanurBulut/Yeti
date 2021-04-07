@@ -1,20 +1,20 @@
 <?php
 
-use app\models\User;
 use app\core\Application;
 use app\core\db\Constants;
 use app\controllers\AppsController;
 use app\controllers\AuthController;
-use app\controllers\HomeController;
 use app\controllers\UsersController;
 use app\controllers\DemandsController;
 use app\controllers\DashboardController;
 
 define("APP_URL","http://localhost:8080/");
 
-require_once  __DIR__.'/../vendor/autoload.php';
+require_once  __DIR__.'/vendor/autoload.php';
 
-$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
+
+
+$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__.'/../'));
 $dotenv->load();
 $config=[
     'db' => [
@@ -23,8 +23,8 @@ $config=[
         'password' => $_ENV['DB_PASSWORD'],
     ]
     ];
-
-$app = new Application(dirname((__DIR__)), $config);
+    echo dirname(__DIR__.'/../');
+$app = new Application(dirname((__DIR__.'/../')), $config);
 $constats = new Constants();
 
 $app->router->get('/', [DashboardController::class,'dashboard']);
