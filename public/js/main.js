@@ -1,7 +1,6 @@
 $(document).ready(function () {
 
     $('#editAppForm').find('input').trigger('keyup');
-
         $("#inputSearch").on("keyup", function() {
             var value = $(this).val().toLowerCase();
             $("#divSearchContent .card").filter(function() {
@@ -17,7 +16,6 @@ $(document).ready(function () {
 
     window.countInput = function (item, labelName) {
         event.preventDefault();
-        let labelItem = document.getElementById(labelName);
         let inputContent = $(item).val();
         let s = inputContent.length;
         let maxLength=$(item).attr('maxLength');
@@ -46,7 +44,6 @@ $(document).ready(function () {
         $.ajax({
             url: href,
             success: function (responseContent) {
-                console.log(responseContent);
               $('#generalModal').find(".content").html(responseContent);
             },
           });
