@@ -8,10 +8,10 @@ class UserItem
 {
     public static function begin($user)
     {
-        $destroyBtn = '<a class="right floated trash btnConfirmModalOpen"
+        $destroyBtn = sprintf('<a class="right floated trash btnConfirmModalOpen"
         id="%s"  href="/users/destroyUser?id=%s">
           <i class="trash red icon"></i>
-      </a>';
+      </a>',$user->id,$user->id);
         if (Application::$app->user->id === $user->id) {
             $destroyBtn = '';
         }
