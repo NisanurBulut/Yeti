@@ -4,7 +4,6 @@ $('#dtDemand').ready(function () {
     url: 'demands/getDemands',
     contentType: 'application/json; charset=utf-8',
     success: function (data) {
-      debugger;
       loadDemandsToTable(JSON.parse(data));
     },
   });
