@@ -32,3 +32,4 @@ use app\views\dashboard\components\DashboardItem; ?>
     </div>
 </div>
 </div>
+<script src="<?php echo APP_URL . 'public/js/dashboard.js'; ?>"></script>

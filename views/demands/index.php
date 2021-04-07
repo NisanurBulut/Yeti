@@ -26,3 +26,4 @@
     include(__DIR__ . '/../shared/confirm-modal.php');
     include(__DIR__ . '/../shared/general-modal.php');
     ?>
+<script src="<?php echo APP_URL . 'public/js/datatables-load.js'; ?>"></script>

@@ -86,8 +86,5 @@ use app\views\shared\MessageItem;
 <script src="<?php echo APP_URL . 'public/highcharts/modules/pyramid3d.js'; ?>"></script>
 
 <script src="<?php echo APP_URL . 'public/js/main.js'; ?>"></script>
-<script src="<?php echo APP_URL . 'public/js/datatables-load.js'; ?>"></script>
 <script src="<?php echo APP_URL . 'public/js/activate.semanticui-components.js'; ?>"></script>
-<script src="<?php echo APP_URL . 'public/js/dashboard.js'; ?>"></script>
-
 </html>
