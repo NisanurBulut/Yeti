@@ -18,7 +18,7 @@ use app\views\shared\MessageItem; ?>
 
 <body>
     <div id="idHeader" class="ui violet inverted borderless top fixed fluid pointing menu large">
-        <a class="header item" href="#">YETİ</a>
+        <a class="header item">YETİ</a>
         <div class="right menu">
             <?php if (Application::$app->isGuest()) : ?>
                 <a class="item" href="/auth/login">

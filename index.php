@@ -53,7 +53,7 @@ $app->router->post('/demands/updateDemand', [DemandsController::class,'updateDem
 $app->router->get('/demands/showDemand', [DemandsController::class,'showDemand']);
 $app->router->post('/demands/changeStateDemand', [DemandsController::class,'changeStateDemand']);
 
-$app->router->get('/', [AuthController::class,'login']);
+$app->router->get('/', [DashboardController::class,'dashboard']);
 $app->router->get('/auth/login', [AuthController::class,'login']);
 $app->router->post('/auth/storeLogin', [AuthController::class,'storeLogin']);
 $app->router->get('/auth/logout', [AuthController::class,'logout']);
