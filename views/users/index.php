@@ -19,12 +19,13 @@ use app\views\users\components\UserItem;
   </div>
 </div>
 <div class="ui bottom attached segment" id="divSearchContent">
-  <div class="ui grid">
-    <?php foreach($users as $user) {
+  <div class="ui stackable grid">
+   <div class="row">
+   <?php foreach($users as $user) {
 
-      $userItem = UserItem::begin($user);
-      $userItem->end();
-    }
-    ?>
+$userItem = UserItem::begin($user);
+$userItem->end();
+}
+?></div>
   </div>
 </div>

@@ -2,7 +2,7 @@
 
 use app\views\dashboard\components\DashboardItem; ?>
 <div class="" style="padding-top:4rem;">
-<div class="ui column cards grid centerGridItems">
+<div class="ui column cards stackable grid centerGridItems">
     <div class="five wide column">
         <div class="column">
             <div class="ui segment">

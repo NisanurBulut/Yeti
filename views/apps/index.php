@@ -17,12 +17,13 @@
   </div>
 </div>
 <div class="ui bottom attached segment" id="divSearchContent">
-  <div class="ui four column cards grid">
+  <div class="ui four column cards stackable grid">
+    <div class="row">
     <?php
     foreach ($apps as $app) {
       $appItem = app\views\apps\components\AppItem::begin($app);
       $appItem->end();
     }
-    ?>
+    ?></div>
   </div>
 </div>
