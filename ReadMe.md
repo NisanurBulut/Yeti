@@ -29,4 +29,8 @@ Written on the basis of the MVC (Model-Viewv-Controller) design pattern using mo
 - Making abstraction between classes that are related to each other.
   Each database model is derived from the DbModel class.Thus, each model has been able to call DbModel methods as they wish, and each model must have tableName, primaryKey .. methods.
 
+User Stories
+- When admin adds a new user, it gives him the initial password. The user can change his / her own password if he / she wishes.
+- User passwords are saved as hashes. No user, including the admin user, can see the raw password.
+- The admin user can add, delete, update and view the user information. However, if the logged in user is admin, he cannot delete himself.
 ![Yeti](https://github.com/NisanurBulut/Yeti/blob/master/Trailers/Trailer_Yeti.gif)
