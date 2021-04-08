@@ -70,11 +70,11 @@ function loadDemandsToTable(dataSource) {
         data: 'id',
         render: function (data, type) {
           return (
-            `<a class="btnModalOpen" id='${data}' href="/demands/editDemand?id=${data}">` +
+            `<a class="btnModalOpen" data-tooltip="Talebi düzenle" id='${data}' href="/demands/editDemand?id=${data}">` +
             `<i class="blue edit icon"></i></a>` +
-            `<a class="btnConfirmModalOpen" id='${data}' href="/demands/destroyDemand?id=${data}">` +
+            `<a class="btnConfirmModalOpen" data-tooltip="Talebi sil" id='${data}' href="/demands/destroyDemand?id=${data}">` +
             `<i class="red trash icon"></i></a>`+
-            `<a class="btnModalOpen" data-html="<p></p>Talep açıklamasını görüntüle aşamasını değiştir.</p>" id='${data}' href="/demands/showDemand?id=${data}">` +
+            `<a class="btnModalOpen" data-tooltip="Talebi görüntüle" id='${data}' href="/demands/showDemand?id=${data}">` +
             `<i class="green gem icon"></i></a>`
           );
         },
