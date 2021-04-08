@@ -31,6 +31,10 @@ use app\views\layouts\components\HeaderItem;
     BreadcrumbItem::showBreadcrumb();
     ?>
     {{ content }}
+    <?php
+    include(__DIR__ . '/../shared/confirm-modal.php');
+    include(__DIR__ . '/../shared/general-modal.php');
+    ?>
 </div>
 </body>
 <script src="<?php echo APP_URL . 'public/semanticui/semantic.js'; ?>"></script>

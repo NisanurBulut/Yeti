@@ -28,8 +28,3 @@ use app\views\users\components\UserItem;
     ?>
   </div>
 </div>
-
-<?php
-include(__DIR__ . '/../shared/confirm-modal.php');
-include(__DIR__ . '/../shared/general-modal.php');
-?>
