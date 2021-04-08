@@ -30,7 +30,6 @@ $(document).ready(function () {
     dataType: 'json',
     success: function (data) {
       drawFixedChart(data);
-      debugger;
     },
   });
   function drawChart(data) {
