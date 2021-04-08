@@ -68,7 +68,7 @@ class User extends BaseUserModel
             'name_surname' => [self::RULE_REQUIRED],
             'email' => [self::RULE_REQUIRED],
             'image_url' => [self::RULE_REQUIRED],
-            'password' => [self::RULE_REQUIRED]
+            'password' => []
         ];
     }
 
