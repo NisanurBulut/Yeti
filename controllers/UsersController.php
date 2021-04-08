@@ -133,9 +133,9 @@ class UsersController extends Controller
         ], [$userEntity->primaryKey() => $userEntity->id]);
         if ($result) {
             Application::$app->session->setSuccessFlashMessage('Parola başarıyla değiştirildi.');
-            return Application::$app->response->redirect('/users');
+            return Application::$app->response->redirect('/demands');
         }
         Application::$app->session->setErrorFlashMessage('Bir hata ile karşılaşıldı');
-        return Application::$app->response->redirect('/users');
+        return Application::$app->response->redirect('/demands');
     }
 }
