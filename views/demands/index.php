@@ -11,7 +11,7 @@
         <thead>
             <tr>
                 <th>Uygulama</th>
-                <th>Title</th>
+                <th>Konu</th>
                 <th>Talebi Açan</th>
                 <th>Talebi Üstlenen</th>
                 <th>Durum</th>
