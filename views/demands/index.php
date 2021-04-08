@@ -16,7 +16,7 @@
                 <th>Talebi Üstlenen</th>
                 <th>Durum</th>
                 <th>Aşama</th>
-                <th>Zaman Aşımı</th>
+                <th>Geçen Süre</th>
                 <th>işlem</th>
             </tr>
         </thead>
