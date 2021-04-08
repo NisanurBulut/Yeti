@@ -11,10 +11,6 @@ class Response
     }
     public function redirect(string $url)
     {
-        $address = '/dashboard';
-        if (Application::$app->isGuest() || Application::$app->isAdmin()) {
-            $address = $url;
-        }
-        header('Location: ' . $address);
+        header('Location: ' . $url);
     }
 }
