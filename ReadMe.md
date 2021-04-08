@@ -33,4 +33,5 @@ User Stories
 - When admin adds a new user, it gives him the initial password. The user can change his / her own password if he / she wishes.
 - User passwords are saved as hashes. No user, including the admin user, can see the raw password.
 - The admin user can add, delete, update and view the user information. However, if the logged in user is admin, he cannot delete himself.
+- 403 and 404 error code requests are defined for http requests. The 403 error code is thrown when the user makes an unauthorized page request, or the 404 error code is thrown when the user tries to reach an invalid address. However, the generic page was written to show other error codes.
 ![Yeti](https://github.com/NisanurBulut/Yeti/blob/master/Trailers/Trailer_Yeti.gif)
