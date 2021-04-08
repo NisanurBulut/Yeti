@@ -63,6 +63,7 @@ class AppsController extends Controller
             if (!$appModel->validate() || !$appModel->save()) {
                 return $this->validateForm($appModel, $response);
             }
+            Application::$app->session->setSuccessFlashMessage('Uygulama başarıyla kaydedildi');
             return Application::$app->response->redirect('/apps');
         }
         Application::$app->session->setFlash('error', 'Bir hata ile karşılaşıldı');
@@ -77,6 +78,7 @@ class AppsController extends Controller
             if (!$appModel->validate() || !$appModel->update()) {
                 return $this->validateForm($appModel, $response);
             }
+            Application::$app->session->setSuccessFlashMessage('Uygulama başarıyla güncellendi');
             return Application::$app->response->redirect('/apps');
         }
         Application::$app->session->setErrorFlashMessage('Bir hata ile karşılaşıldı');
