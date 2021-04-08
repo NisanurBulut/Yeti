@@ -1,7 +1,8 @@
 <?php
-
+use app\views\layouts\components\HeaderItem;
 use app\core\Application;
 use app\views\shared\MessageItem; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,28 +11,15 @@ use app\views\shared\MessageItem; ?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $this->title ?></title>
-    <link rel="shortcut icon" type="image/jpg" href="<?php echo APP_URL . 'public/images/favicon.ico'; ?>"/>
+    <link rel="shortcut icon" type="image/jpg" href="<?php echo APP_URL . 'public/images/favicon.ico'; ?>" />
     <link rel="stylesheet" type="text/css" href="<?php echo APP_URL . 'public/semanticui/semantic.min.css'; ?>" />
     <link rel="stylesheet" type="text/css" href="<?php echo APP_URL . 'public/css/main.css'; ?>" />
     <script src="<?php echo APP_URL . 'public/datatables/datatables.net-se/css/dataTables.semanticui.min.css'; ?>">
     </script>
 
 <body>
-    <div id="idHeader" class="ui violet inverted borderless top fixed fluid pointing menu large">
-        <a class="header item">YETİ</a>
-        <div class="right menu">
-            <?php if (Application::$app->isGuest()) : ?>
-                <a class="item" href="/auth/login">
-                    <i class="sign-in icon large tooltip" data-content="Oturum Açın"></i>
-                </a>
-        </div>
-    <?php else : ?>
-        <a class="item" href="/dashboard">
-            <i class="icon home large tooltip" data-content="Dashboard ekranına dönün"></i>
-        </a>
-    </div>
-<?php endif; ?>
-</div>
+    <?php HeaderItem::begin() ?>
+    <?php HeaderItem::end() ?>
 </body>
 <div class="">
     {{ content }}
