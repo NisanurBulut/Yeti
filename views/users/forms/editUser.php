@@ -5,10 +5,7 @@
     <?php echo $form->field($model, 'name_surname', 'text', '') ?>
     <?php echo $form->field($model, 'username', 'text', '') ?>
 </div>
-<div class="two fields">
-    <?php echo $form->field($model, 'email', 'text', '')->emailField() ?>
-    <?php echo $form->field($model, 'password', 'text', '') ?>
-</div>
+<?php echo $form->field($model, 'email', 'text', '')->emailField() ?>
 
 <div class="two fields">
     <div class="twelve wide field">

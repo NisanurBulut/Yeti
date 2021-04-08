@@ -42,6 +42,8 @@ $app->router->delete('/users/destroyUser', [UsersController::class,'destroyUser'
 $app->router->get('/users/editUser', [UsersController::class,'editUser']);
 $app->router->get('/users/createUser', [UsersController::class,'createUser']);
 $app->router->post('/users/updateUser', [UsersController::class,'updateUser']);
+$app->router->get('/users/changeUserPassword', [UsersController::class,'changeUserPassword']);
+$app->router->post('/users/changePassword', [UsersController::class,'changePassword']);
 
 $app->router->get('/demands', [DemandsController::class,'index']);
 $app->router->get('/demands/getDemands', [DemandsController::class,'getDemands']);

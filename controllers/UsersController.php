@@ -10,6 +10,8 @@ use app\core\Controller;
 use app\core\Application;
 use app\core\middlewares\AuthMiddleware;
 use app\core\middlewares\AdminMiddleware;
+use app\core\Model;
+use app\models\UserPasswordForm;
 
 class UsersController extends Controller
 {
@@ -28,7 +30,7 @@ class UsersController extends Controller
         ];
         return $this->render('users/index', $params);
     }
-    private function validateForm(User $model, Response $response)
+    private function validateForm(Model $model, Response $response)
     {
         $msg = $model->convertErrorMessagesToString();
         Application::$app->session->setErrorFlashMessage('İşlem iptal edildi.' . $msg);
@@ -106,6 +108,32 @@ class UsersController extends Controller
             $param = $request->params['id'];
             $result = $userEntity->where(['id' => $param]);
             return $this->renderOnlyView('users/forms/editUser', ['model' => $result]);
+        }
+        Application::$app->session->setErrorFlashMessage('Bir hata ile karşılaşıldı');
+        return Application::$app->response->redirect('/users');
+    }
+    public function changeUserPassword(Request $request)
+    {
+        $userEntity = new UserPasswordForm();
+        $param = $request->params['id'];
+        $userEntity->id=$param;
+        return $this->renderOnlyView('users/forms/changePassword', ['model' => $userEntity]);
+    }
+    public function changePassword(Request $request, Response $response)
+    {
+        $userEntity = new UserPasswordForm();
+        $userEntity->loadData($request->getBody());
+        $userItem = $userEntity->where(["id" => $userEntity->id]);
+        if (!$userEntity->validate()) {
+            return $this->validateForm($userEntity, $response);
+        }
+        $userEntity->password =  password_hash($userEntity->password, PASSWORD_DEFAULT);
+        $result = $userItem->updateWhere([
+            "password" => $userEntity->password
+        ], [$userEntity->primaryKey() => $userEntity->id]);
+        if ($result) {
+            Application::$app->session->setSuccessFlashMessage('Parola başarıyla değiştirildi.');
+            return Application::$app->response->redirect('/users');
         }
         Application::$app->session->setErrorFlashMessage('Bir hata ile karşılaşıldı');
         return Application::$app->response->redirect('/users');

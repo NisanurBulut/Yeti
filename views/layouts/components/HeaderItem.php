@@ -74,8 +74,15 @@ class HeaderItem
             <label class="text ui violet label basic">Oturumu kapat</label>
         </a>
     </div>
+    <div style="cursor:pointer;" role="option" aria-checked="true" aria-selected="true" class="item">
+    <a class="ui btnModalOpen"
+    href="/users/changeUserPassword?id=%s">
+      <i class="lock violet icon large tooltip" data-content="Parola değiştir"></i>
+      <label class="text ui violet label basic">Parola değiştir</label>
+      </div>
+  </a>
 </div>
-</div>', Application::$app->user->getUserImageUrl(), Application::$app->user->getDisplayName());
+</div>', Application::$app->user->getUserImageUrl(), Application::$app->user->getDisplayName(),Application::$app->user->id);
     }
     public static function end()
     {
