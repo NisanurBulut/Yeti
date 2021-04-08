@@ -7,7 +7,7 @@ class AppItem
     public static function begin($app)
     {
         echo sprintf(
-            '<div class="four wide column centerGridItems">
+            '<div class="four wide column centerGridItems stackable">
         <div class="ui fluid card">
             <div class="content">
                 <div class="hoverBtns">
@@ -34,14 +34,14 @@ class AppItem
                     <div class="item">
                         <i class="database icon grey large"></i>
                         <div class="content">
-                            <a class="header text-break">%s</a>
+                            <a class="header text-break aTagText">%s</a>
                         </div>
                     </div>
                     <div class="item">
                     <div class="content">
                  <label class="ui ">
                  <i class="linkify icon large grey"></i>
-                 <a class="" href="%s" target="_blank">
+                 <a class="aTagText" href="%s" target="_blank">
                  %s </a></label>
                         </div>
                     </div>
