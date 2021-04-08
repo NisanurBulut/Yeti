@@ -10,11 +10,11 @@ class HeaderItem
     {
         $rightMenu = self::getRightMenu();
         $leftMenu = self::getLeftMenu();
-        $headerComponent='';
+        $headerComponent = '';
         $headerComponentBegin = '<div id="idHeader" class="ui violet inverted borderless top fixed fluid pointing menu large">';
         $profileMenu = self::getProfileMenu();
 
-        $headerComponent = $headerComponentBegin. $leftMenu . $rightMenu . $profileMenu;
+        $headerComponent = $headerComponentBegin . $leftMenu . $rightMenu . $profileMenu;
         echo $headerComponent;
         return new HeaderItem();
     }
@@ -32,16 +32,17 @@ class HeaderItem
         </a>%s', $demandItem);
     }
     private static function getRightMenu(): string
-    {   $rightMenuBegin = '<div class="right menu">';
+    {
+        $rightMenuBegin = '<div class="right menu">';
         $rightMenuContent = '';
         if (Application::$app->isGuest()) {
-            $rightMenuContent='<a class="item" href="/auth/login">
+            $rightMenuContent = '<a class="item" href="/auth/login">
             <i class="sign-in icon large tooltip" data-content="Oturum Açın"></i>
         </a>';
         } else {
             $rightMenuContent = self::getProfileMenu();
 
-            $rightMenuContent ='<div class="right menu"><a class="item" href="/dashboard">
+            $rightMenuContent = '<div class="right menu"><a class="item" href="/dashboard">
             <i class="bolt icon large tooltip" data-content="Dashboard"></i>
         </a>
         <a class="item" href="/demands">
@@ -51,7 +52,7 @@ class HeaderItem
                 $rightMenuContent = self::getAdminRightMenu();
             }
         }
-        return $rightMenuBegin.$rightMenuContent;
+        return $rightMenuBegin . $rightMenuContent;
     }
     private static function getLeftMenu(): string
     {
@@ -59,30 +60,30 @@ class HeaderItem
     }
     private static function getProfileMenu(): string
     {
-        if(Application::isGuest()) return '';
-        return sprintf(' <div role="listbox" aria-expanded="false" class="ui item inline dropdown" tabindex="0">
-<div aria-atomic="true" aria-live="polite" role="alert" class="divider text">
+        if (Application::isGuest()) return '';
+        return sprintf(' <div class="ui item inline dropdown" tabindex="0">
+<div>
     <img class="ui avatar image"
     src="%s" />
     <i>%s</i>
 </div>
 <i aria-hidden="true" class="dropdown icon"></i>
 <div class="menu transition">
+<div role="option" aria-checked="true" aria-selected="true" class="item">
+<a class="ui btnModalOpen" href="/users/changeUserPassword?id=%s" style="cursor:pointer;">
+    <i class="lock violet icon large tooltip" data-content="Parola değiştir"></i>
+    <label class="text ui violet label basic">Parola değiştir</label>
+    </a>
+</div>
     <div style="cursor:pointer;" role="option" aria-checked="true" aria-selected="true" class="item">
         <a class="ui" href="/auth/logout">
             <i type="submit" class="sign out violet alternate icon large tooltip" data-content="Oturumu kapat"></i>
             <label class="text ui violet label basic">Oturumu kapat</label>
         </a>
     </div>
-    <div style="cursor:pointer;" role="option" aria-checked="true" aria-selected="true" class="item">
-    <a class="ui btnModalOpen"
-    href="/users/changeUserPassword?id=%s">
-      <i class="lock violet icon large tooltip" data-content="Parola değiştir"></i>
-      <label class="text ui violet label basic">Parola değiştir</label>
-      </div>
-  </a>
+
 </div>
-</div>', Application::$app->user->getUserImageUrl(), Application::$app->user->getDisplayName(),Application::$app->user->id);
+</div>',Application::$app->user->getUserImageUrl(), Application::$app->user->getDisplayName(),Application::$app->user->id);
     }
     public static function end()
     {
