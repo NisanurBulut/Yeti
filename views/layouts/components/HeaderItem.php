@@ -24,7 +24,7 @@ class HeaderItem
         $demandItem = sprintf('<a class="item" href="/demands">
         <i class="tasks icon large tooltip" data-content="Talepler"></i>%s</a>', $demandsCount);
         return sprintf('<a class="item" href="/dashboard">
-        <i class="bolt icon large tooltip" data-content="Dashboard"></i></a><a class="item" href="/users">
+        <i class="bolt icon large tooltip" data-content="Gösterge Paneli"></i></a><a class="item" href="/users">
         <i class="users icon large tooltip" data-content="Kullanıcılar"></i>
         </a>
         <a class="item" href="/apps">
