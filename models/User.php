@@ -51,6 +51,13 @@ class User extends BaseUserModel
     }
     public function update()
     {
+        if (!isset($_POST['is_admin'])) // PHP doesnt see checkbox's value
+            {
+                $_POST['is_admin'] = false;
+            }
+        if (($key = array_search('password', $this->attributes())) !== false) {
+            unset($this->attributes()[$key]);
+        }
         return parent::update();
     }
     public function where($where)

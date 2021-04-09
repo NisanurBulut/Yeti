@@ -33,15 +33,11 @@ abstract class DbModel extends Model
         $params = [];
         $statement = "";
         foreach ($attributes as $key) {
-            if ($key === "password") // PHP doesnt see checkbox's value
+            if ($key === "password") // user password doesnt change
             {
                continue;
             }
-            if (!isset($_POST[$key]) && $key === "is_admin") // PHP doesnt see checkbox's value
-            {
-                $statement .= "`$key` = :$key,";
-                $params[$key] = false;
-            }
+
             $statement .= "`$key` = :$key,";
             $params[$key] = $this->{$key};
         }
