@@ -91,7 +91,7 @@ function loadDemandsToTable(dataSource) {
         data: 'demandDatetime',
         render: function (data, type, full) {
           return `<div class="ui label">
-                        <i class="clock icon"></i> ${data}
+                        <i class="calender alternate icon"></i> ${data}
                       </div>`;
         },
       },
