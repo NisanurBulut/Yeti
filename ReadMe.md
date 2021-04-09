@@ -3,7 +3,7 @@ If you like or are using this project to learn or start your solution, please gi
 <hr>
 
 ## <i>YETİ</i>
-<img align="left" width="100" height="100" src="https://raw.githubusercontent.com/NisanurBulut/Yeti/master/public/images/yeti.jpg"><p>Yeti is a demand tracking application. Users open requests about applications. Admin users meet these demands. The main element of the application is the demands. Side items are applications and users. The movements arising from these elements are presented graphically on the dashboard screen.It is not possible to become a member of the application. therefore, an admin user must add you to the application to be able to use the application.</p>
+<img align="left" width="100" height="100" src="https://raw.githubusercontent.com/NisanurBulut/Yeti/master/public/images/yeti.jpg"><p>Yeti is a demand tracking application. Users open requests about applications. Admin users undertake these demands. The main element of the application is the demands. Side items are applications and users. The movements arising from these elements are presented graphically on the dashboard screen.It is not possible to become a member of the application. therefore, an admin user must add you to the application to be able to use the application.</p>
 
 * Only admin users have full authority over the application.
 
