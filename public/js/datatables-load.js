@@ -88,7 +88,7 @@ function loadDemandsToTable(dataSource) {
         },
       },
       {
-        data: 'differenceTime',
+        data: 'demandDatetime',
         render: function (data, type, full) {
           return `<div class="ui label">
                         <i class="clock icon"></i> ${data}
